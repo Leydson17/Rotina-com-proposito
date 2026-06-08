@@ -121,27 +121,16 @@
     .streak-reset-btn{width:100%;padding:12px;background:transparent;border:1px solid #2a2a3e;border-radius:8px;color:#555;font-size:11px;font-family:Georgia,serif;cursor:pointer;letter-spacing:1px}
 
     /* DEVOCIONAL */
+    .dv-view{padding:16px}
     .dv-tabs{display:flex;border-bottom:1px solid #2a1a3e;background:#0d0d0d}
-    .dv-tab{flex:1;padding:11px 4px;background:transparent;border:none;color:#555;font-size:11px;letter-spacing:.5px;cursor:pointer;font-family:Georgia,serif;border-bottom:2px solid transparent;transition:all .2s}
+    .dv-tab{flex:1;padding:11px 4px;background:transparent;border:none;color:#555;font-size:10px;letter-spacing:.5px;cursor:pointer;font-family:Georgia,serif;border-bottom:2px solid transparent;transition:all .2s}
     .dv-tab.active{color:#c084fc;border-bottom-color:#c084fc}
-    .dv-view-content{padding:16px}
-
-    .dv-progress-row{display:flex;align-items:center;justify-content:space-between;background:#1a1a2e;border:1px solid #2a2a3e;border-radius:10px;padding:10px 14px;margin-bottom:14px}
-    .dv-progress-row .dv-prog-label{font-size:11px;color:#888;letter-spacing:1px}
-    .dv-progress-row .dv-prog-num{font-size:13px;color:#c084fc;font-weight:bold}
-    .dv-month-title{font-size:20px;color:#f0ece0;font-weight:normal;letter-spacing:.5px;margin-bottom:4px}
-    .dv-month-desc{font-size:12px;color:#888;line-height:1.6;font-style:italic;margin-bottom:14px}
-    .dv-week-badge{display:inline-block;font-size:10px;color:#c084fc;background:#c084fc18;border:1px solid #c084fc33;border-radius:20px;padding:4px 12px;letter-spacing:1px;margin-bottom:12px}
-
     .dv-verse-card{background:linear-gradient(135deg,#1a0a2e,#2a1040);border:1px solid #c084fc33;border-radius:14px;padding:20px;margin-bottom:16px}
-    .dv-verse-label{font-size:9px;color:#c084fc;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
-    .dv-verse-day-title{font-size:15px;color:#f0ece0;margin-bottom:14px;letter-spacing:.5px}
+    .dv-verse-label{font-size:9px;color:#c084fc;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
     .dv-verse-text{font-size:16px;color:#f0ece0;line-height:1.8;font-style:italic;margin-bottom:12px}
     .dv-verse-ref{font-size:12px;color:#c084fc;text-align:right}
-    .dv-verse-nav{display:flex;justify-content:space-between;margin-top:14px}
+    .dv-verse-nav{display:flex;justify-content:space-between;margin-top:12px}
     .dv-verse-nav-btn{background:transparent;border:1px solid #2a1a3e;border-radius:20px;color:#888;font-size:11px;padding:5px 12px;cursor:pointer;font-family:Georgia,serif}
-    .dv-verse-nav-btn:disabled{opacity:.3}
-
     .dv-section{font-size:10px;color:#555;letter-spacing:2px;margin-bottom:10px}
     .dv-reflect{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:10px;padding:14px;margin-bottom:10px}
     .dv-reflect-num{font-size:10px;color:#c084fc;letter-spacing:1px;margin-bottom:6px}
@@ -155,20 +144,6 @@
     .dv-prayer-text{font-size:13px;color:#b0c4d8;line-height:1.8;font-style:italic}
     .dv-complete-btn{width:100%;padding:14px;background:linear-gradient(90deg,#4a2c6e,#6a3a9e);border:none;border-radius:10px;color:#e8e8e0;font-size:14px;font-family:Georgia,serif;cursor:pointer;margin-bottom:20px;letter-spacing:1px}
     .dv-complete-btn.done{background:#1a4731;border:1px solid #4ecb7144;color:#4ecb71}
-
-    /* TRILHA */
-    .dv-trail-month{background:#15101f;border:1px solid #2a1a3e;border-radius:14px;padding:16px;margin-bottom:16px}
-    .dv-trail-month-title{font-size:15px;color:#f0ece0;margin-bottom:2px}
-    .dv-trail-month-desc{font-size:11px;color:#777;font-style:italic;line-height:1.5;margin-bottom:14px}
-    .dv-trail-week{margin-bottom:12px}
-    .dv-trail-week-title{font-size:11px;color:#c084fc;letter-spacing:.5px;margin-bottom:6px}
-    .dv-trail-dots{display:flex;gap:7px}
-    .dv-day-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;border:2px solid #2a2a3e;color:#444;cursor:pointer;font-family:Georgia,serif;background:transparent}
-    .dv-day-dot.done{background:#1a4731;border-color:#4ecb71;color:#4ecb71}
-    .dv-day-dot.today{border-color:#c084fc;color:#c084fc;box-shadow:0 0 0 2px #c084fc33}
-    .dv-day-dot.future{opacity:.4;cursor:default}
-    .dv-future{background:#120e1a;border:1px dashed #2a1a3e;border-radius:14px;padding:24px 16px;margin-bottom:16px;text-align:center;color:#555;font-size:12px;font-style:italic}
-
     .dv-hist-item{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:10px;padding:14px;margin-bottom:10px}
     .dv-hist-date{font-size:10px;color:#c084fc;letter-spacing:1px;margin-bottom:6px}
     .dv-hist-verse{font-size:12px;color:#888;font-style:italic;margin-bottom:6px}
@@ -277,14 +252,50 @@
 </div>
 
 <div class="view" id="view-devocional">
+  <!-- mini sub-tabs -->
   <div class="dv-tabs">
     <button class="dv-tab active" id="dvTabHoje" onclick="dvSwitchTab('hoje')">📖 Hoje</button>
-    <button class="dv-tab" id="dvTabTrilha" onclick="dvSwitchTab('trilha')">🗺 Trilha</button>
     <button class="dv-tab" id="dvTabHist" onclick="dvSwitchTab('historico')">📅 Histórico</button>
   </div>
-  <div id="dvHojeView" class="dv-view-content"></div>
-  <div id="dvTrilhaView" class="dv-view-content" style="display:none"></div>
-  <div id="dvHistView" class="dv-view-content" style="display:none"></div>
+  <!-- today view -->
+  <div class="dv-view" id="dvTodayView">
+    <div class="dv-verse-card">
+      <div class="dv-verse-label">✦ VERSÍCULO DO DIA ✦</div>
+      <div class="dv-verse-text" id="dvVerseText"></div>
+      <div class="dv-verse-ref" id="dvVerseRef"></div>
+      <div class="dv-verse-nav">
+        <button class="dv-verse-nav-btn" onclick="dvPrev()">← anterior</button>
+        <button class="dv-verse-nav-btn" onclick="dvNext()">próximo →</button>
+      </div>
+    </div>
+    <div class="dv-section">REFLEXÃO GUIADA</div>
+    <div class="dv-reflect">
+      <div class="dv-reflect-num">PERGUNTA 1 — OBSERVAÇÃO</div>
+      <div class="dv-reflect-q" id="dvQ1"></div>
+      <textarea class="dv-journal" id="dvAns1" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+    </div>
+    <div class="dv-reflect">
+      <div class="dv-reflect-num">PERGUNTA 2 — INTERPRETAÇÃO</div>
+      <div class="dv-reflect-q" id="dvQ2"></div>
+      <textarea class="dv-journal" id="dvAns2" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+    </div>
+    <div class="dv-reflect">
+      <div class="dv-reflect-num">PERGUNTA 3 — APLICAÇÃO</div>
+      <div class="dv-reflect-q" id="dvQ3"></div>
+      <textarea class="dv-journal" id="dvAns3" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+    </div>
+    <button class="dv-save-btn" onclick="dvSave()">💾 Salvar reflexões</button>
+    <div class="dv-saved" id="dvSaved">✓ Reflexões salvas!</div>
+    <div class="dv-prayer">
+      <div class="dv-prayer-label">🙏 ORAÇÃO DO DIA</div>
+      <div class="dv-prayer-text" id="dvPrayer"></div>
+    </div>
+    <button class="dv-complete-btn" id="dvCompleteBtn" onclick="dvToggleDone()">Marcar devocional como concluído ✓</button>
+  </div>
+  <!-- history view -->
+  <div class="dv-view" id="dvHistView" style="display:none">
+    <div id="dvHistList"></div>
+  </div>
 </div>
 
 <!-- MODAL EDITAR/ADICIONAR -->
@@ -767,362 +778,134 @@ function confirmReset(){
   }
 }
 
-// ===================== DEVOCIONAL — CURRÍCULO ANUAL =====================
-const CURRICULUM = [
-  {
-    tema:"O Caráter de Deus",
-    descricao:"Explore quem Deus é em Sua essência — santo, amoroso, fiel e todo-poderoso.",
-    semanas:[
-      {titulo:"Deus é Santo",dias:[
-        {titulo:"A Santidade de Deus",ref:"Isaías 6:3",texto:"Santo, Santo, Santo é o SENHOR dos Exércitos; toda a terra está cheia da sua glória.",q1:"O que você observa neste versículo? Quem fala, para quem, e o que está acontecendo?",q2:"Por que os serafins repetem a palavra 'Santo' três vezes? O que isso revela sobre a natureza de Deus?",q3:"Como começar este dia reconhecendo a santidade de Deus muda o seu modo de viver hoje?",oracao:"Senhor, reconheço hoje que Tu és Santo, Santo, Santo. Que toda a minha vida reflita a Tua glória que enche a terra. Ajuda-me a viver com reverência diante de Ti. Amém."},
-        {titulo:"Chamados à Santidade",ref:"Levítico 11:44",texto:"Porque eu sou o SENHOR vosso Deus; santificai-vos pois, e sede santos, porque eu sou santo.",q1:"O que você observa neste versículo? Quem dá esta ordem e qual é a razão apresentada?",q2:"O que significa que a santidade de Deus se torna o fundamento e a medida da nossa própria santidade?",q3:"Que área prática da sua vida hoje precisa ser separada para Deus em obediência a este chamado?",oracao:"Pai, Tu me chamas a ser santo porque Tu és santo. Separa o meu coração e as minhas escolhas para Ti hoje. Que a minha vida seja consagrada ao Teu nome. Amém."},
-        {titulo:"Adoração ao Santo",ref:"Salmos 99:9",texto:"Exaltai ao SENHOR nosso Deus, e adorai no seu santo monte; porque santo é o SENHOR nosso Deus.",q1:"O que você observa neste versículo? Qual ação o salmista convoca o povo a praticar?",q2:"Por que a santidade de Deus é apresentada aqui como a razão central da adoração?",q3:"Como a sua adoração hoje pode ir além de palavras e se expressar em reverência genuína?",oracao:"Senhor, eu Te exalto porque Tu és santo. Recebe a minha adoração não só dos meus lábios, mas de toda a minha vida. Sê glorificado em mim hoje. Amém."},
-        {titulo:"Santos em Todo o Procedimento",ref:"1 Pedro 1:15-16",texto:"Mas, como é santo aquele que vos chamou, sede vós também santos em toda a vossa maneira de viver; porquanto está escrito: Sede santos, porque eu sou santo.",q1:"O que você observa neste versículo? Que abrangência Pedro dá à santidade?",q2:"O que significa que a santidade deve alcançar 'toda a vossa maneira de viver', e não apenas momentos religiosos?",q3:"Em que parte do seu dia — trabalho, família, descanso — você costuma esquecer de viver em santidade?",oracao:"Pai santo, que a minha santidade não fique restrita a momentos de oração, mas alcance cada palavra e atitude do meu dia. Transforma toda a minha maneira de viver. Amém."},
-        {titulo:"O Eterno Santo",ref:"Apocalipse 4:8",texto:"Santo, Santo, Santo é o Senhor Deus Todo-poderoso, que era, e que é, e que há de vir.",q1:"O que você observa neste versículo? Quem entoa este louvor diante do trono?",q2:"O que significa que a santidade de Deus é eterna — 'que era, que é e que há de vir'?",q3:"Como saber que adoro o mesmo Deus Santo de ontem, hoje e sempre fortalece a sua fé diante das mudanças da vida?",oracao:"Senhor Deus Todo-poderoso, Tu eras, Tu és e Tu hás de vir. Em meio às mudanças da minha vida, descanso na Tua santidade eterna e imutável. A Ti seja a glória. Amém."},
-        {titulo:"Olhos Puros Demais",ref:"Habacuque 1:13",texto:"Teus olhos são mui puros para verem o mal, e não podes contemplar a iniquidade.",q1:"O que você observa neste versículo? Como Habacuque descreve os olhos de Deus?",q2:"Se Deus é puro demais para tolerar o mal, por que então a graça e a cruz se tornam tão necessárias para nós?",q3:"Que pecado tolerado em sua vida você precisa confessar hoje diante do Deus de olhos puros?",oracao:"Senhor, Teus olhos são puros demais para contemplar a iniquidade. Sonda o meu coração e revela o que preciso abandonar. Purifica-me pelo sangue de Cristo. Amém."},
-        {titulo:"Guardados pelo Pai Santo",ref:"João 17:11",texto:"Pai santo, guarda-os no teu nome, esse teu nome que me deste, para que eles sejam um, como nós.",q1:"O que você observa neste versículo? A quem Jesus se dirige e o que Ele pede?",q2:"Por que Jesus apela à santidade do Pai justamente quando pede proteção e unidade para os seus?",q3:"Como descansar no fato de que o Pai Santo guarda você muda o modo como você enfrenta os desafios de hoje?",oracao:"Pai santo, obrigado porque Jesus orou para que Tu me guardasses no Teu nome. Guarda-me hoje do mal e une-me ao Teu povo. Em Ti encontro segurança. Amém."},
-      ]},
-      {titulo:"Deus é Amor",dias:[
-        {titulo:"Deus É Amor",ref:"1 João 4:8",texto:"Aquele que não ama não conhece a Deus, porque Deus é amor.",q1:"O que você observa neste versículo? Que afirmação direta João faz sobre Deus?",q2:"O que significa dizer que Deus não apenas ama, mas que Ele 'é' amor em Sua própria essência?",q3:"Se conhecer a Deus se prova no amar, como o seu amor pelas pessoas hoje revela o quanto você O conhece?",oracao:"Senhor, Tu não apenas amas — Tu és amor. Enche-me do Teu amor para que eu possa amar os outros e assim revelar que Te conheço. Amém."},
-        {titulo:"O Maior Amor",ref:"João 3:16",texto:"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.",q1:"O que você observa neste versículo? Quem amou, a quem, e o que entregou?",q2:"O que a entrega do Filho unigênito revela sobre a dimensão e o custo do amor de Deus?",q3:"Como viver hoje sabendo que você é amado a esse ponto por Deus?",oracao:"Pai, obrigado por amar o mundo a ponto de dar Teu Filho por mim. Que eu nunca me esqueça do preço do Teu amor e viva em gratidão. Amém."},
-        {titulo:"Amor Provado na Cruz",ref:"Romanos 5:8",texto:"Mas Deus prova o seu amor para conosco em que Cristo morreu por nós, sendo nós ainda pecadores.",q1:"O que você observa neste versículo? Em que momento Cristo morreu por nós?",q2:"Por que é tão significativo que Deus tenha demonstrado Seu amor enquanto ainda éramos pecadores, e não depois de nos corrigirmos?",q3:"Como esse amor que não espera você merecer transforma o modo como você se vê e perdoa os outros hoje?",oracao:"Senhor, Tu provaste o Teu amor por mim quando eu ainda era pecador. Que eu descanse nesse amor que não depende dos meus méritos e o estenda a quem me ofende. Amém."},
-        {titulo:"Amor Eterno",ref:"Jeremias 31:3",texto:"O SENHOR me apareceu desde longe, dizendo: Eu te amei com amor eterno; por isso, com benignidade te atraí.",q1:"O que você observa neste versículo? Como Deus descreve a duração do Seu amor?",q2:"O que significa que o amor de Deus por você não teve começo no tempo, mas é eterno?",q3:"Como saber que você é amado com amor eterno traz segurança ao seu coração nos momentos de rejeição ou solidão?",oracao:"Pai, Tu me amaste com amor eterno e me atraíste com benignidade. Quando me sentir rejeitado, lembra-me de que o Teu amor por mim não tem fim. Amém."},
-        {titulo:"A Dimensão do Amor",ref:"Efésios 3:17-19",texto:"Para que possais compreender com todos os santos qual seja a largura, e o comprimento, e a altura e a profundidade, e conhecer o amor de Cristo, que excede todo o entendimento.",q1:"O que você observa neste versículo? Que dimensões Paulo usa para descrever o amor de Cristo?",q2:"Por que Paulo diz que esse amor 'excede todo o entendimento' e ainda assim ora para que o conheçamos?",q3:"Que parte do amor de Cristo — largura, comprimento, altura ou profundidade — você precisa experimentar mais hoje?",oracao:"Senhor Jesus, ajuda-me a compreender, com todos os santos, a imensidão do Teu amor. Que eu seja cheio de toda a plenitude de Deus. Amém."},
-        {titulo:"Amamos Porque Ele Primeiro Amou",ref:"1 João 4:19",texto:"Nós amamos a Deus porque ele nos amou primeiro.",q1:"O que você observa neste versículo? Qual é a ordem do amor descrita por João?",q2:"O que muda quando entendemos que o nosso amor é sempre uma resposta ao amor de Deus, e não a origem dele?",q3:"Como reconhecer que Deus amou você primeiro o liberta de tentar conquistar o amor Dele por esforço próprio?",oracao:"Senhor, eu Te amo porque Tu me amaste primeiro. Liberta-me de tentar merecer o Teu amor e ensina-me a simplesmente respondê-lo com a minha vida. Amém."},
-        {titulo:"Deus Se Alegra em Você",ref:"Sofonias 3:17",texto:"O SENHOR teu Deus está no meio de ti, poderoso para salvar; ele se deliciará em ti com alegria; renovar-te-á no seu amor; exultará por tua causa com júbilo.",q1:"O que você observa neste versículo? Quais sentimentos de Deus para com Seu povo são descritos?",q2:"O que significa que o Deus poderoso para salvar também se deleita e exulta de alegria por você?",q3:"Como mudaria o seu dia se você realmente cresse que Deus se alegra em você neste exato momento?",oracao:"Pai, é difícil crer que Tu te alegras em mim, mas Tua Palavra diz que sim. Renova-me no Teu amor e ajuda-me a viver como filho amado, e não como servo que tenta agradar. Amém."},
-      ]},
-      {titulo:"Deus é Fiel",dias:[
-        {titulo:"Misericórdias Novas Cada Manhã",ref:"Lamentações 3:22-23",texto:"As misericórdias do SENHOR nunca têm fim; as suas compaixões nunca se extinguem. Renovam-se cada manhã; grande é a tua fidelidade.",q1:"O que você observa neste versículo? Com que frequência as misericórdias de Deus se renovam?",q2:"O que é notável no fato de que essa esperança foi escrita por Jeremias em meio à destruição de Jerusalém?",q3:"Como a verdade de que as misericórdias se renovam cada manhã dá a você um recomeço hoje, apesar das falhas de ontem?",oracao:"Senhor, obrigado porque as Tuas misericórdias se renovam a cada manhã. Deixo no passado as falhas de ontem e recebo o Teu novo dia de graça. Grande é a Tua fidelidade. Amém."},
-        {titulo:"Fiel é Deus",ref:"1 Coríntios 1:9",texto:"Fiel é Deus, pelo qual fostes chamados à comunhão de seu Filho Jesus Cristo nosso Senhor.",q1:"O que você observa neste versículo? Para que Deus, em Sua fidelidade, nos chamou?",q2:"O que significa que a base da nossa comunhão com Cristo está na fidelidade de Deus, e não na nossa?",q3:"Como descansar na fidelidade de Deus o ajuda a permanecer firme quando a sua própria constância falha?",oracao:"Pai, Tu és fiel e me chamaste à comunhão com o Teu Filho. Quando eu vacilar, lembra-me de que a nossa relação se sustenta na Tua fidelidade, não na minha. Amém."},
-        {titulo:"Fidelidade que Alcança os Céus",ref:"Salmos 36:5",texto:"Ó SENHOR, a tua misericórdia chega aos céus; e a tua fidelidade até às mais altas nuvens.",q1:"O que você observa neste versículo? Que imagem o salmista usa para descrever a fidelidade de Deus?",q2:"Por que comparar a fidelidade de Deus às alturas dos céus comunica algo sobre o seu alcance ilimitado?",q3:"Existe alguma situação que parece grande demais para a fidelidade de Deus alcançar? Como este versículo responde a isso?",oracao:"Senhor, a Tua fidelidade alcança as mais altas nuvens. Nenhuma circunstância da minha vida é grande demais para Ti. Confio que a Tua fidelidade me alcança hoje. Amém."},
-        {titulo:"Deus Não Mente",ref:"Números 23:19",texto:"Deus não é homem para que minta, nem filho de homem para que se arrependa. Porventura diria ele alguma coisa e não a faria? Ou falaria e não a confirmaria?",q1:"O que você observa neste versículo? Que contraste é feito entre Deus e os homens?",q2:"O que significa para a sua confiança o fato de que Deus sempre cumpre o que fala?",q3:"Que promessa de Deus você precisa crer hoje, mesmo sem ainda ver o seu cumprimento?",oracao:"Pai, Tu não és homem para mentir. Tudo o que prometeste, Tu cumprirás. Fortalece a minha fé para crer nas Tuas promessas mesmo antes de vê-las cumpridas. Amém."},
-        {titulo:"Fiel Mesmo Quando Falhamos",ref:"2 Timóteo 2:13",texto:"Se formos infiéis, ele permanece fiel; ele não pode negar-se a si mesmo.",q1:"O que você observa neste versículo? O que acontece com a fidelidade de Deus quando somos infiéis?",q2:"O que significa que Deus permanece fiel porque 'não pode negar-se a si mesmo' — em que isso baseia a nossa segurança?",q3:"Como essa verdade liberta você do medo de que suas falhas anulem o compromisso de Deus com você?",oracao:"Senhor, mesmo quando eu falho, Tu permaneces fiel, pois não podes negar a Ti mesmo. Obrigado porque a minha salvação repousa na Tua fidelidade. Restaura-me hoje. Amém."},
-        {titulo:"Fidelidade Como Escudo",ref:"Salmos 89:8",texto:"Ó SENHOR Deus dos Exércitos, quem é como tu, poderoso SENHOR? E a tua fidelidade te rodeia.",q1:"O que você observa neste versículo? Como a fidelidade de Deus é descrita em relação a Ele mesmo?",q2:"O que significa que a fidelidade 'rodeia' a Deus — ela é apenas um atributo ou faz parte de quem Ele é?",q3:"Como saber que serve a um Deus rodeado de fidelidade lhe dá coragem diante das incertezas de hoje?",oracao:"Senhor dos Exércitos, ninguém é como Tu. A Tua fidelidade Te rodeia e me protege. Sob esse escudo eu enfrento o dia sem temor. Amém."},
-        {titulo:"Firmes na Esperança",ref:"Hebreus 10:23",texto:"Retenhamos firme a confissão da nossa esperança, sem vacilar, porque fiel é o que prometeu.",q1:"O que você observa neste versículo? Que atitude somos chamados a ter e qual é a razão?",q2:"Por que a fidelidade de quem prometeu é apresentada como o fundamento para não vacilarmos na esperança?",q3:"Em que área você tem vacilado, e como a fidelidade de Deus pode firmar a sua esperança hoje?",oracao:"Pai, ajuda-me a reter firme a esperança sem vacilar, porque Tu és fiel em cumprir o que prometeste. Quando eu enfraquecer, sê a minha firmeza. Amém."},
-      ]},
-      {titulo:"Deus é Todo-Poderoso",dias:[
-        {titulo:"Nada é Difícil Demais",ref:"Gênesis 18:14",texto:"Porventura há coisa alguma difícil demais para o SENHOR? Ao tempo determinado voltarei a ti, e Sara terá um filho.",q1:"O que você observa neste versículo? Que pergunta Deus faz e em que contexto?",q2:"Por que Deus responde à descrença de Sara com uma pergunta sobre o Seu poder, em vez de uma repreensão?",q3:"Que situação 'impossível' na sua vida você precisa entregar hoje ao Deus para quem nada é difícil demais?",oracao:"Senhor, para Ti não há nada difícil demais. Entrego a Ti aquilo que parece impossível na minha vida e descanso no Teu poder e no Teu tempo perfeito. Amém."},
-        {titulo:"O Criador de Tudo",ref:"Jeremias 32:17",texto:"Ah! SENHOR Deus, eis que tu fizeste o céu e a terra com o teu grande poder e com o teu braço estendido; nada há que te seja difícil.",q1:"O que você observa neste versículo? Que obra de Deus Jeremias relembra em sua oração?",q2:"Por que recordar que Deus criou os céus e a terra fortalece a confiança em meio às dificuldades?",q3:"Como começar a sua oração lembrando do poder criador de Deus muda a forma como você apresenta seus pedidos hoje?",oracao:"Senhor Deus, Tu criaste os céus e a terra com o Teu grande poder. Nada Te é difícil. Diante do Criador de tudo, apresento as minhas necessidades com confiança. Amém."},
-        {titulo:"Poder e Entendimento Infinitos",ref:"Salmos 147:5",texto:"Grande é o nosso Senhor e mui poderoso; o seu entendimento é infinito.",q1:"O que você observa neste versículo? Que dois atributos de Deus são unidos aqui?",q2:"Por que é um conforto que o poder infinito de Deus venha acompanhado de um entendimento infinito?",q3:"Como confiar que Deus é poderoso e também entende perfeitamente a sua situação muda a sua ansiedade hoje?",oracao:"Senhor, Tu és grande em poder e infinito em entendimento. Tu não só podes agir, mas compreendes perfeitamente tudo o que vivo. Descanso na Tua sabedoria e força. Amém."},
-        {titulo:"Possível para Deus",ref:"Mateus 19:26",texto:"Jesus, porém, olhando para eles, disse: Para os homens isso é impossível, mas para Deus tudo é possível.",q1:"O que você observa neste versículo? Que contraste Jesus estabelece entre os homens e Deus?",q2:"O que essa verdade ensina sobre os limites do esforço humano e a suficiência do poder de Deus na salvação?",q3:"Em que área você tem confiado nas suas próprias forças quando deveria confiar no poder de Deus?",oracao:"Jesus, o que é impossível para mim é possível para Ti. Tira de mim a confiança nas minhas próprias forças e ensina-me a depender do Teu poder em tudo. Amém."},
-        {titulo:"Força para os Cansados",ref:"Isaías 40:28-29",texto:"Não sabes tu? Não ouviste que o Deus eterno, o SENHOR, o Criador dos fins da terra, não se cansa nem se fatiga? Ele dá força ao cansado e multiplica as forças ao que não tem vigor.",q1:"O que você observa neste versículo? O que Deus faz por aqueles que estão cansados?",q2:"Por que é significativo que o Deus que nunca se cansa seja exatamente aquele que dá força aos que se cansam?",q3:"Em que parte da sua vida você está esgotado e precisa receber hoje a força que vem de Deus?",oracao:"Deus eterno, Tu não te cansas nem te fatigas. Eu estou cansado, mas Tu dás força ao cansado. Renova as minhas forças hoje para que eu cumpra o que me chamaste a fazer. Amém."},
-        {titulo:"Mais do que Pedimos",ref:"Efésios 3:20",texto:"Ora, àquele que é poderoso para fazer infinitamente mais do que tudo quanto pedimos ou pensamos, conforme o poder que opera em nós.",q1:"O que você observa neste versículo? Quão longe vai o poder de Deus em relação aos nossos pedidos?",q2:"O que significa que o poder de Deus que faz 'infinitamente mais' é o mesmo poder que já opera dentro de você?",q3:"Como esse versículo amplia a sua expectativa diante daquilo que você tem pedido a Deus de forma tímida?",oracao:"Pai, Tu és poderoso para fazer infinitamente mais do que peço ou penso. Aumenta a minha fé para esperar grandes coisas, sabendo que o Teu poder opera em mim. Amém."},
-        {titulo:"O Todo-Poderoso Reina",ref:"Apocalipse 19:6",texto:"E ouvi como que a voz de uma grande multidão... dizendo: Aleluia! Porque já o Senhor Deus Todo-poderoso reina.",q1:"O que você observa neste versículo? Que proclamação a multidão celestial faz?",q2:"O que significa para a sua esperança o anúncio de que o Senhor Todo-poderoso já reina, mesmo em meio ao caos do mundo?",q3:"Como viver hoje sob o reinado do Todo-poderoso traz paz diante das circunstâncias que parecem fora de controle?",oracao:"Aleluia, Senhor! Tu, o Deus Todo-poderoso, reinas sobre todas as coisas. Em meio ao caos do mundo, descanso sob o Teu trono soberano. A Ti pertence o domínio. Amém."},
-      ]},
-    ]
-  },
-  {
-    tema:"Jesus Cristo",
-    descricao:"Conheça a pessoa de Jesus — Sua divindade, Seus ensinamentos, Sua cruz e Sua ressurreição.",
-    semanas:[
-      {titulo:"Quem é Jesus",dias:[
-        {titulo:"O Verbo Eterno",ref:"João 1:1",texto:"No princípio era o Verbo, e o Verbo estava com Deus, e o Verbo era Deus.",q1:"O que você observa neste versículo? Como João descreve o Verbo em relação a Deus?",q2:"O que significa afirmar, ao mesmo tempo, que o Verbo 'estava com Deus' e 'era Deus'?",q3:"Como reconhecer que Jesus é o Deus eterno muda a maneira como você se relaciona com Ele hoje?",oracao:"Senhor Jesus, Tu és o Verbo eterno, que estava com Deus e era Deus. Adoro-Te como meu Deus e Salvador. Que eu nunca diminua a Tua glória no meu coração. Amém."},
-        {titulo:"Imagem do Deus Invisível",ref:"Colossenses 1:15",texto:"O qual é a imagem do Deus invisível, o primogênito de toda a criação.",q1:"O que você observa neste versículo? Que título é dado a Cristo em relação a Deus?",q2:"O que significa dizer que em Jesus o Deus invisível se tornou visível e conhecível?",q3:"Como olhar para Jesus para conhecer o Pai transforma a sua ideia de quem Deus é?",oracao:"Pai, em Jesus eu vejo quem Tu és, pois Ele é a imagem do Deus invisível. Ajuda-me a conhecer-Te contemplando Cristo. Que a minha visão de Ti seja moldada por Ele. Amém."},
-        {titulo:"Caminho, Verdade e Vida",ref:"João 14:6",texto:"Jesus lhe disse: Eu sou o caminho, e a verdade, e a vida; ninguém vem ao Pai senão por mim.",q1:"O que você observa neste versículo? Que três afirmações Jesus faz sobre si mesmo?",q2:"O que significa que Jesus não apenas mostra o caminho, mas que Ele mesmo é o único caminho até o Pai?",q3:"Como a exclusividade de Cristo como caminho ao Pai orienta as suas escolhas e a sua fé hoje?",oracao:"Jesus, Tu és o caminho, a verdade e a vida. Não há outro meio de chegar ao Pai senão por Ti. Guia-me por Ti hoje e firma a minha confiança somente em Ti. Amém."},
-        {titulo:"Resplendor da Glória",ref:"Hebreus 1:3",texto:"O qual, sendo o resplendor da sua glória e a expressa imagem da sua pessoa, e sustentando todas as coisas pela palavra do seu poder...",q1:"O que você observa neste versículo? O que Cristo faz com 'todas as coisas'?",q2:"O que significa que o mesmo Jesus que é o resplendor da glória de Deus também sustenta o universo pela Sua palavra?",q3:"Como confiar que Cristo sustenta todas as coisas traz paz às áreas da sua vida que parecem instáveis?",oracao:"Senhor Jesus, Tu sustentas todas as coisas pela palavra do Teu poder. Se Tu seguras o universo, posso confiar que seguras também a minha vida. Descanso em Ti. Amém."},
-        {titulo:"Antes que Abraão Fosse",ref:"João 8:58",texto:"Jesus lhes disse: Na verdade, na verdade vos digo: Antes que Abraão existisse, eu sou.",q1:"O que você observa neste versículo? Que expressão Jesus usa para descrever Sua existência?",q2:"Por que ao dizer 'Eu sou' Jesus se identifica com o nome de Deus revelado a Moisés, afirmando Sua eternidade?",q3:"Como adorar um Salvador que existe antes de todas as coisas firma a sua fé nas incertezas de hoje?",oracao:"Jesus, antes de Abraão existir, Tu já eras o 'Eu Sou'. Tu és eterno e imutável. Em Ti, que não muda, eu ancoro a minha vida que tanto muda. Amém."},
-        {titulo:"O Deus que Se Esvaziou",ref:"Filipenses 2:6-7",texto:"O qual, sendo de forma divina, não considerou o ser igual a Deus como algo a que devia apegar-se; antes, esvaziou-se a si mesmo, tomando forma de servo, fazendo-se semelhante aos homens.",q1:"O que você observa neste versículo? Que escolha Cristo fez sendo de forma divina?",q2:"O que significa que o próprio Deus se esvaziou e tomou a forma de servo por amor a nós?",q3:"Como o exemplo da humildade de Cristo desafia o seu orgulho e o chama a servir hoje?",oracao:"Senhor Jesus, sendo Deus, Tu te esvaziaste e tomaste forma de servo por mim. Quebranta o meu orgulho e ensina-me a servir com a Tua humildade. Amém."},
-        {titulo:"O Alfa e o Ômega",ref:"Apocalipse 1:8",texto:"Eu sou o Alfa e o Ômega, o princípio e o fim, diz o Senhor Deus, aquele que é, e que era, e que há de vir, o Todo-poderoso.",q1:"O que você observa neste versículo? Que títulos o Senhor declara sobre si mesmo?",q2:"O que significa que Cristo é o princípio e o fim de todas as coisas, inclusive da sua história pessoal?",q3:"Como saber que Jesus está no começo e no fim de tudo dá sentido ao seu dia de hoje?",oracao:"Senhor, Tu és o Alfa e o Ômega, o princípio e o fim. Tu estás no início e no fim da minha vida. Entrego a Ti a minha história inteira, do começo ao fim. Amém."},
-      ]},
-      {titulo:"Os Ensinamentos de Jesus",dias:[
-        {titulo:"O Caminho do Reino",ref:"Mateus 5:3",texto:"Bem-aventurados os pobres em espírito, porque deles é o reino dos céus.",q1:"O que você observa neste versículo? Quem Jesus declara bem-aventurado?",q2:"O que significa ser 'pobre em espírito', e por que essa atitude é a porta de entrada do reino dos céus?",q3:"Onde você precisa reconhecer hoje a sua total dependência de Deus em vez de confiar em si mesmo?",oracao:"Senhor, ensina-me a ser pobre em espírito, reconhecendo que sem Ti nada posso. Que essa dependência humilde abra para mim as portas do Teu reino. Amém."},
-        {titulo:"O Grande Mandamento",ref:"Mateus 22:37-39",texto:"Amarás o Senhor teu Deus de todo o teu coração, e de toda a tua alma, e de todo o teu pensamento... Amarás o teu próximo como a ti mesmo.",q1:"O que você observa neste versículo? Quais são os dois grandes mandamentos que Jesus une?",q2:"Por que Jesus relaciona o amor a Deus com o amor ao próximo como inseparáveis?",q3:"Qual desses dois amores tem sido mais negligenciado por você ultimamente, e como corrigir isso hoje?",oracao:"Pai, ensina-me a amar-Te de todo o coração, alma e pensamento, e a amar o meu próximo como a mim mesmo. Que todo o meu dia seja governado por esse amor. Amém."},
-        {titulo:"A Prioridade do Reino",ref:"Mateus 6:33",texto:"Mas buscai primeiro o reino de Deus e a sua justiça, e todas estas coisas vos serão acrescentadas.",q1:"O que você observa neste versículo? O que Jesus manda buscar em primeiro lugar?",q2:"Por que Jesus dá essa ordem logo depois de falar sobre as ansiedades com comida, roupa e o futuro?",q3:"Suas prioridades de hoje mostram que você está buscando primeiro o reino de Deus ou as próprias preocupações?",oracao:"Senhor, ajuda-me a buscar primeiro o Teu reino e a Tua justiça, confiando que cuidarás do restante. Reordena as minhas prioridades segundo a Tua vontade. Amém."},
-        {titulo:"Amai-vos Como Eu Amei",ref:"João 13:34",texto:"Um novo mandamento vos dou: que vos ameis uns aos outros; assim como eu vos amei a vós, que também vós uns aos outros vos ameis.",q1:"O que você observa neste versículo? Qual é o padrão de amor que Jesus estabelece?",q2:"O que torna esse mandamento 'novo' — qual é a medida do amor que Jesus ordena?",q3:"Quem na sua vida hoje precisa receber de você o tipo de amor sacrificial que Jesus demonstrou?",oracao:"Jesus, Tu me ordenas amar os outros como Tu me amaste. Esse padrão excede as minhas forças, por isso ama através de mim hoje. Que o Teu amor flua de mim. Amém."},
-        {titulo:"Amai os Inimigos",ref:"Mateus 5:44",texto:"Eu, porém, vos digo: Amai os vossos inimigos, bendizei os que vos maldizem, fazei bem aos que vos odeiam...",q1:"O que você observa neste versículo? Que atitude radical Jesus ordena diante dos inimigos?",q2:"Por que amar os inimigos distingue o discípulo de Cristo de uma moral comum baseada apenas em reciprocidade?",q3:"Há alguém que o magoou e a quem você precisa abençoar em vez de retribuir o mal hoje?",oracao:"Senhor, é contra a minha natureza amar quem me faz mal, mas Tu me ordenas isso. Enche o meu coração de graça para abençoar e fazer o bem aos que me ferem. Amém."},
-        {titulo:"Pedi, Buscai, Batei",ref:"Mateus 7:7",texto:"Pedi, e dar-se-vos-á; buscai, e encontrareis; batei, e abrir-se-vos-á.",q1:"O que você observa neste versículo? Que três ações Jesus convida o discípulo a praticar?",q2:"O que esses três verbos no presente contínuo ensinam sobre a persistência na oração?",q3:"Em que área você desistiu de pedir, buscar ou bater, e precisa retomar a oração com fé hoje?",oracao:"Pai, ensina-me a pedir, buscar e bater com perseverança. Renova a minha fé para orar sem desanimar, confiando na Tua bondade em responder. Amém."},
-        {titulo:"A Verdade que Liberta",ref:"João 8:31-32",texto:"Se vós permanecerdes na minha palavra, verdadeiramente sereis meus discípulos; e conhecereis a verdade, e a verdade vos libertará.",q1:"O que você observa neste versículo? Qual é a condição que Jesus dá para sermos verdadeiramente Seus discípulos?",q2:"O que significa que a liberdade vem de permanecer na Palavra e conhecer a verdade que é Cristo?",q3:"De que mentira ou escravidão você precisa ser libertado hoje permanecendo na Palavra de Jesus?",oracao:"Jesus, ajuda-me a permanecer na Tua Palavra para conhecer a verdade que liberta. Quebra as correntes que me prendem e firma-me como Teu verdadeiro discípulo. Amém."},
-      ]},
-      {titulo:"A Cruz e o Sacrifício",dias:[
-        {titulo:"Ferido pelas Nossas Transgressões",ref:"Isaías 53:5",texto:"Mas ele foi traspassado pelas nossas transgressões e moído pelas nossas iniquidades; o castigo que nos traz a paz estava sobre ele, e pelas suas pisaduras fomos sarados.",q1:"O que você observa neste versículo? Por quem e por que o Servo sofreu?",q2:"O que significa que o castigo que nos traz paz recaiu sobre Ele em nosso lugar?",q3:"Como contemplar que Cristo foi ferido pelas suas transgressões transforma a sua gratidão e o seu arrependimento hoje?",oracao:"Senhor Jesus, Tu foste traspassado pelas minhas transgressões e moído pelas minhas iniquidades. Pelas Tuas feridas eu fui curado. Obrigado por levar o meu castigo. Amém."},
-        {titulo:"Amor Provado no Calvário",ref:"Romanos 5:8",texto:"Mas Deus prova o seu amor para conosco em que Cristo morreu por nós, sendo nós ainda pecadores.",q1:"O que você observa neste versículo? Em que condição estávamos quando Cristo morreu por nós?",q2:"Por que a cruz é a prova máxima do amor de Deus, e não apenas um exemplo entre outros?",q3:"Como saber que foi amado a esse ponto, sem merecer, transforma a sua autoimagem e o seu modo de amar?",oracao:"Pai, Tu provaste o Teu amor na cruz, quando Cristo morreu por mim ainda pecador. Que essa prova de amor seja o fundamento da minha identidade e da minha paz. Amém."},
-        {titulo:"O Bom Pastor",ref:"João 10:11",texto:"Eu sou o bom Pastor; o bom Pastor dá a sua vida pelas ovelhas.",q1:"O que você observa neste versículo? Como Jesus se descreve e o que Ele faz pelas ovelhas?",q2:"O que distingue o bom Pastor que dá a vida do mercenário que foge diante do perigo?",q3:"Como confiar que o bom Pastor já deu a vida por você muda o modo como você O segue hoje?",oracao:"Jesus, Tu és o bom Pastor que deu a vida por mim. Ensina-me a ouvir a Tua voz e a seguir-Te com confiança, sabendo que Tu cuidas de mim como ovelha amada. Amém."},
-        {titulo:"Sarados pelas Suas Feridas",ref:"1 Pedro 2:24",texto:"Ele mesmo levou em seu corpo os nossos pecados sobre o madeiro, para que, mortos para os pecados, vivamos para a justiça; pelas suas feridas fostes sarados.",q1:"O que você observa neste versículo? Qual era o propósito de Cristo levar nossos pecados no madeiro?",q2:"O que significa que morremos para o pecado a fim de vivermos para a justiça por meio da cruz?",q3:"Que pecado você precisa considerar morto hoje para viver a nova vida que Cristo conquistou?",oracao:"Senhor, Tu levaste os meus pecados na cruz para que eu vivesse para a justiça. Considero hoje mortos os meus velhos pecados e escolho viver para Ti. Amém."},
-        {titulo:"Crucificado com Cristo",ref:"Gálatas 2:20",texto:"Já estou crucificado com Cristo; e vivo, não mais eu, mas Cristo vive em mim; e o que agora vivo na carne, vivo-o pela fé do Filho de Deus, o qual me amou e se entregou a si mesmo por mim.",q1:"O que você observa neste versículo? O que Paulo diz que aconteceu com o seu velho 'eu'?",q2:"O que significa, na prática, dizer 'não mais eu, mas Cristo vive em mim'?",q3:"Em que área da sua vida você ainda precisa deixar Cristo viver em você em vez do seu velho eu?",oracao:"Senhor Jesus, estou crucificado conTigo; já não vivo eu, mas Tu vives em mim. Reina hoje sobre as áreas onde o meu velho eu ainda quer mandar. Amém."},
-        {titulo:"Chegados Perto pelo Sangue",ref:"Efésios 2:13",texto:"Mas agora em Cristo Jesus, vós, que antes estáveis longe, fostes chegados perto pelo sangue de Cristo.",q1:"O que você observa neste versículo? Que mudança de posição diante de Deus o sangue de Cristo realizou?",q2:"O que significa que foi o sangue de Cristo, e não o nosso esforço, que nos aproximou de Deus?",q3:"Como a certeza de estar perto de Deus pelo sangue de Cristo afasta de você o sentimento de distância e rejeição?",oracao:"Pai, eu estava longe, mas pelo sangue de Cristo fui aproximado de Ti. Obrigado por me receber não pelos meus méritos, mas pelo sacrifício de Jesus. Amém."},
-        {titulo:"Amor Maior",ref:"João 15:13",texto:"Maior amor do que este ninguém tem: de dar alguém a sua vida pelos seus amigos.",q1:"O que você observa neste versículo? Qual é, segundo Jesus, a maior expressão de amor?",q2:"O que significa que Jesus chamou de 'amigos' aqueles por quem Ele estava prestes a dar a vida?",q3:"Como o amor que se entrega por inteiro desafia o seu modo de amar as pessoas hoje?",oracao:"Jesus, não há amor maior do que o Teu, que deu a vida por mim, Teu amigo. Ensina-me a amar de forma sacrificial, entregando-me ao bem dos outros como Tu fizeste. Amém."},
-      ]},
-      {titulo:"A Ressurreição e a Vida Nova",dias:[
-        {titulo:"Eu Sou a Ressurreição",ref:"João 11:25",texto:"Disse-lhe Jesus: Eu sou a ressurreição e a vida; quem crê em mim, ainda que esteja morto, viverá.",q1:"O que você observa neste versículo? Que declaração Jesus faz sobre si mesmo diante da morte?",q2:"O que significa que a ressurreição não é apenas um evento futuro, mas uma pessoa — o próprio Cristo?",q3:"Como crer que Jesus é a ressurreição transforma o seu olhar sobre a morte e sobre as perdas que você enfrenta?",oracao:"Senhor Jesus, Tu és a ressurreição e a vida. Em Ti, mesmo a morte não tem a palavra final. Liberta-me do medo da morte e enche-me da esperança da vida eterna. Amém."},
-        {titulo:"Cristo Ressuscitou",ref:"1 Coríntios 15:20",texto:"Mas agora Cristo ressuscitou dentre os mortos; ele é as primícias dos que dormem.",q1:"O que você observa neste versículo? Que fato Paulo afirma sobre Cristo e que título lhe dá?",q2:"O que significa que Cristo é as 'primícias' — a garantia da ressurreição de todos os que Lhe pertencem?",q3:"Como a ressurreição já consumada de Cristo dá certeza à sua própria esperança de ressurreição?",oracao:"Pai, Cristo ressuscitou e é as primícias dos que dormem. A Sua vitória garante a minha. Vivo hoje com a esperança firme de que ressuscitarei com Ele. Amém."},
-        {titulo:"Novidade de Vida",ref:"Romanos 6:4",texto:"Fomos, pois, sepultados com ele pelo batismo na morte, para que, como Cristo ressuscitou dos mortos pela glória do Pai, assim também nós andemos em novidade de vida.",q1:"O que você observa neste versículo? Com que finalidade fomos sepultados e ressuscitados com Cristo?",q2:"O que significa, na prática, 'andar em novidade de vida' como fruto da ressurreição?",q3:"Que hábito antigo você precisa deixar no túmulo para andar hoje na novidade de vida em Cristo?",oracao:"Senhor, fui sepultado e ressuscitado com Cristo para andar em novidade de vida. Que eu deixe para trás o velho modo de viver e ande hoje na vida nova que me deste. Amém."},
-        {titulo:"Viva Esperança",ref:"1 Pedro 1:3",texto:"Bendito o Deus e Pai de nosso Senhor Jesus Cristo, o qual segundo a sua muita misericórdia nos regenerou para uma viva esperança, pela ressurreição de Jesus Cristo dentre os mortos.",q1:"O que você observa neste versículo? Para que Deus nos regenerou e por meio de quê?",q2:"O que torna a nossa esperança 'viva', em contraste com as esperanças mortas que o mundo oferece?",q3:"Em que situação você precisa trocar uma esperança vazia pela viva esperança da ressurreição hoje?",oracao:"Pai, segundo a Tua muita misericórdia, Tu me regeneraste para uma viva esperança pela ressurreição de Jesus. Que essa esperança me sustente em meio às provações. Amém."},
-        {titulo:"Vivo pelos Séculos",ref:"Apocalipse 1:18",texto:"E o que vivo, e fui morto; e eis que estou vivo pelos séculos dos séculos, Amém; e tenho as chaves da morte e do inferno.",q1:"O que você observa neste versículo? O que Cristo declara possuir após ter sido morto e ressuscitado?",q2:"O que significa que Jesus tem as chaves da morte e do inferno — quem está no controle do destino eterno?",q3:"Como saber que Cristo domina sobre a morte traz coragem para você enfrentar os seus maiores medos?",oracao:"Senhor Jesus, Tu foste morto, mas vives pelos séculos e tens as chaves da morte e do inferno. Diante de Ti, que domina a morte, eu não temo. Tu seguras o meu futuro. Amém."},
-        {titulo:"Vivificados pelo Espírito",ref:"Romanos 8:11",texto:"E, se o Espírito daquele que ressuscitou Jesus dentre os mortos habita em vós, o mesmo que ressuscitou a Cristo dentre os mortos também vivificará os vossos corpos mortais pelo seu Espírito que em vós habita.",q1:"O que você observa neste versículo? Que poder habita no crente segundo Paulo?",q2:"O que significa que o mesmo Espírito que ressuscitou Jesus opera vida em você agora?",q3:"Em que área morta da sua vida você precisa hoje do poder vivificador do Espírito?",oracao:"Espírito Santo, o mesmo poder que ressuscitou Jesus habita em mim. Traz vida àquilo que está morto na minha vida e renova as minhas forças hoje. Amém."},
-        {titulo:"Vitória em Cristo",ref:"1 Coríntios 15:57",texto:"Mas graças a Deus que nos dá a vitória por nosso Senhor Jesus Cristo.",q1:"O que você observa neste versículo? De quem vem a vitória e por meio de quem?",q2:"O que significa que a vitória sobre o pecado e a morte é um dom de Deus, e não uma conquista nossa?",q3:"Em que batalha você tem lutado nas próprias forças quando deveria receber a vitória que já é sua em Cristo?",oracao:"Pai, obrigado porque me dás a vitória por meio do Senhor Jesus Cristo. A vitória não é fruto do meu esforço, mas Teu presente. Hoje vivo como vencedor em Cristo. Amém."},
-      ]},
-    ]
-  },
-  {
-    tema:"O Espírito Santo",
-    descricao:"Descubra a pessoa e a obra do Espírito Santo — Consolador, fonte de fruto, dons e vida nova.",
-    semanas:[
-      {titulo:"Quem é o Espírito Santo",dias:[
-        {titulo:"O Consolador Prometido",ref:"João 14:16-17",texto:"E eu rogarei ao Pai, e ele vos dará outro Consolador, para que fique convosco para sempre; o Espírito da verdade, que o mundo não pode receber, porque não o vê nem o conhece; mas vós o conheceis, porque habita convosco, e estará em vós.",q1:"O que você observa neste versículo? Quem Jesus promete enviar e por quanto tempo Ele ficará?",q2:"O que significa que o Espírito não apenas está conosco, mas vem habitar dentro de nós para sempre?",q3:"Como viver hoje consciente de que o Consolador habita em você muda a sua sensação de solidão ou medo?",oracao:"Pai, obrigado pelo dom do Consolador, o Espírito da verdade, que habita em mim para sempre. Que eu nunca me sinta sozinho, pois Tu vives dentro de mim. Amém."},
-        {titulo:"O Espírito da Verdade",ref:"João 16:13",texto:"Mas quando vier o Espírito da verdade, ele vos guiará em toda a verdade; porque não falará de si mesmo, mas dirá tudo o que tiver ouvido, e vos anunciará as coisas que estão para vir.",q1:"O que você observa neste versículo? Qual é a obra do Espírito da verdade descrita por Jesus?",q2:"O que significa que o Espírito não fala de si mesmo, mas glorifica e revela a verdade de Cristo?",q3:"Em que decisão ou confusão você precisa hoje da direção do Espírito que guia em toda a verdade?",oracao:"Espírito Santo, Tu és o Espírito da verdade. Guia-me em toda a verdade e dá-me discernimento nas decisões que enfrento hoje. Conduze-me ao caminho de Cristo. Amém."},
-        {titulo:"Poder para Testemunhar",ref:"Atos 1:8",texto:"Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós; e sereis minhas testemunhas, tanto em Jerusalém como em toda a Judéia e Samaria, e até aos confins da terra.",q1:"O que você observa neste versículo? O que os discípulos receberiam e para qual propósito?",q2:"O que significa que o poder do Espírito é dado especialmente para o testemunho, e não apenas para conforto pessoal?",q3:"Onde está a sua 'Jerusalém' hoje — o lugar mais próximo onde você é chamado a testemunhar de Cristo?",oracao:"Senhor, enche-me do poder do Teu Espírito para que eu seja Tua testemunha onde quer que eu esteja hoje. Dá-me coragem para falar de Ti com a minha vida e com as minhas palavras. Amém."},
-        {titulo:"Templo de Deus",ref:"1 Coríntios 3:16",texto:"Não sabeis vós que sois o templo de Deus, e que o Espírito de Deus habita em vós?",q1:"O que você observa neste versículo? Que identidade Paulo atribui ao crente?",q2:"O que significa que o seu corpo é templo onde o próprio Espírito de Deus habita?",q3:"Como tratar a sua vida e o seu corpo como templo do Espírito muda as suas escolhas hoje?",oracao:"Senhor, o meu corpo é templo do Teu Espírito. Ajuda-me a viver de forma digna dessa presença santa, honrando-Te em tudo o que faço com a minha vida. Amém."},
-        {titulo:"O Espírito nos Ajuda",ref:"Romanos 8:26",texto:"E da mesma forma o Espírito também nos ajuda nas nossas fraquezas; porque não sabemos o que havemos de pedir como convém, mas o mesmo Espírito intercede por nós com gemidos inexprimíveis.",q1:"O que você observa neste versículo? Como o Espírito age em meio às nossas fraquezas?",q2:"O que significa que o Espírito intercede por nós mesmo quando não sabemos o que ou como orar?",q3:"Em que fraqueza ou oração sem palavras você precisa hoje confiar na intercessão do Espírito?",oracao:"Espírito Santo, quando eu não sei o que pedir nem como orar, intercede por mim. Sustenta-me na minha fraqueza e leva os meus gemidos ao trono do Pai. Amém."},
-        {titulo:"O Ensino do Espírito",ref:"João 14:26",texto:"Mas o Consolador, o Espírito Santo, que o Pai enviará em meu nome, esse vos ensinará todas as coisas e vos fará lembrar de tudo o que eu vos disse.",q1:"O que você observa neste versículo? Que duas obras do Espírito Jesus destaca aqui?",q2:"O que significa depender do Espírito como mestre que ensina e relembra a Palavra de Cristo?",q3:"Que verdade da Palavra você precisa que o Espírito traga à sua memória e ao seu coração hoje?",oracao:"Espírito Santo, ensina-me todas as coisas e faze-me lembrar das palavras de Jesus. Sê o meu mestre hoje e grava a Tua verdade no meu coração. Amém."},
-        {titulo:"Selados com o Espírito",ref:"Efésios 1:13-14",texto:"...fostes selados com o Santo Espírito da promessa, o qual é o penhor da nossa herança, para redenção da possessão adquirida, para louvor da sua glória.",q1:"O que você observa neste versículo? Com que e para que fomos selados?",q2:"O que significa que o Espírito é o 'penhor' — a garantia antecipada da herança que receberemos?",q3:"Como a certeza de estar selado pelo Espírito traz segurança quanto à sua salvação hoje?",oracao:"Pai, fui selado com o Espírito Santo, garantia da minha herança eterna. Obrigado por essa marca de pertencimento. Vivo hoje seguro de que sou Teu. Amém."},
-      ]},
-      {titulo:"Os Frutos do Espírito",dias:[
-        {titulo:"O Fruto do Espírito",ref:"Gálatas 5:22-23",texto:"Mas o fruto do Espírito é: caridade, gozo, paz, longanimidade, benignidade, bondade, fé, mansidão, temperança. Contra estas coisas não há lei.",q1:"O que você observa neste versículo? Quais são as nove características do fruto do Espírito?",q2:"Por que Paulo fala em 'fruto' no singular, e não em 'frutos' — o que isso ensina sobre essas qualidades?",q3:"Qual dessas nove características o Espírito está convidando você a cultivar de modo especial hoje?",oracao:"Espírito Santo, produz em mim o Teu fruto: amor, alegria, paz, paciência e tudo o mais. Que a minha vida revele a Tua presença por essas qualidades. Amém."},
-        {titulo:"O Amor que Permanece",ref:"1 Coríntios 13:4-5",texto:"A caridade é sofredora, é benigna; a caridade não é invejosa; a caridade não trata com leviandade, não se ensoberbece. Não se porta com indecência, não busca os seus interesses, não se irrita, não suspeita mal.",q1:"O que você observa neste versículo? Quais características do amor verdadeiro Paulo descreve?",q2:"Por que o amor que 'não busca os seus interesses' é tão diferente do amor que o mundo costuma celebrar?",q3:"Qual característica do amor descrita aqui está mais ausente em suas relações e precisa ser cultivada hoje?",oracao:"Senhor, ensina-me o amor que é paciente, benigno e que não busca os próprios interesses. Quebra em mim o egoísmo e o orgulho, e produz esse amor pelo Teu Espírito. Amém."},
-        {titulo:"Gozo e Paz Inexplicáveis",ref:"Filipenses 4:4,7",texto:"Alegrai-vos no Senhor sempre; outra vez digo, alegrai-vos... E a paz de Deus, que excede todo o entendimento, guardará os vossos corações e os vossos sentimentos em Cristo Jesus.",q1:"O que você observa neste versículo? Que duas realidades Paulo descreve como possíveis no Senhor?",q2:"O que significa que a paz de Deus 'excede todo o entendimento' e guarda o coração mesmo em circunstâncias difíceis?",q3:"Em que área de ansiedade você precisa hoje receber a alegria e a paz que vêm do Senhor?",oracao:"Pai, ensina-me a alegrar-me em Ti sempre, mesmo nas dificuldades. Guarda o meu coração com a Tua paz que excede todo o entendimento. Acalma a minha ansiedade hoje. Amém."},
-        {titulo:"A Obra da Longanimidade",ref:"Tiago 1:3-4",texto:"Sabendo que a prova da vossa fé opera a paciência. Mas a paciência deve ter obra perfeita, para que sejais perfeitos e completos, sem faltar em coisa alguma.",q1:"O que você observa neste versículo? O que a prova da fé produz, segundo Tiago?",q2:"O que significa permitir que a paciência tenha sua 'obra perfeita' em nós através das provações?",q3:"Que prova atual em sua vida Deus pode estar usando para amadurecer a sua paciência hoje?",oracao:"Senhor, ajuda-me a ver as provas como oportunidade de crescer em paciência. Que a Tua obra em mim seja completa, formando um caráter maduro e firme. Amém."},
-        {titulo:"Bondade e Benignidade",ref:"Efésios 4:32",texto:"Sede bondosos uns para com os outros, misericordiosos, perdoando-vos uns aos outros, como também Deus vos perdoou em Cristo.",q1:"O que você observa neste versículo? Que atitudes Paulo nos chama a ter uns com os outros?",q2:"Qual é o fundamento e a medida do nosso perdão, segundo este versículo?",q3:"Quem você precisa perdoar hoje, lembrando de como Deus já o perdoou em Cristo?",oracao:"Pai, ensina-me a ser bondoso e misericordioso, perdoando aos outros como Tu me perdoaste em Cristo. Tira de mim toda a amargura e enche-me da Tua bondade. Amém."},
-        {titulo:"Permanecei em Mim",ref:"João 15:4-5",texto:"Permanecei em mim, e eu em vós. Como o ramo não pode dar fruto de si mesmo, se não permanecer na videira, assim também vós, se não permanecerdes em mim. Eu sou a videira, vós as varas; o que permanece em mim e eu nele, esse dá muito fruto.",q1:"O que você observa neste versículo? Qual é a condição para dar fruto, segundo Jesus?",q2:"O que significa que sem permanecer em Cristo é impossível produzir qualquer fruto espiritual?",q3:"Como você pode permanecer em Cristo de forma prática ao longo do seu dia de hoje?",oracao:"Jesus, Tu és a videira e eu sou o ramo. Sem Ti não posso dar fruto algum. Ensina-me a permanecer em Ti hoje, para que a minha vida seja frutífera. Amém."},
-        {titulo:"Glorificando o Pai",ref:"João 15:8",texto:"Nisto é glorificado meu Pai, em que deis muito fruto; e assim sereis meus discípulos.",q1:"O que você observa neste versículo? O que glorifica o Pai, segundo Jesus?",q2:"Qual é a ligação entre dar muito fruto e ser reconhecido como discípulo de Cristo?",q3:"De que forma a sua vida pode dar fruto hoje para a glória do Pai?",oracao:"Pai, que a minha vida dê muito fruto para a Tua glória. Ajuda-me a viver como verdadeiro discípulo de Cristo, frutífero por meio da Tua obra em mim. Amém."},
-      ]},
-      {titulo:"Os Dons do Espírito",dias:[
-        {titulo:"Diversidade de Dons",ref:"1 Coríntios 12:4-7",texto:"Há diversidade de dons, mas o Espírito é o mesmo; e há diversidade de ministérios, mas o Senhor é o mesmo; e há diversidade de operações, mas é o mesmo Deus que opera tudo em todos. Mas a manifestação do Espírito é dada a cada um, para o que for útil.",q1:"O que você observa neste versículo? O que é diverso e o que permanece o mesmo?",q2:"O que significa que existem muitos dons diferentes, mas um só Espírito que os concede?",q3:"Como reconhecer que o seu dom, ainda que diferente do dos outros, é dado para o bem comum hoje?",oracao:"Senhor, obrigado por me conceder dons pelo Teu Espírito. Ajuda-me a usá-los para o bem comum, valorizando a diversidade no Teu corpo. Amém."},
-        {titulo:"Use Seu Dom",ref:"Romanos 12:6-8",texto:"Tendo, pois, diferentes dons, segundo a graça que nos é dada, se é profecia, seja ela feita segundo a proporção da fé; se é ministério, dediquemo-nos ao ministério; se é ensino, ao ensino; se é exortação, à exortação...",q1:"O que você observa neste versículo? O que Paulo exorta cada um a fazer com seu dom?",q2:"O que significa exercer o dom 'segundo a graça que nos é dada', sem comparações nem omissão?",q3:"Qual dom você reconhece em si mesmo e precisa colocar em prática com dedicação hoje?",oracao:"Pai, Tu me deste dons pela Tua graça. Ajuda-me a não enterrá-los, mas a exercê-los com dedicação para servir os outros e edificar a Tua igreja. Amém."},
-        {titulo:"Um Corpo, Muitos Membros",ref:"1 Coríntios 12:12",texto:"Porque, assim como o corpo é um e tem muitos membros, e todos os membros, sendo muitos, são um só corpo, assim também Cristo.",q1:"O que você observa neste versículo? Que imagem Paulo usa para descrever a igreja?",q2:"O que significa que cada membro, por mais diferente, é essencial à unidade do mesmo corpo?",q3:"Como você pode valorizar o seu lugar e o dos outros no corpo de Cristo hoje?",oracao:"Senhor, faze-me entender que sou parte do Teu corpo, junto com muitos irmãos. Ensina-me a viver em unidade, valorizando cada membro como necessário. Amém."},
-        {titulo:"Para o Serviço",ref:"Efésios 4:11-12",texto:"E ele mesmo deu uns para apóstolos, e outros para profetas, e outros para evangelistas, e outros para pastores e doutores, para o aperfeiçoamento dos santos, para a obra do ministério, para a edificação do corpo de Cristo.",q1:"O que você observa neste versículo? Com que finalidade Cristo concedeu esses ministérios?",q2:"O que significa que os dons existem para capacitar todos os santos ao serviço, e não apenas alguns líderes?",q3:"Como você pode ser equipado e, ao mesmo tempo, servir à edificação do corpo de Cristo hoje?",oracao:"Senhor, Tu deste dons para equipar o Teu povo ao serviço. Capacita-me para servir e edificar a Tua igreja, e dá-me um coração disposto a contribuir. Amém."},
-        {titulo:"Sede Zelosos",ref:"1 Coríntios 14:1",texto:"Segui o amor e procurai os dons espirituais, mas principalmente o de profetizar.",q1:"O que você observa neste versículo? Que duas buscas Paulo recomenda e em que ordem?",q2:"O que significa procurar os dons espirituais sem deixar de seguir o amor como prioridade?",q3:"Como você pode buscar com zelo crescer espiritualmente sem perder o amor como motivação hoje?",oracao:"Senhor, ensina-me a seguir o amor acima de tudo e, ao mesmo tempo, a desejar com zelo os dons espirituais para servir os outros. Que o amor governe tudo em mim. Amém."},
-        {titulo:"Bons Despenseiros",ref:"1 Pedro 4:10",texto:"Cada um administre aos outros o dom como o recebeu, como bons despenseiros da multiforme graça de Deus.",q1:"O que você observa neste versículo? Como devemos administrar os dons recebidos?",q2:"O que significa ser um 'despenseiro' — um administrador, e não dono — da graça de Deus?",q3:"Como você pode usar hoje aquilo que recebeu de Deus para servir alguém ao seu redor?",oracao:"Pai, ajuda-me a ser um bom despenseiro da Tua multiforme graça, usando os dons que recebi para servir os outros, e não a mim mesmo. Amém."},
-        {titulo:"Dons sem Amor São Nada",ref:"1 Coríntios 13:1-2",texto:"Ainda que eu falasse as línguas dos homens e dos anjos, e não tivesse amor, seria como o metal que soa ou como o sino que tine. E ainda que tivesse o dom de profecia, e conhecesse todos os mistérios e toda a ciência, e ainda que tivesse toda a fé, de maneira tal que transportasse os montes, e não tivesse amor, nada seria.",q1:"O que você observa neste versículo? Que valor têm os maiores dons sem o amor?",q2:"O que significa que sem amor até os dons mais impressionantes se tornam vazios diante de Deus?",q3:"Como você pode garantir que o amor, e não o desempenho, seja a base do seu serviço hoje?",oracao:"Senhor, sem amor todos os meus dons nada valem. Enche-me do Teu amor para que tudo o que eu faça seja motivado por ele, e não pela vaidade. Amém."},
-      ]},
-      {titulo:"A Vida no Espírito",dias:[
-        {titulo:"Nenhuma Condenação",ref:"Romanos 8:1",texto:"Portanto, agora nenhuma condenação há para os que estão em Cristo Jesus, que não andam segundo a carne, mas segundo o Espírito.",q1:"O que você observa neste versículo? Que declaração é feita sobre os que estão em Cristo?",q2:"O que significa viver sem condenação quando a nossa consciência ainda nos acusa por nossas falhas?",q3:"Que culpa ou condenação você precisa entregar hoje para viver na liberdade que há em Cristo?",oracao:"Pai, obrigado porque em Cristo já não há condenação para mim. Liberta-me da culpa que me prende e ensina-me a andar segundo o Teu Espírito, e não segundo a carne. Amém."},
-        {titulo:"Filhos de Deus",ref:"Romanos 8:14",texto:"Porque todos os que são guiados pelo Espírito de Deus são filhos de Deus.",q1:"O que você observa neste versículo? Qual é a marca dos verdadeiros filhos de Deus?",q2:"O que significa ser 'guiado pelo Espírito' como sinal e prova da filiação divina?",q3:"Em que parte do seu dia você precisa render-se à direção do Espírito como filho amado de Deus?",oracao:"Pai, sou Teu filho, guiado pelo Teu Espírito. Ajuda-me a viver hoje na segurança dessa identidade e a seguir a direção do Espírito em cada passo. Amém."},
-        {titulo:"Andai no Espírito",ref:"Gálatas 5:16",texto:"Digo, porém: andai no Espírito e não cumprireis os desejos da carne.",q1:"O que você observa neste versículo? Qual é a promessa ligada a andar no Espírito?",q2:"O que significa que a vitória sobre a carne vem de andar no Espírito, e não apenas de resistir ao pecado?",q3:"Que desejo da carne você pode vencer hoje ao escolher andar no Espírito?",oracao:"Espírito Santo, ensina-me a andar contigo a cada momento, para que eu não satisfaça os desejos da carne. Conduze os meus passos e os meus pensamentos hoje. Amém."},
-        {titulo:"Enchei-vos do Espírito",ref:"Efésios 5:18",texto:"E não vos embriagueis com vinho, em que há contenda, mas enchei-vos do Espírito.",q1:"O que você observa neste versículo? Que contraste e que ordem Paulo apresenta?",q2:"O que significa ser cheio do Espírito como uma realidade contínua, e não apenas uma experiência pontual?",q3:"O que precisa ser esvaziado da sua vida hoje para que você seja cheio do Espírito?",oracao:"Senhor, enche-me do Teu Espírito hoje. Esvazia-me de tudo que ocupa o lugar que pertence a Ti e domina a minha vida com a Tua presença. Amém."},
-        {titulo:"Tudo Contribui para o Bem",ref:"Romanos 8:28",texto:"E sabemos que todas as coisas contribuem juntamente para o bem daqueles que amam a Deus, daqueles que são chamados segundo o seu propósito.",q1:"O que você observa neste versículo? Para quem todas as coisas cooperam para o bem?",q2:"O que significa que 'todas as coisas' — inclusive as dolorosas — são usadas por Deus para o nosso bem e o Seu propósito?",q3:"Que situação difícil você precisa entregar hoje, confiando que Deus a usará para o bem?",oracao:"Pai, confio que todas as coisas, até as dolorosas, cooperam para o meu bem porque Te amo e fui chamado segundo o Teu propósito. Descanso na Tua soberania hoje. Amém."},
-        {titulo:"Coração Novo",ref:"Ezequiel 36:26-27",texto:"Dar-vos-ei também coração novo, e porei dentro de vós espírito novo; e tirarei da vossa carne o coração de pedra, e dar-vos-ei um coração de carne. E porei dentro de vós o meu Espírito, e farei que andeis nos meus estatutos, e guardeis os meus juízos e os observeis.",q1:"O que você observa neste versículo? Que promessa Deus faz quanto ao coração e ao espírito do Seu povo?",q2:"O que significa que é Deus quem troca o coração de pedra pelo de carne e capacita a obediência pelo Seu Espírito?",q3:"Que área endurecida do seu coração você precisa entregar hoje para que Deus a renove?",oracao:"Senhor, dá-me um coração novo e põe o Teu Espírito dentro de mim. Tira de mim toda dureza e capacita-me a andar nos Teus caminhos com alegria. Amém."},
-        {titulo:"Liberdade e Transformação",ref:"2 Coríntios 3:17-18",texto:"Ora, o Senhor é o Espírito; e onde está o Espírito do Senhor, aí há liberdade. Mas todos nós, com rosto descoberto, refletindo como num espelho a glória do Senhor, somos transformados de glória em glória na mesma imagem, como pelo Espírito do Senhor.",q1:"O que você observa neste versículo? O que existe onde está o Espírito do Senhor?",q2:"O que significa ser transformado 'de glória em glória' à imagem de Cristo pela obra contínua do Espírito?",q3:"Olhando para esta jornada que você concluiu, como o Espírito tem transformado você ao longo dela?",oracao:"Espírito Santo, obrigado pela liberdade e pela transformação que operas em mim. Continua a me transformar à imagem de Cristo, de glória em glória, todos os dias. Amém."},
-      ]},
-    ]
-  },
+// DEVOCIONAL
+const VERSES = [
+  {text:'"Porque sou eu que conheço os planos que tenho a vosso respeito, planos de paz e não de calamidade, para vos dar um futuro e uma esperança."',ref:'Jeremias 29:11',q1:'O que Deus está prometendo neste versículo?',q2:'Por que essa promessa foi dada ao povo de Israel no exílio?',q3:'Como essa promessa me afeta hoje no meu dia a dia?',prayer:'Senhor, confio que Teus planos para mim são bons. Quando eu não entendo o caminho, ajuda-me a descansar na Tua promessa. Que eu busque meu futuro em Ti, não nas circunstâncias. Amém.'},
+  {text:'"Tudo posso naquele que me fortalece."',ref:'Filipenses 4:13',q1:'O que Paulo quis dizer com "tudo posso"?',q2:'Em que contexto Paulo escreveu isso — ele estava bem ou passando por dificuldades?',q3:'Qual desafio da minha vida precisa desta verdade hoje?',prayer:'Pai, reconheço que minha força é limitada, mas a Tua é infinita. Fortifica-me hoje para cumprir o que me chamaste a fazer. Que eu dependa de Ti em tudo. Amém.'},
+  {text:'"Buscai primeiro o reino de Deus e a sua justiça, e todas as demais coisas vos serão acrescentadas."',ref:'Mateus 6:33',q1:'O que significa buscar "primeiro" o reino de Deus?',q2:'Por que Jesus deu essa instrução logo após falar sobre ansiedade?',q3:'Minhas prioridades do dia refletem que estou buscando primeiro a Deus?',prayer:'Senhor Jesus, ajuda-me a colocar-Te em primeiro lugar — antes do trabalho, antes das preocupações. Que meu dia comece e termine em Ti. Amém.'},
+  {text:'"O Senhor é o meu pastor; nada me faltará."',ref:'Salmos 23:1',q1:'O que a imagem do pastor comunica sobre Deus?',q2:'Quais outros elementos do Salmo 23 complementam esse versículo?',q3:'Em que área da minha vida preciso confiar que nada me faltará?',prayer:'Senhor, Tu és meu pastor fiel. Mesmo quando passo por vales sombrios, Tu estás comigo. Que eu ouça Tua voz e te siga sem medo. Amém.'},
+  {text:'"Sede fortes e corajosos. Não temais, nem vos assusteis diante deles, porque o Senhor, teu Deus, é quem vai contigo."',ref:'Deuteronômio 31:6',q1:'Para quem Deus disse essas palavras originalmente?',q2:'Qual é a base para a coragem que Deus ordena?',q3:'Que situação em minha vida exige coragem que só Deus pode dar?',prayer:'Deus forte, enche-me de coragem hoje. Que o medo não paralise meus passos. Sei que não estou sozinho — Tu vais à minha frente. Amém.'},
+  {text:'"Não vos conformeis com este século, mas transformai-vos pela renovação da vossa mente."',ref:'Romanos 12:2',q1:'O que Paulo quer dizer com "não vos conformeis"?',q2:'Como a mente renovada leva ao discernimento da vontade de Deus?',q3:'Qual padrão do mundo ainda molda meu pensamento que preciso entregar a Deus?',prayer:'Pai, renova minha mente. Que Tua Palavra transforme o modo como vejo o trabalho, a família e as decisões. Não deixa o mundo me moldar. Amém.'},
+  {text:'"O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha."',ref:'1 Coríntios 13:4',q1:'Quais características do amor são mencionadas neste versículo?',q2:'Por que Paulo colocou o amor acima de todos os dons espirituais?',q3:'Qual característica do amor preciso desenvolver mais nas minhas relações?',prayer:'Senhor, ensina-me a amar como Tu amas — paciente, bondoso, sem vaidade. Que meu amor pela minha família reflita o Teu amor por mim. Amém.'},
+  {text:'"Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento."',ref:'Provérbios 3:5',q1:'O que significa confiar com "todo o coração"?',q2:'Por que nosso próprio entendimento pode ser um obstáculo?',q3:'Há alguma decisão que estou tentando resolver sozinho em vez de confiar a Deus?',prayer:'Senhor, entrego meu entendimento limitado a Ti. Quando não souber o caminho, guia meus passos. Confio em Ti com tudo o que sou. Amém.'},
+  {text:'"Mas os que esperam no Senhor renovarão as suas forças, subirão com asas como águias."',ref:'Isaías 40:31',q1:'O que a imagem das águias comunica sobre os que esperam em Deus?',q2:'Por que "esperar no Senhor" exige força de caráter?',q3:'Há algo em minha vida onde preciso aprender a esperar com paciência?',prayer:'Pai, quando estou cansado e sem forças, renova-me. Ensina-me a esperar em Ti com esperança, não com ansiedade. Amém.'},
+  {text:'"E tudo quanto fizerdes, fazei-o de todo o coração, como ao Senhor, e não aos homens."',ref:'Colossenses 3:23',q1:'O que significa fazer algo "como ao Senhor"?',q2:'Como essa perspectiva muda a motivação para o trabalho?',q3:'Como posso aplicar esse princípio ao meu trabalho hoje?',prayer:'Senhor, que tudo o que eu fizer hoje — no trabalho, em casa, nos estudos — seja feito para a Tua glória. Amém.'},
+  {text:'"Instrui o menino no caminho em que deve andar; e até quando envelhecer não se desviará dele."',ref:'Provérbios 22:6',q1:'Que responsabilidade esse versículo coloca sobre os pais?',q2:'O que significa "o caminho em que deve andar" — é genérico ou personalizado?',q3:'O que estou ensinando ao meu filho pelo meu exemplo diário?',prayer:'Pai, ajuda-me a ser um pai que instrui com amor e consistência. Que meu filho veja Cristo em mim. Amém.'},
+  {text:'"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna."',ref:'João 3:16',q1:'Quais são as dimensões do amor de Deus reveladas neste versículo?',q2:'O que significa que Deus "deu" seu filho?',q3:'Esse amor de Deus tem mudado a forma como eu me relaciono com as pessoas?',prayer:'Senhor, que eu nunca perca de vista o quanto me amaste. Que esse amor seja a base de tudo que faço. Amém.'},
 ];
 
-const DV_MESES_PT=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-
 let dvData = JSON.parse(localStorage.getItem('devocional')||'{}');
-let dvStart = localStorage.getItem('dvStart') || null;
-let dvViewDay = null; // dia atualmente exibido na aba Hoje
+let dvOffset = parseInt(localStorage.getItem('devOffset')||'0');
 
-function dvTodayKey(){
+function dvKey(){
   const d=new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
-
-function dvKeyFromDayNumber(n){
-  const start=new Date(dvStart+'T00:00:00');
-  const d=new Date(start.getTime()+(n-1)*86400000);
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
 function dvFmtDate(key){
   const [y,m,d]=key.split('-');
-  return `${parseInt(d)} de ${DV_MESES_PT[parseInt(m)-1]} de ${y}`;
+  const months=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  return `${d} de ${months[parseInt(m)-1]} de ${y}`;
 }
 
-function dvDayNumber(){
-  const start=new Date(dvStart+'T00:00:00');
-  const today=new Date(); today.setHours(0,0,0,0);
-  return Math.max(1, Math.floor((today-start)/86400000)+1);
-}
-
-function dvPosition(n){
-  const m=Math.floor((n-1)/28);
-  const rem=(n-1)%28;
-  const w=Math.floor(rem/7);
-  const d=rem%7;
-  return {m,w,d};
-}
-
-function dvEntryFor(n){
-  const {m,w,d}=dvPosition(n);
-  const mes=CURRICULUM[m];
-  if(!mes) return null;
-  return {dia:mes.semanas[w].dias[d], mes, semana:mes.semanas[w], m, w, d};
+function dvVerseIdx(){
+  const d=new Date();
+  return (d.getFullYear()*365+d.getMonth()*31+d.getDate()+dvOffset)%VERSES.length;
 }
 
 function dvSavePersist(){
   localStorage.setItem('devocional',JSON.stringify(dvData));
+  localStorage.setItem('devOffset',String(dvOffset));
 }
-
-function escAttr(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
 function renderDevocional(){
-  if(!dvStart){
-    dvStart=dvTodayKey();
-    localStorage.setItem('dvStart',dvStart);
-  }
-  dvSwitchTab('hoje');
-}
-
-function dvSwitchTab(tab){
-  document.getElementById('dvHojeView').style.display=tab==='hoje'?'block':'none';
-  document.getElementById('dvTrilhaView').style.display=tab==='trilha'?'block':'none';
-  document.getElementById('dvHistView').style.display=tab==='historico'?'block':'none';
-  document.getElementById('dvTabHoje').classList.toggle('active',tab==='hoje');
-  document.getElementById('dvTabTrilha').classList.toggle('active',tab==='trilha');
-  document.getElementById('dvTabHist').classList.toggle('active',tab==='historico');
-  if(tab==='hoje') renderDvHoje(dvViewDay||undefined);
-  if(tab==='trilha') renderDvTrilha();
-  if(tab==='historico') renderDvHist();
-}
-
-function renderDvHoje(dayNum){
-  const totalDays=CURRICULUM.length*28;
-  const realToday=dvDayNumber();
-  let n = dayNum || realToday;
-  if(n<1) n=1;
-  if(n>totalDays) n=totalDays;
-  dvViewDay=n;
-
-  const el=document.getElementById('dvHojeView');
-  const entry=dvEntryFor(n);
-  if(!entry){
-    el.innerHTML='<div class="dv-future">Este dia ainda não faz parte do currículo disponível. Em breve novos conteúdos!</div>';
-    return;
-  }
-  const {dia,mes,semana}=entry;
-  const key=dvKeyFromDayNumber(n);
+  const key=dvKey();
+  const vi=dvVerseIdx();
+  const v=VERSES[vi];
   const stored=dvData[key]||{};
-  const isToday=(n===realToday);
 
-  el.innerHTML=`
-    <div class="dv-progress-row">
-      <span class="dv-prog-label">JORNADA DEVOCIONAL</span>
-      <span class="dv-prog-num">Dia ${n} de ${totalDays}</span>
-    </div>
-    <div class="dv-month-title">${escAttr(mes.tema)}</div>
-    <div class="dv-month-desc">${escAttr(mes.descricao)}</div>
-    <div class="dv-week-badge">${escAttr(semana.titulo)}</div>
-    <div class="dv-verse-card">
-      <div class="dv-verse-label">✦ ${isToday?'VERSÍCULO DE HOJE':'VERSÍCULO DO DIA'} ✦</div>
-      <div class="dv-verse-day-title">${escAttr(dia.titulo)}</div>
-      <div class="dv-verse-text">"${escAttr(dia.texto)}"</div>
-      <div class="dv-verse-ref">— ${escAttr(dia.ref)}</div>
-      <div class="dv-verse-nav">
-        <button class="dv-verse-nav-btn" onclick="dvGoDay(${n-1})" ${n<=1?'disabled':''}>← anterior</button>
-        ${!isToday?`<button class="dv-verse-nav-btn" onclick="dvGoDay(${realToday})">ir para hoje</button>`:''}
-        <button class="dv-verse-nav-btn" onclick="dvGoDay(${n+1})" ${(n>=realToday||n>=totalDays)?'disabled':''}>próximo →</button>
-      </div>
-    </div>
-    <div class="dv-section">REFLEXÃO GUIADA</div>
-    <div class="dv-reflect">
-      <div class="dv-reflect-num">PERGUNTA 1 — OBSERVAÇÃO</div>
-      <div class="dv-reflect-q">${escAttr(dia.q1)}</div>
-      <textarea class="dv-journal" id="dvAns1" placeholder="Escreva sua reflexão aqui..." rows="3">${escAttr(stored.ans1||'')}</textarea>
-    </div>
-    <div class="dv-reflect">
-      <div class="dv-reflect-num">PERGUNTA 2 — INTERPRETAÇÃO</div>
-      <div class="dv-reflect-q">${escAttr(dia.q2)}</div>
-      <textarea class="dv-journal" id="dvAns2" placeholder="Escreva sua reflexão aqui..." rows="3">${escAttr(stored.ans2||'')}</textarea>
-    </div>
-    <div class="dv-reflect">
-      <div class="dv-reflect-num">PERGUNTA 3 — APLICAÇÃO</div>
-      <div class="dv-reflect-q">${escAttr(dia.q3)}</div>
-      <textarea class="dv-journal" id="dvAns3" placeholder="Escreva sua reflexão aqui..." rows="3">${escAttr(stored.ans3||'')}</textarea>
-    </div>
-    <button class="dv-save-btn" onclick="dvSave()">💾 Salvar reflexões</button>
-    <div class="dv-saved" id="dvSaved" style="display:${stored.ans1?'block':'none'}">✓ Reflexões salvas!</div>
-    <div class="dv-prayer">
-      <div class="dv-prayer-label">🙏 ORAÇÃO DO DIA</div>
-      <div class="dv-prayer-text">${escAttr(dia.oracao)}</div>
-    </div>
-    <button class="dv-complete-btn ${stored.done?'done':''}" onclick="dvToggleDone()">${stored.done?'✅ Devocional concluído!':'Marcar devocional como concluído ✓'}</button>
-  `;
+  document.getElementById('dvVerseText').textContent=v.text;
+  document.getElementById('dvVerseRef').textContent='— '+v.ref;
+  document.getElementById('dvQ1').textContent=v.q1;
+  document.getElementById('dvQ2').textContent=v.q2;
+  document.getElementById('dvQ3').textContent=v.q3;
+  document.getElementById('dvAns1').value=stored.ans1||'';
+  document.getElementById('dvAns2').value=stored.ans2||'';
+  document.getElementById('dvAns3').value=stored.ans3||'';
+  document.getElementById('dvPrayer').textContent=v.prayer;
+
+  const btn=document.getElementById('dvCompleteBtn');
+  if(stored.done){
+    btn.textContent='✅ Devocional concluído!';
+    btn.classList.add('done');
+  } else {
+    btn.textContent='Marcar devocional como concluído ✓';
+    btn.classList.remove('done');
+  }
+
+  const savedEl=document.getElementById('dvSaved');
+  savedEl.style.display=stored.ans1?'block':'none';
 }
 
-function dvGoDay(n){
-  renderDvHoje(n);
-}
+function dvPrev(){dvOffset--;dvSavePersist();renderDevocional()}
+function dvNext(){dvOffset++;dvSavePersist();renderDevocional()}
 
 function dvSave(){
-  const n=dvViewDay||dvDayNumber();
-  const key=dvKeyFromDayNumber(n);
-  const entry=dvEntryFor(n);
+  const key=dvKey();
+  const vi=dvVerseIdx();
   if(!dvData[key])dvData[key]={};
-  dvData[key].dayNum=n;
-  dvData[key].ref=entry.dia.ref;
-  dvData[key].titulo=entry.dia.titulo;
+  dvData[key].verseIdx=vi;
+  dvData[key].verseRef=VERSES[vi].ref;
   dvData[key].ans1=document.getElementById('dvAns1').value;
   dvData[key].ans2=document.getElementById('dvAns2').value;
   dvData[key].ans3=document.getElementById('dvAns3').value;
   dvSavePersist();
   const savedEl=document.getElementById('dvSaved');
-  if(savedEl){savedEl.style.display='block';setTimeout(()=>{if(savedEl)savedEl.style.display='none'},2000);}
+  savedEl.style.display='block';
+  setTimeout(()=>savedEl.style.display='none',2000);
 }
 
 function dvToggleDone(){
-  const n=dvViewDay||dvDayNumber();
-  const key=dvKeyFromDayNumber(n);
-  const entry=dvEntryFor(n);
+  const key=dvKey();
+  const vi=dvVerseIdx();
   if(!dvData[key])dvData[key]={};
-  dvData[key].dayNum=n;
-  dvData[key].ref=entry.dia.ref;
-  dvData[key].titulo=entry.dia.titulo;
-  // persist current answers too
-  const a1=document.getElementById('dvAns1'); if(a1)dvData[key].ans1=a1.value;
-  const a2=document.getElementById('dvAns2'); if(a2)dvData[key].ans2=a2.value;
-  const a3=document.getElementById('dvAns3'); if(a3)dvData[key].ans3=a3.value;
+  dvData[key].verseIdx=vi;
+  dvData[key].verseRef=VERSES[vi].ref;
   dvData[key].done=!dvData[key].done;
   dvSavePersist();
-  renderDvHoje(n);
+  renderDevocional();
 }
 
-function renderDvTrilha(){
-  const el=document.getElementById('dvTrilhaView');
-  const realToday=dvDayNumber();
-  let html='';
-  CURRICULUM.forEach((mes,mi)=>{
-    html+=`<div class="dv-trail-month">
-      <div class="dv-trail-month-title">${mi+1}º Mês · ${escAttr(mes.tema)}</div>
-      <div class="dv-trail-month-desc">${escAttr(mes.descricao)}</div>`;
-    mes.semanas.forEach((sem,wi)=>{
-      html+=`<div class="dv-trail-week"><div class="dv-trail-week-title">Semana ${wi+1} · ${escAttr(sem.titulo)}</div><div class="dv-trail-dots">`;
-      sem.dias.forEach((dia,di)=>{
-        const dayNum=mi*28+wi*7+di+1;
-        const key=dvKeyFromDayNumber(dayNum);
-        const done=dvData[key]&&dvData[key].done;
-        let cls='dv-day-dot';
-        let onclick=`onclick="dvGoFromTrilha(${dayNum})"`;
-        if(done) cls+=' done';
-        else if(dayNum===realToday) cls+=' today';
-        else if(dayNum>realToday){cls+=' future';onclick='';}
-        html+=`<div class="${cls}" ${onclick}>${done?'✓':di+1}</div>`;
-      });
-      html+=`</div></div>`;
-    });
-    html+=`</div>`;
-  });
-  // meses futuros não populados
-  html+=`<div class="dv-future">Mais meses de jornada serão revelados em breve. Continue firme — um dia de cada vez!</div>`;
-  el.innerHTML=html;
+function dvSwitchTab(tab){
+  document.getElementById('dvTodayView').style.display=tab==='hoje'?'block':'none';
+  document.getElementById('dvHistView').style.display=tab==='historico'?'block':'none';
+  document.getElementById('dvTabHoje').classList.toggle('active',tab==='hoje');
+  document.getElementById('dvTabHist').classList.toggle('active',tab==='historico');
+  if(tab==='historico')dvRenderHistory();
 }
 
-function dvGoFromTrilha(n){
-  dvViewDay=n;
-  dvSwitchTab('hoje');
-}
-
-function renderDvHist(){
-  const el=document.getElementById('dvHistView');
-  const keys=Object.keys(dvData).filter(k=>{const d=dvData[k];return d.ans1||d.ans2||d.ans3||d.done}).sort().reverse();
+function dvRenderHistory(){
+  const el=document.getElementById('dvHistList');
+  const keys=Object.keys(dvData).sort().reverse();
   if(!keys.length){
     el.innerHTML='<div class="dv-empty">Nenhum devocional registrado ainda.<br>Complete o de hoje para começar seu histórico.</div>';
     return;
   }
-  let html='';
+  el.innerHTML='';
   keys.forEach(key=>{
     const d=dvData[key];
-    const ref=d.ref||'';
-    const titulo=d.titulo||'';
-    const note=d.ans1||d.ans2||d.ans3||'';
-    html+=`<div class="dv-hist-item">
-      <div class="dv-hist-date">📅 ${dvFmtDate(key)}${d.dayNum?' · Dia '+d.dayNum:''}</div>
-      <div class="dv-hist-verse">${escAttr(titulo)}${ref?' — '+escAttr(ref):''}</div>
-      ${note?`<div class="dv-hist-note">💭 ${escAttr(note.substring(0,120))}${note.length>120?'…':''}</div>`:''}
+    const vi=d.verseIdx!==undefined?d.verseIdx:0;
+    const verse=VERSES[vi]||VERSES[0];
+    const item=document.createElement('div');
+    item.className='dv-hist-item';
+    item.innerHTML=`
+      <div class="dv-hist-date">📅 ${dvFmtDate(key)}</div>
+      <div class="dv-hist-verse">${verse.text.substring(0,80)}… — ${verse.ref}</div>
+      ${d.ans1?`<div class="dv-hist-note">💭 ${d.ans1.substring(0,100)}${d.ans1.length>100?'…':''}</div>`:''}
       ${d.done?'<div class="dv-hist-done">✅ Devocional concluído</div>':'<div style="font-size:10px;color:#555;margin-top:4px">⬜ Não concluído</div>'}
-    </div>`;
+    `;
+    el.appendChild(item);
   });
-  el.innerHTML=html;
 }
 
 // RENDER
