@@ -121,9 +121,9 @@
     .streak-reset-btn{width:100%;padding:12px;background:transparent;border:1px solid #2a2a3e;border-radius:8px;color:#555;font-size:11px;font-family:Georgia,serif;cursor:pointer;letter-spacing:1px}
 
     /* MODAL GENÉRICO */
-    .modal-overlay{display:none;position:fixed;inset:0;background:#000000cc;z-index:100;align-items:flex-end;justify-content:center}
+    .modal-overlay{display:none;position:fixed;inset:0;background:#000000cc;z-index:100;align-items:flex-end;justify-content:center;padding-bottom:env(safe-area-inset-bottom)}
     .modal-overlay.open{display:flex}
-    .modal-box{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px 16px 0 0;padding:20px 20px calc(env(safe-area-inset-bottom)+20px);width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
+    .modal-box{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px 16px 0 0;padding:20px 20px 24px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
     .modal-title{font-size:14px;color:#e8e8e0;margin-bottom:16px;font-weight:bold}
     .modal-field{margin-bottom:14px}
     .modal-field label{display:block;font-size:10px;color:#666;letter-spacing:1px;margin-bottom:6px}
