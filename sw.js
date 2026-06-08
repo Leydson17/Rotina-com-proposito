@@ -1,5 +1,5 @@
 // Bump CACHE_VERSION on every deploy to invalidate the old cache
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5';
 const CACHE = `rotina-${CACHE_VERSION}`;
 // BASE resolve o caminho correto independente de subdiretório (ex: /Rotina-com-proposito)
 const BASE = self.location.pathname.replace('/sw.js', '');

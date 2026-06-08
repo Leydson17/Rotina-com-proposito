@@ -120,6 +120,37 @@
     .streak-dot.empty{color:#333}
     .streak-reset-btn{width:100%;padding:12px;background:transparent;border:1px solid #2a2a3e;border-radius:8px;color:#555;font-size:11px;font-family:Georgia,serif;cursor:pointer;letter-spacing:1px}
 
+    /* DEVOCIONAL */
+    .dv-view{padding:16px}
+    .dv-tabs{display:flex;border-bottom:1px solid #2a1a3e;background:#0d0d0d}
+    .dv-tab{flex:1;padding:11px 4px;background:transparent;border:none;color:#555;font-size:10px;letter-spacing:.5px;cursor:pointer;font-family:Georgia,serif;border-bottom:2px solid transparent;transition:all .2s}
+    .dv-tab.active{color:#c084fc;border-bottom-color:#c084fc}
+    .dv-verse-card{background:linear-gradient(135deg,#1a0a2e,#2a1040);border:1px solid #c084fc33;border-radius:14px;padding:20px;margin-bottom:16px}
+    .dv-verse-label{font-size:9px;color:#c084fc;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+    .dv-verse-text{font-size:16px;color:#f0ece0;line-height:1.8;font-style:italic;margin-bottom:12px}
+    .dv-verse-ref{font-size:12px;color:#c084fc;text-align:right}
+    .dv-verse-nav{display:flex;justify-content:space-between;margin-top:12px}
+    .dv-verse-nav-btn{background:transparent;border:1px solid #2a1a3e;border-radius:20px;color:#888;font-size:11px;padding:5px 12px;cursor:pointer;font-family:Georgia,serif}
+    .dv-section{font-size:10px;color:#555;letter-spacing:2px;margin-bottom:10px}
+    .dv-reflect{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:10px;padding:14px;margin-bottom:10px}
+    .dv-reflect-num{font-size:10px;color:#c084fc;letter-spacing:1px;margin-bottom:6px}
+    .dv-reflect-q{font-size:13px;color:#e8e8e0;line-height:1.6;margin-bottom:10px}
+    .dv-journal{width:100%;min-height:80px;background:#0d0d0d;border:1px solid #2a2a3e;color:#b0c4d8;font-size:13px;font-family:Georgia,serif;padding:10px 12px;resize:none;outline:none;line-height:1.6}
+    .dv-journal:focus{border-color:#c084fc44}
+    .dv-save-btn{width:100%;margin-top:8px;padding:11px;background:#c084fc22;border:1px solid #c084fc44;border-radius:8px;color:#c084fc;font-size:12px;font-family:Georgia,serif;cursor:pointer;letter-spacing:1px}
+    .dv-saved{font-size:10px;color:#4ecb71;margin-top:6px;text-align:center;display:none}
+    .dv-prayer{background:#1a0a2e;border:1px solid #c084fc22;border-radius:10px;padding:14px;margin-top:16px;margin-bottom:16px}
+    .dv-prayer-label{font-size:9px;color:#c084fc;letter-spacing:3px;margin-bottom:10px}
+    .dv-prayer-text{font-size:13px;color:#b0c4d8;line-height:1.8;font-style:italic}
+    .dv-complete-btn{width:100%;padding:14px;background:linear-gradient(90deg,#4a2c6e,#6a3a9e);border:none;border-radius:10px;color:#e8e8e0;font-size:14px;font-family:Georgia,serif;cursor:pointer;margin-bottom:20px;letter-spacing:1px}
+    .dv-complete-btn.done{background:#1a4731;border:1px solid #4ecb7144;color:#4ecb71}
+    .dv-hist-item{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:10px;padding:14px;margin-bottom:10px}
+    .dv-hist-date{font-size:10px;color:#c084fc;letter-spacing:1px;margin-bottom:6px}
+    .dv-hist-verse{font-size:12px;color:#888;font-style:italic;margin-bottom:6px}
+    .dv-hist-note{font-size:12px;color:#aaa;line-height:1.5}
+    .dv-hist-done{font-size:10px;color:#4ecb71;margin-top:6px}
+    .dv-empty{text-align:center;color:#555;font-size:13px;font-style:italic;padding:40px 20px}
+
     /* MODAL GENÉRICO */
     .modal-overlay{display:none;position:fixed;inset:0;background:#000000cc;z-index:100;align-items:flex-end;justify-content:center;padding-bottom:env(safe-area-inset-bottom)}
     .modal-overlay.open{display:flex}
@@ -172,6 +203,7 @@
   <button class="tab-btn active" onclick="switchTab('agenda',0)">📅 AGENDA</button>
   <button class="tab-btn" onclick="switchTab('historico',1)">📊 HISTÓRICO</button>
   <button class="tab-btn" onclick="switchTab('sequencia',2)">🔥 SEQUÊNCIA</button>
+  <button class="tab-btn" onclick="switchTab('devocional',3)">✝️ DEVOCIONAL</button>
 </div>
 
 <div class="view active" id="view-agenda">
@@ -216,6 +248,53 @@
       <div class="streak-dots" id="streakDots"></div>
     </div>
     <button class="streak-reset-btn" onclick="confirmReset()">🔄 Reiniciar sequência</button>
+  </div>
+</div>
+
+<div class="view" id="view-devocional">
+  <!-- mini sub-tabs -->
+  <div class="dv-tabs">
+    <button class="dv-tab active" id="dvTabHoje" onclick="dvSwitchTab('hoje')">📖 Hoje</button>
+    <button class="dv-tab" id="dvTabHist" onclick="dvSwitchTab('historico')">📅 Histórico</button>
+  </div>
+  <!-- today view -->
+  <div class="dv-view" id="dvTodayView">
+    <div class="dv-verse-card">
+      <div class="dv-verse-label">✦ VERSÍCULO DO DIA ✦</div>
+      <div class="dv-verse-text" id="dvVerseText"></div>
+      <div class="dv-verse-ref" id="dvVerseRef"></div>
+      <div class="dv-verse-nav">
+        <button class="dv-verse-nav-btn" onclick="dvPrev()">← anterior</button>
+        <button class="dv-verse-nav-btn" onclick="dvNext()">próximo →</button>
+      </div>
+    </div>
+    <div class="dv-section">REFLEXÃO GUIADA</div>
+    <div class="dv-reflect">
+      <div class="dv-reflect-num">PERGUNTA 1 — OBSERVAÇÃO</div>
+      <div class="dv-reflect-q" id="dvQ1"></div>
+      <textarea class="dv-journal" id="dvAns1" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+    </div>
+    <div class="dv-reflect">
+      <div class="dv-reflect-num">PERGUNTA 2 — INTERPRETAÇÃO</div>
+      <div class="dv-reflect-q" id="dvQ2"></div>
+      <textarea class="dv-journal" id="dvAns2" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+    </div>
+    <div class="dv-reflect">
+      <div class="dv-reflect-num">PERGUNTA 3 — APLICAÇÃO</div>
+      <div class="dv-reflect-q" id="dvQ3"></div>
+      <textarea class="dv-journal" id="dvAns3" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+    </div>
+    <button class="dv-save-btn" onclick="dvSave()">💾 Salvar reflexões</button>
+    <div class="dv-saved" id="dvSaved">✓ Reflexões salvas!</div>
+    <div class="dv-prayer">
+      <div class="dv-prayer-label">🙏 ORAÇÃO DO DIA</div>
+      <div class="dv-prayer-text" id="dvPrayer"></div>
+    </div>
+    <button class="dv-complete-btn" id="dvCompleteBtn" onclick="dvToggleDone()">Marcar devocional como concluído ✓</button>
+  </div>
+  <!-- history view -->
+  <div class="dv-view" id="dvHistView" style="display:none">
+    <div id="dvHistList"></div>
   </div>
 </div>
 
@@ -397,6 +476,7 @@ function switchTab(tab,idx){
   document.querySelectorAll('.tab-btn')[idx].classList.add('active');
   if(tab==='historico') renderHistory();
   if(tab==='sequencia') renderStreakView();
+  if(tab==='devocional') renderDevocional();
 }
 
 // STREAK
@@ -696,6 +776,136 @@ function confirmReset(){
   if(confirm('Resetar sequência? Não pode ser desfeito.')){
     streak={count:0,lastDate:null,weekDone:[]};save();renderStreakView();renderStreakBanner();
   }
+}
+
+// DEVOCIONAL
+const VERSES = [
+  {text:'"Porque sou eu que conheço os planos que tenho a vosso respeito, planos de paz e não de calamidade, para vos dar um futuro e uma esperança."',ref:'Jeremias 29:11',q1:'O que Deus está prometendo neste versículo?',q2:'Por que essa promessa foi dada ao povo de Israel no exílio?',q3:'Como essa promessa me afeta hoje no meu dia a dia?',prayer:'Senhor, confio que Teus planos para mim são bons. Quando eu não entendo o caminho, ajuda-me a descansar na Tua promessa. Que eu busque meu futuro em Ti, não nas circunstâncias. Amém.'},
+  {text:'"Tudo posso naquele que me fortalece."',ref:'Filipenses 4:13',q1:'O que Paulo quis dizer com "tudo posso"?',q2:'Em que contexto Paulo escreveu isso — ele estava bem ou passando por dificuldades?',q3:'Qual desafio da minha vida precisa desta verdade hoje?',prayer:'Pai, reconheço que minha força é limitada, mas a Tua é infinita. Fortifica-me hoje para cumprir o que me chamaste a fazer. Que eu dependa de Ti em tudo. Amém.'},
+  {text:'"Buscai primeiro o reino de Deus e a sua justiça, e todas as demais coisas vos serão acrescentadas."',ref:'Mateus 6:33',q1:'O que significa buscar "primeiro" o reino de Deus?',q2:'Por que Jesus deu essa instrução logo após falar sobre ansiedade?',q3:'Minhas prioridades do dia refletem que estou buscando primeiro a Deus?',prayer:'Senhor Jesus, ajuda-me a colocar-Te em primeiro lugar — antes do trabalho, antes das preocupações. Que meu dia comece e termine em Ti. Amém.'},
+  {text:'"O Senhor é o meu pastor; nada me faltará."',ref:'Salmos 23:1',q1:'O que a imagem do pastor comunica sobre Deus?',q2:'Quais outros elementos do Salmo 23 complementam esse versículo?',q3:'Em que área da minha vida preciso confiar que nada me faltará?',prayer:'Senhor, Tu és meu pastor fiel. Mesmo quando passo por vales sombrios, Tu estás comigo. Que eu ouça Tua voz e te siga sem medo. Amém.'},
+  {text:'"Sede fortes e corajosos. Não temais, nem vos assusteis diante deles, porque o Senhor, teu Deus, é quem vai contigo."',ref:'Deuteronômio 31:6',q1:'Para quem Deus disse essas palavras originalmente?',q2:'Qual é a base para a coragem que Deus ordena?',q3:'Que situação em minha vida exige coragem que só Deus pode dar?',prayer:'Deus forte, enche-me de coragem hoje. Que o medo não paralise meus passos. Sei que não estou sozinho — Tu vais à minha frente. Amém.'},
+  {text:'"Não vos conformeis com este século, mas transformai-vos pela renovação da vossa mente."',ref:'Romanos 12:2',q1:'O que Paulo quer dizer com "não vos conformeis"?',q2:'Como a mente renovada leva ao discernimento da vontade de Deus?',q3:'Qual padrão do mundo ainda molda meu pensamento que preciso entregar a Deus?',prayer:'Pai, renova minha mente. Que Tua Palavra transforme o modo como vejo o trabalho, a família e as decisões. Não deixa o mundo me moldar. Amém.'},
+  {text:'"O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha."',ref:'1 Coríntios 13:4',q1:'Quais características do amor são mencionadas neste versículo?',q2:'Por que Paulo colocou o amor acima de todos os dons espirituais?',q3:'Qual característica do amor preciso desenvolver mais nas minhas relações?',prayer:'Senhor, ensina-me a amar como Tu amas — paciente, bondoso, sem vaidade. Que meu amor pela minha família reflita o Teu amor por mim. Amém.'},
+  {text:'"Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento."',ref:'Provérbios 3:5',q1:'O que significa confiar com "todo o coração"?',q2:'Por que nosso próprio entendimento pode ser um obstáculo?',q3:'Há alguma decisão que estou tentando resolver sozinho em vez de confiar a Deus?',prayer:'Senhor, entrego meu entendimento limitado a Ti. Quando não souber o caminho, guia meus passos. Confio em Ti com tudo o que sou. Amém.'},
+  {text:'"Mas os que esperam no Senhor renovarão as suas forças, subirão com asas como águias."',ref:'Isaías 40:31',q1:'O que a imagem das águias comunica sobre os que esperam em Deus?',q2:'Por que "esperar no Senhor" exige força de caráter?',q3:'Há algo em minha vida onde preciso aprender a esperar com paciência?',prayer:'Pai, quando estou cansado e sem forças, renova-me. Ensina-me a esperar em Ti com esperança, não com ansiedade. Amém.'},
+  {text:'"E tudo quanto fizerdes, fazei-o de todo o coração, como ao Senhor, e não aos homens."',ref:'Colossenses 3:23',q1:'O que significa fazer algo "como ao Senhor"?',q2:'Como essa perspectiva muda a motivação para o trabalho?',q3:'Como posso aplicar esse princípio ao meu trabalho hoje?',prayer:'Senhor, que tudo o que eu fizer hoje — no trabalho, em casa, nos estudos — seja feito para a Tua glória. Amém.'},
+  {text:'"Instrui o menino no caminho em que deve andar; e até quando envelhecer não se desviará dele."',ref:'Provérbios 22:6',q1:'Que responsabilidade esse versículo coloca sobre os pais?',q2:'O que significa "o caminho em que deve andar" — é genérico ou personalizado?',q3:'O que estou ensinando ao meu filho pelo meu exemplo diário?',prayer:'Pai, ajuda-me a ser um pai que instrui com amor e consistência. Que meu filho veja Cristo em mim. Amém.'},
+  {text:'"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna."',ref:'João 3:16',q1:'Quais são as dimensões do amor de Deus reveladas neste versículo?',q2:'O que significa que Deus "deu" seu filho?',q3:'Esse amor de Deus tem mudado a forma como eu me relaciono com as pessoas?',prayer:'Senhor, que eu nunca perca de vista o quanto me amaste. Que esse amor seja a base de tudo que faço. Amém.'},
+];
+
+let dvData = JSON.parse(localStorage.getItem('devocional')||'{}');
+let dvOffset = parseInt(localStorage.getItem('devOffset')||'0');
+
+function dvKey(){
+  const d=new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function dvFmtDate(key){
+  const [y,m,d]=key.split('-');
+  const months=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  return `${d} de ${months[parseInt(m)-1]} de ${y}`;
+}
+
+function dvVerseIdx(){
+  const d=new Date();
+  return (d.getFullYear()*365+d.getMonth()*31+d.getDate()+dvOffset)%VERSES.length;
+}
+
+function dvSavePersist(){
+  localStorage.setItem('devocional',JSON.stringify(dvData));
+  localStorage.setItem('devOffset',String(dvOffset));
+}
+
+function renderDevocional(){
+  const key=dvKey();
+  const vi=dvVerseIdx();
+  const v=VERSES[vi];
+  const stored=dvData[key]||{};
+
+  document.getElementById('dvVerseText').textContent=v.text;
+  document.getElementById('dvVerseRef').textContent='— '+v.ref;
+  document.getElementById('dvQ1').textContent=v.q1;
+  document.getElementById('dvQ2').textContent=v.q2;
+  document.getElementById('dvQ3').textContent=v.q3;
+  document.getElementById('dvAns1').value=stored.ans1||'';
+  document.getElementById('dvAns2').value=stored.ans2||'';
+  document.getElementById('dvAns3').value=stored.ans3||'';
+  document.getElementById('dvPrayer').textContent=v.prayer;
+
+  const btn=document.getElementById('dvCompleteBtn');
+  if(stored.done){
+    btn.textContent='✅ Devocional concluído!';
+    btn.classList.add('done');
+  } else {
+    btn.textContent='Marcar devocional como concluído ✓';
+    btn.classList.remove('done');
+  }
+
+  const savedEl=document.getElementById('dvSaved');
+  savedEl.style.display=stored.ans1?'block':'none';
+}
+
+function dvPrev(){dvOffset--;dvSavePersist();renderDevocional()}
+function dvNext(){dvOffset++;dvSavePersist();renderDevocional()}
+
+function dvSave(){
+  const key=dvKey();
+  const vi=dvVerseIdx();
+  if(!dvData[key])dvData[key]={};
+  dvData[key].verseIdx=vi;
+  dvData[key].verseRef=VERSES[vi].ref;
+  dvData[key].ans1=document.getElementById('dvAns1').value;
+  dvData[key].ans2=document.getElementById('dvAns2').value;
+  dvData[key].ans3=document.getElementById('dvAns3').value;
+  dvSavePersist();
+  const savedEl=document.getElementById('dvSaved');
+  savedEl.style.display='block';
+  setTimeout(()=>savedEl.style.display='none',2000);
+}
+
+function dvToggleDone(){
+  const key=dvKey();
+  const vi=dvVerseIdx();
+  if(!dvData[key])dvData[key]={};
+  dvData[key].verseIdx=vi;
+  dvData[key].verseRef=VERSES[vi].ref;
+  dvData[key].done=!dvData[key].done;
+  dvSavePersist();
+  renderDevocional();
+}
+
+function dvSwitchTab(tab){
+  document.getElementById('dvTodayView').style.display=tab==='hoje'?'block':'none';
+  document.getElementById('dvHistView').style.display=tab==='historico'?'block':'none';
+  document.getElementById('dvTabHoje').classList.toggle('active',tab==='hoje');
+  document.getElementById('dvTabHist').classList.toggle('active',tab==='historico');
+  if(tab==='historico')dvRenderHistory();
+}
+
+function dvRenderHistory(){
+  const el=document.getElementById('dvHistList');
+  const keys=Object.keys(dvData).sort().reverse();
+  if(!keys.length){
+    el.innerHTML='<div class="dv-empty">Nenhum devocional registrado ainda.<br>Complete o de hoje para começar seu histórico.</div>';
+    return;
+  }
+  el.innerHTML='';
+  keys.forEach(key=>{
+    const d=dvData[key];
+    const vi=d.verseIdx!==undefined?d.verseIdx:0;
+    const verse=VERSES[vi]||VERSES[0];
+    const item=document.createElement('div');
+    item.className='dv-hist-item';
+    item.innerHTML=`
+      <div class="dv-hist-date">📅 ${dvFmtDate(key)}</div>
+      <div class="dv-hist-verse">${verse.text.substring(0,80)}… — ${verse.ref}</div>
+      ${d.ans1?`<div class="dv-hist-note">💭 ${d.ans1.substring(0,100)}${d.ans1.length>100?'…':''}</div>`:''}
+      ${d.done?'<div class="dv-hist-done">✅ Devocional concluído</div>':'<div style="font-size:10px;color:#555;margin-top:4px">⬜ Não concluído</div>'}
+    `;
+    el.appendChild(item);
+  });
 }
 
 // RENDER
