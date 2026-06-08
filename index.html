@@ -23,6 +23,10 @@
     .notif-banner.hidden{display:none}
     .notif-banner-text{font-size:12px;color:#4ecb71;flex:1}
     .notif-banner-btn{background:#4ecb71;color:#000;font-size:11px;padding:5px 12px;border-radius:20px;border:none;cursor:pointer;font-family:Georgia,serif;font-weight:bold}
+    .update-banner{background:#1a1a2e;border-bottom:1px solid #4a9eff44;padding:10px 16px;display:none;align-items:center;gap:10px}
+    .update-banner.visible{display:flex}
+    .update-banner-text{font-size:12px;color:#4a9eff;flex:1}
+    .update-banner-btn{background:#4a9eff;color:#fff;font-size:11px;padding:5px 12px;border-radius:20px;border:none;cursor:pointer;font-family:Georgia,serif;font-weight:bold}
 
     .streak-banner{background:linear-gradient(90deg,#1a1a0a,#2a2200);border-bottom:1px solid #f59e0b44;padding:10px 20px;display:flex;align-items:center;justify-content:center;gap:10px}
     .streak-text{font-size:13px;color:#f59e0b}
@@ -140,6 +144,11 @@
   <div class="header-label">AGENDA SEMANAL</div>
   <h1>Rotina com Propósito</h1>
   <p>Trabalho · Estudo · Fé</p>
+</div>
+
+<div class="update-banner" id="updateBanner">
+  <span class="update-banner-text">🔄 Nova versão disponível</span>
+  <button class="update-banner-btn" onclick="applyUpdate()">Atualizar agora</button>
 </div>
 
 <div class="notif-banner" id="notifBanner" onclick="requestNotifPermission()">
@@ -324,11 +333,35 @@ function save(){
 }
 
 // SERVICE WORKER
+let swReg = null;
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/Rotina-com-proposito/sw.js').then(reg=>{
+    swReg = reg;
     checkNotifBanner();
     if(Notification.permission==='granted') scheduleNotifications(reg);
+
+    // Show update banner if a new SW is already waiting
+    if(reg.waiting) showUpdateBanner();
+
+    // Show update banner when a new SW finishes installing
+    reg.addEventListener('updatefound', ()=>{
+      const newSW = reg.installing;
+      newSW.addEventListener('statechange', ()=>{
+        if(newSW.state === 'installed' && navigator.serviceWorker.controller) showUpdateBanner();
+      });
+    });
   });
+
+  // Reload the page once the new SW takes control
+  navigator.serviceWorker.addEventListener('controllerchange', ()=>location.reload());
+}
+function showUpdateBanner(){
+  document.getElementById('updateBanner').classList.add('visible');
+}
+function applyUpdate(){
+  if(swReg && swReg.waiting){
+    swReg.waiting.postMessage({type:'SKIP_WAITING'});
+  }
 }
 function checkNotifBanner(){
   if(Notification.permission==='granted'||Notification.permission==='denied')
