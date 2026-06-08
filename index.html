@@ -136,8 +136,11 @@
     .dv-reflect{background:#1e2638;border:1px solid #2c3550;border-radius:10px;padding:14px;margin-bottom:10px}
     .dv-reflect-num{font-size:12px;color:#c084fc;letter-spacing:1px;margin-bottom:6px}
     .dv-reflect-q{font-size:15px;color:#e8e8e0;line-height:1.6;margin-bottom:10px}
-    .dv-journal{width:100%;min-height:80px;background:#0f1320;border:1px solid #2c3550;color:#b0c4d8;font-size:15px;font-family:Georgia,serif;padding:10px 12px;resize:none;outline:none;line-height:1.6;border-radius:6px}
+    .dv-journal{width:100%;min-height:80px;background:#0f1320;border:1px solid #2c3550;color:#b0c4d8;font-size:15px;font-family:Georgia,serif;padding:10px 12px;resize:none;outline:none;line-height:1.6;border-radius:6px;overflow:hidden;box-sizing:border-box}
     .dv-journal:focus{border-color:#c084fc44}
+    .dv-study-notes-wrap{margin-top:14px;border-top:1px solid #2a4060;padding-top:12px}
+    .dv-study-notes-label{font-size:11px;color:#5aacff;letter-spacing:2px;margin-bottom:8px}
+    .dv-study-notes-save{margin-top:8px;width:100%;padding:9px;background:#5aacff22;border:1px solid #5aacff44;border-radius:8px;color:#5aacff;font-size:13px;font-family:Georgia,serif;cursor:pointer;letter-spacing:1px}
     .dv-save-btn{width:100%;margin-top:8px;padding:11px;background:#c084fc22;border:1px solid #c084fc44;border-radius:8px;color:#c084fc;font-size:14px;font-family:Georgia,serif;cursor:pointer;letter-spacing:1px}
     .dv-saved{font-size:12px;color:#4ecb71;margin-top:6px;text-align:center;display:none}
     .dv-prayer{background:#1e0e38;border:1px solid #c084fc22;border-radius:10px;padding:14px;margin-top:16px;margin-bottom:16px}
@@ -314,6 +317,11 @@
       </button>
       <div class="dv-study-body" id="dvStudyBody" style="display:none">
         <div class="dv-study-text" id="dvStudyText"></div>
+        <div class="dv-study-notes-wrap">
+          <div class="dv-study-notes-label">📝 MINHAS ANOTAÇÕES</div>
+          <textarea class="dv-journal" id="dvStudyNotes" placeholder="Cole aqui textos das referências cruzadas ou escreva suas anotações do estudo..." oninput="autoResize(this)"></textarea>
+          <button class="dv-study-notes-save" onclick="dvSaveStudyNotes()">Salvar anotações</button>
+        </div>
       </div>
     </div>
     <!-- Desafio do Dia -->
@@ -329,17 +337,17 @@
     <div class="dv-reflect">
       <div class="dv-reflect-num">PERGUNTA 1 — OBSERVAÇÃO</div>
       <div class="dv-reflect-q" id="dvQ1"></div>
-      <textarea class="dv-journal" id="dvAns1" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+      <textarea class="dv-journal" id="dvAns1" placeholder="Escreva sua reflexão aqui..." oninput="autoResize(this)"></textarea>
     </div>
     <div class="dv-reflect">
       <div class="dv-reflect-num">PERGUNTA 2 — INTERPRETAÇÃO</div>
       <div class="dv-reflect-q" id="dvQ2"></div>
-      <textarea class="dv-journal" id="dvAns2" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+      <textarea class="dv-journal" id="dvAns2" placeholder="Escreva sua reflexão aqui..." oninput="autoResize(this)"></textarea>
     </div>
     <div class="dv-reflect">
       <div class="dv-reflect-num">PERGUNTA 3 — APLICAÇÃO</div>
       <div class="dv-reflect-q" id="dvQ3"></div>
-      <textarea class="dv-journal" id="dvAns3" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+      <textarea class="dv-journal" id="dvAns3" placeholder="Escreva sua reflexão aqui..." oninput="autoResize(this)"></textarea>
     </div>
     <button class="dv-save-btn" onclick="dvSave()">💾 Salvar reflexões</button>
     <div class="dv-saved" id="dvSaved">✓ Reflexões salvas!</div>
@@ -930,6 +938,21 @@ function dvSavePersist(){
   localStorage.setItem('devOffset',String(dvOffset));
 }
 
+function autoResize(el){
+  el.style.height='auto';
+  el.style.height=el.scrollHeight+'px';
+}
+
+function dvSaveStudyNotes(){
+  const key=dvKey();
+  if(!dvData[key])dvData[key]={};
+  dvData[key].studyNotes=document.getElementById('dvStudyNotes').value;
+  dvSavePersist();
+  const btn=document.querySelector('.dv-study-notes-save');
+  btn.textContent='✅ Salvo!';
+  setTimeout(()=>btn.textContent='Salvar anotações',1500);
+}
+
 function dvToggleStudy(){
   dvStudyOpen = !dvStudyOpen;
   document.getElementById('dvStudyBody').style.display = dvStudyOpen ? 'block' : 'none';
@@ -982,9 +1005,14 @@ function renderDevocional(){
   document.getElementById('dvQ1').textContent=v.q1;
   document.getElementById('dvQ2').textContent=v.q2;
   document.getElementById('dvQ3').textContent=v.q3;
-  document.getElementById('dvAns1').value=stored.ans1||'';
-  document.getElementById('dvAns2').value=stored.ans2||'';
-  document.getElementById('dvAns3').value=stored.ans3||'';
+  const ta1=document.getElementById('dvAns1');
+  const ta2=document.getElementById('dvAns2');
+  const ta3=document.getElementById('dvAns3');
+  const taN=document.getElementById('dvStudyNotes');
+  ta1.value=stored.ans1||''; ta1.style.height='auto';
+  ta2.value=stored.ans2||''; ta2.style.height='auto';
+  ta3.value=stored.ans3||''; ta3.style.height='auto';
+  taN.value=stored.studyNotes||''; taN.style.height='auto';
   document.getElementById('dvPrayer').textContent=v.prayer;
 
   dvStudyOpen=false;
@@ -1020,6 +1048,7 @@ function dvSave(){
   dvData[key].ans1=document.getElementById('dvAns1').value;
   dvData[key].ans2=document.getElementById('dvAns2').value;
   dvData[key].ans3=document.getElementById('dvAns3').value;
+  dvData[key].studyNotes=document.getElementById('dvStudyNotes').value;
   dvSavePersist();
   const savedEl=document.getElementById('dvSaved');
   savedEl.style.display='block';
