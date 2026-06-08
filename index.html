@@ -6,52 +6,53 @@
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
   <meta name="apple-mobile-web-app-title" content="Rotina"/>
-  <meta name="theme-color" content="#0d0d0d"/>
+  <meta name="theme-color" content="#141922"/>
   <link rel="manifest" href="/Rotina-com-proposito/manifest.json"/>
   <link rel="apple-touch-icon" href="/Rotina-com-proposito/icon-192.png"/>
   <title>Rotina com Propósito</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-    body{background:#0d0d0d;color:#e8e8e0;font-family:Georgia,'Times New Roman',serif;min-height:100vh;padding-bottom:env(safe-area-inset-bottom)}
+    html{background:#141922}
+    body{background:#141922;color:#e8e8e0;font-family:Georgia,'Times New Roman',serif;min-height:100vh;padding-bottom:env(safe-area-inset-bottom);max-width:480px;margin:0 auto}
 
-    .header{background:linear-gradient(135deg,#0d1b2a,#1a1a2e);border-bottom:1px solid #2a2a3e;padding:calc(env(safe-area-inset-top)+20px) 24px 16px;text-align:center}
-    .header-label{font-size:10px;letter-spacing:4px;color:#4a9eff;text-transform:uppercase;margin-bottom:6px}
+    .header{background:linear-gradient(135deg,#162235,#1e1840);border-bottom:1px solid #2c3550;padding:calc(env(safe-area-inset-top)+20px) 24px 16px;text-align:center}
+    .header-label{font-size:10px;letter-spacing:4px;color:#5aacff;text-transform:uppercase;margin-bottom:6px}
     .header h1{font-size:22px;font-weight:normal;color:#f0ece0;letter-spacing:1px}
-    .header p{margin-top:4px;font-size:12px;color:#888;font-style:italic}
+    .header p{margin-top:4px;font-size:12px;color:#8a9ab5;font-style:italic}
 
-    .notif-banner{background:#1a2a1a;border-bottom:1px solid #4ecb7144;padding:10px 16px;display:flex;align-items:center;gap:10px;cursor:pointer}
+    .notif-banner{background:#152a15;border-bottom:1px solid #4ecb7155;padding:10px 16px;display:flex;align-items:center;gap:10px;cursor:pointer}
     .notif-banner.hidden{display:none}
     .notif-banner-text{font-size:12px;color:#4ecb71;flex:1}
     .notif-banner-btn{background:#4ecb71;color:#000;font-size:11px;padding:5px 12px;border-radius:20px;border:none;cursor:pointer;font-family:Georgia,serif;font-weight:bold}
-    .update-banner{background:#1a1a2e;border-bottom:1px solid #4a9eff44;padding:10px 16px;display:none;align-items:center;gap:10px}
+    .update-banner{background:#1e2638;border-bottom:1px solid #5aacff44;padding:10px 16px;display:none;align-items:center;gap:10px}
     .update-banner.visible{display:flex}
-    .update-banner-text{font-size:12px;color:#4a9eff;flex:1}
-    .update-banner-btn{background:#4a9eff;color:#fff;font-size:11px;padding:5px 12px;border-radius:20px;border:none;cursor:pointer;font-family:Georgia,serif;font-weight:bold}
+    .update-banner-text{font-size:12px;color:#5aacff;flex:1}
+    .update-banner-btn{background:#5aacff;color:#fff;font-size:11px;padding:5px 12px;border-radius:20px;border:none;cursor:pointer;font-family:Georgia,serif;font-weight:bold}
 
-    .streak-banner{background:linear-gradient(90deg,#1a1a0a,#2a2200);border-bottom:1px solid #f59e0b44;padding:10px 20px;display:flex;align-items:center;justify-content:center;gap:10px}
+    .streak-banner{background:linear-gradient(90deg,#1e1a08,#2e2400);border-bottom:1px solid #f59e0b44;padding:10px 20px;display:flex;align-items:center;justify-content:center;gap:10px}
     .streak-text{font-size:13px;color:#f59e0b}
     .streak-num{font-size:20px;font-weight:bold;color:#f59e0b}
 
-    .tabs{display:flex;border-bottom:1px solid #2a2a3e;background:#0d0d0d}
-    .tab-btn{flex:1;padding:11px 4px;background:transparent;border:none;color:#555;font-size:10px;letter-spacing:.5px;cursor:pointer;font-family:Georgia,serif;border-bottom:2px solid transparent;transition:all .2s}
-    .tab-btn.active{color:#4a9eff;border-bottom-color:#4a9eff}
+    .tabs{display:flex;border-bottom:1px solid #2c3550;background:#141922}
+    .tab-btn{flex:1;padding:11px 4px;background:transparent;border:none;color:#506080;font-size:10px;letter-spacing:.5px;cursor:pointer;font-family:Georgia,serif;border-bottom:2px solid transparent;transition:all .2s}
+    .tab-btn.active{color:#5aacff;border-bottom-color:#5aacff}
 
     .view{display:none}
     .view.active{display:block}
 
     .day-selector{display:flex;overflow-x:auto;padding:14px 14px 0;gap:8px;scrollbar-width:none}
     .day-selector::-webkit-scrollbar{display:none}
-    .day-btn{flex:0 0 auto;padding:9px 13px;background:#1a1a2e;color:#888;border:1px solid #2a2a3e;border-radius:8px;cursor:pointer;font-size:11px;letter-spacing:1px;transition:all .2s;font-family:Georgia,serif;text-align:center}
-    .day-btn.active{background:#4a9eff;color:#fff;border-color:#4a9eff;font-weight:bold}
-    .day-sub{font-size:9px;margin-top:2px;color:#555}
+    .day-btn{flex:0 0 auto;padding:9px 13px;background:#1e2638;color:#8a9ab5;border:1px solid #2c3550;border-radius:8px;cursor:pointer;font-size:11px;letter-spacing:1px;transition:all .2s;font-family:Georgia,serif;text-align:center}
+    .day-btn.active{background:#5aacff;color:#fff;border-color:#5aacff;font-weight:bold}
+    .day-sub{font-size:9px;margin-top:2px;color:#506080}
     .day-btn.active .day-sub{color:#cce}
 
     .progress-wrap{padding:14px 14px 0}
-    .progress-box{background:#1a1a2e;border-radius:8px;padding:12px 16px;border:1px solid #2a2a3e;display:flex;align-items:center;gap:12px}
+    .progress-box{background:#1e2638;border-radius:8px;padding:12px 16px;border:1px solid #2c3550;display:flex;align-items:center;gap:12px}
     .progress-inner{flex:1}
-    .progress-label{font-size:10px;color:#666;margin-bottom:6px;letter-spacing:1px}
-    .progress-bar-bg{background:#0d0d0d;border-radius:4px;height:6px;overflow:hidden}
-    .progress-bar{height:100%;background:linear-gradient(90deg,#4a9eff,#4ecb71);border-radius:4px;transition:width .4s ease}
+    .progress-label{font-size:10px;color:#7080a0;margin-bottom:6px;letter-spacing:1px}
+    .progress-bar-bg{background:#0f1320;border-radius:4px;height:6px;overflow:hidden}
+    .progress-bar{height:100%;background:linear-gradient(90deg,#5aacff,#4ecb71);border-radius:4px;transition:width .4s ease}
     .progress-pct{font-size:20px;font-weight:bold;color:#4ecb71;min-width:44px;text-align:right}
 
     .schedule{padding:14px}
@@ -62,79 +63,115 @@
 
     .block{flex:1;border-radius:10px;padding:11px 13px;transition:all .2s;margin-bottom:4px;border-width:1px;border-style:solid;border-left-width:3px}
     .block-top{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;-webkit-user-select:none}
-    .block.checked{background:#111!important;border-color:#333!important;border-left-color:#333!important;opacity:.5}
+    .block.checked{background:#16191f!important;border-color:#2c3550!important;border-left-color:#2c3550!important;opacity:.5}
     .block-icon{font-size:17px;flex-shrink:0}
     .block-title{font-size:13px;color:#e8e8e0;font-weight:500}
-    .block.checked .block-title{color:#555;text-decoration:line-through}
+    .block.checked .block-title{color:#506080;text-decoration:line-through}
     .block-cat{font-size:10px;margin-top:2px}
-    .block.checked .block-cat{color:#444!important}
+    .block.checked .block-cat{color:#405070!important}
     .block-actions{display:flex;gap:6px;margin-top:8px;align-items:center}
-    .block-action-btn{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid #2a2a3e;background:transparent;color:#888;cursor:pointer;font-family:Georgia,serif;white-space:nowrap;flex-shrink:0}
+    .block-action-btn{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid #2c3550;background:transparent;color:#8a9ab5;cursor:pointer;font-family:Georgia,serif;white-space:nowrap;flex-shrink:0}
     .block-action-btn:active{opacity:.7}
-    .note-toggle{color:#4a9eff;border-color:#4a9eff33}
+    .note-toggle{color:#5aacff;border-color:#5aacff33}
     .edit-btn{color:#f59e0b;border-color:#f59e0b44}
     .del-btn{color:#ff6b6b;border-color:#ff6b6b44}
-    .note-preview{font-size:11px;color:#666;margin-top:4px;font-style:italic}
+    .note-preview{font-size:11px;color:#7080a0;margin-top:4px;font-style:italic}
 
-    .add-block-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 14px 14px;padding:14px;background:#1a1a2e;border:1px dashed #2a2a3e;border-radius:10px;cursor:pointer;color:#555;font-size:12px;font-family:Georgia,serif;transition:all .2s}
-    .add-block-btn:active{border-color:#4a9eff;color:#4a9eff}
+    .add-block-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 14px 14px;padding:14px;background:#1e2638;border:1px dashed #2c3550;border-radius:10px;cursor:pointer;color:#506080;font-size:12px;font-family:Georgia,serif;transition:all .2s}
+    .add-block-btn:active{border-color:#5aacff;color:#5aacff}
 
     .legend{padding:0 14px 14px}
-    .legend-title{font-size:10px;color:#555;letter-spacing:2px;margin-bottom:8px}
+    .legend-title{font-size:10px;color:#506080;letter-spacing:2px;margin-bottom:8px}
     .legend-items{display:flex;flex-wrap:wrap;gap:6px}
-    .legend-item{display:flex;align-items:center;gap:5px;background:#1a1a2e;border-radius:20px;padding:3px 9px;font-size:10px;border-width:1px;border-style:solid}
+    .legend-item{display:flex;align-items:center;gap:5px;background:#1e2638;border-radius:20px;padding:3px 9px;font-size:10px;border-width:1px;border-style:solid}
 
     .tip-wrap{padding:0 14px 20px}
-    .tip-box{background:#0d1b2a;border:1px solid #1e3a5f;border-radius:10px;padding:13px 15px;cursor:pointer}
-    .tip-label{font-size:10px;color:#4a9eff;letter-spacing:1px;margin-bottom:6px}
+    .tip-box{background:#142030;border:1px solid #1e4060;border-radius:10px;padding:13px 15px;cursor:pointer}
+    .tip-label{font-size:10px;color:#5aacff;letter-spacing:1px;margin-bottom:6px}
     .tip-text{font-size:12px;color:#b0c4d8;line-height:1.6;font-style:italic}
-    .hint{text-align:center;font-size:10px;color:#444;padding-bottom:28px}
+    .hint{text-align:center;font-size:10px;color:#405070;padding-bottom:28px}
 
     /* HISTÓRICO */
     .history-view{padding:16px}
-    .history-title{font-size:10px;color:#666;letter-spacing:2px;margin-bottom:16px}
-    .history-row{display:flex;align-items:center;gap:12px;background:#1a1a2e;border:1px solid #2a2a3e;border-radius:10px;padding:12px 14px;margin-bottom:8px}
-    .history-day-name{font-size:12px;color:#888;width:64px;flex-shrink:0}
-    .history-bar-bg{flex:1;background:#0d0d0d;border-radius:4px;height:8px;overflow:hidden}
+    .history-title{font-size:10px;color:#7080a0;letter-spacing:2px;margin-bottom:16px}
+    .history-row{display:flex;align-items:center;gap:12px;background:#1e2638;border:1px solid #2c3550;border-radius:10px;padding:12px 14px;margin-bottom:8px}
+    .history-day-name{font-size:12px;color:#8a9ab5;width:64px;flex-shrink:0}
+    .history-bar-bg{flex:1;background:#0f1320;border-radius:4px;height:8px;overflow:hidden}
     .history-bar{height:100%;border-radius:4px;transition:width .6s ease}
     .history-pct{font-size:12px;font-weight:bold;width:36px;text-align:right;flex-shrink:0}
-    .history-empty{text-align:center;color:#555;font-size:13px;font-style:italic;padding:40px 20px}
+    .history-empty{text-align:center;color:#506080;font-size:13px;font-style:italic;padding:40px 20px}
 
     /* SEQUÊNCIA */
     .streak-view{padding:16px}
-    .streak-card{background:linear-gradient(135deg,#1a1a0a,#2a2200);border:1px solid #f59e0b44;border-radius:14px;padding:28px;text-align:center;margin-bottom:16px}
+    .streak-card{background:linear-gradient(135deg,#1e1a08,#2e2400);border:1px solid #f59e0b44;border-radius:14px;padding:28px;text-align:center;margin-bottom:16px}
     .streak-big{font-size:72px;font-weight:bold;color:#f59e0b;line-height:1}
-    .streak-label{font-size:12px;color:#888;margin-top:8px;letter-spacing:2px}
-    .streak-sub{font-size:11px;color:#555;margin-top:6px;font-style:italic}
-    .streak-week{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:12px;padding:16px;margin-bottom:16px}
-    .streak-week-title{font-size:10px;color:#555;letter-spacing:2px;margin-bottom:14px}
+    .streak-label{font-size:12px;color:#8a9ab5;margin-top:8px;letter-spacing:2px}
+    .streak-sub{font-size:11px;color:#506080;margin-top:6px;font-style:italic}
+    .streak-week{background:#1e2638;border:1px solid #2c3550;border-radius:12px;padding:16px;margin-bottom:16px}
+    .streak-week-title{font-size:10px;color:#506080;letter-spacing:2px;margin-bottom:14px}
     .streak-dots{display:flex;gap:8px;justify-content:center}
-    .streak-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:bold;border:2px solid #2a2a3e}
+    .streak-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:bold;border:2px solid #2c3550}
     .streak-dot.done{background:#f59e0b22;border-color:#f59e0b;color:#f59e0b}
-    .streak-dot.today{border-color:#4a9eff;color:#4a9eff}
-    .streak-dot.empty{color:#333}
-    .streak-reset-btn{width:100%;padding:12px;background:transparent;border:1px solid #2a2a3e;border-radius:8px;color:#555;font-size:11px;font-family:Georgia,serif;cursor:pointer;letter-spacing:1px}
+    .streak-dot.today{border-color:#5aacff;color:#5aacff}
+    .streak-dot.empty{color:#304060}
+    .streak-reset-btn{width:100%;padding:12px;background:transparent;border:1px solid #2c3550;border-radius:8px;color:#506080;font-size:11px;font-family:Georgia,serif;cursor:pointer;letter-spacing:1px}
+
+    /* DEVOCIONAL */
+    .dv-view{padding:16px}
+    .dv-tabs{display:flex;border-bottom:1px solid #2c2048;background:#141922}
+    .dv-tab{flex:1;padding:11px 4px;background:transparent;border:none;color:#506080;font-size:10px;letter-spacing:.5px;cursor:pointer;font-family:Georgia,serif;border-bottom:2px solid transparent;transition:all .2s}
+    .dv-tab.active{color:#c084fc;border-bottom-color:#c084fc}
+    .dv-verse-card{background:linear-gradient(135deg,#200e38,#2c1250);border:1px solid #c084fc44;border-radius:14px;padding:20px;margin-bottom:16px}
+    .dv-verse-label{font-size:9px;color:#c084fc;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+    .dv-verse-text{font-size:16px;color:#f0ece0;line-height:1.8;font-style:italic;margin-bottom:12px}
+    .dv-verse-ref{font-size:12px;color:#c084fc;text-align:right}
+    .dv-verse-nav{display:flex;justify-content:space-between;margin-top:12px}
+    .dv-verse-nav-btn{background:transparent;border:1px solid #2c2048;border-radius:20px;color:#8a9ab5;font-size:11px;padding:5px 12px;cursor:pointer;font-family:Georgia,serif}
+    .dv-study-wrap{margin-bottom:16px}
+    .dv-study-toggle{width:100%;background:#182535;border:1px solid #2a4060;border-radius:10px;color:#7ab8e0;font-size:11px;letter-spacing:2px;padding:12px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:Georgia,serif;text-align:left}
+    .dv-study-toggle:active{opacity:.8}
+    .dv-study-body{background:#10192a;border:1px solid #2a4060;border-top:none;border-radius:0 0 10px 10px;padding:14px}
+    .dv-study-text{font-size:13px;color:#b0c8e0;line-height:1.9}
+    .dv-section{font-size:10px;color:#506080;letter-spacing:2px;margin-bottom:10px}
+    .dv-reflect{background:#1e2638;border:1px solid #2c3550;border-radius:10px;padding:14px;margin-bottom:10px}
+    .dv-reflect-num{font-size:10px;color:#c084fc;letter-spacing:1px;margin-bottom:6px}
+    .dv-reflect-q{font-size:13px;color:#e8e8e0;line-height:1.6;margin-bottom:10px}
+    .dv-journal{width:100%;min-height:80px;background:#0f1320;border:1px solid #2c3550;color:#b0c4d8;font-size:13px;font-family:Georgia,serif;padding:10px 12px;resize:none;outline:none;line-height:1.6;border-radius:6px}
+    .dv-journal:focus{border-color:#c084fc44}
+    .dv-save-btn{width:100%;margin-top:8px;padding:11px;background:#c084fc22;border:1px solid #c084fc44;border-radius:8px;color:#c084fc;font-size:12px;font-family:Georgia,serif;cursor:pointer;letter-spacing:1px}
+    .dv-saved{font-size:10px;color:#4ecb71;margin-top:6px;text-align:center;display:none}
+    .dv-prayer{background:#1e0e38;border:1px solid #c084fc22;border-radius:10px;padding:14px;margin-top:16px;margin-bottom:16px}
+    .dv-prayer-label{font-size:9px;color:#c084fc;letter-spacing:3px;margin-bottom:10px}
+    .dv-prayer-text{font-size:13px;color:#b0c4d8;line-height:1.8;font-style:italic}
+    .dv-complete-btn{width:100%;padding:14px;background:linear-gradient(90deg,#4a2c6e,#6a3a9e);border:none;border-radius:10px;color:#e8e8e0;font-size:14px;font-family:Georgia,serif;cursor:pointer;margin-bottom:20px;letter-spacing:1px}
+    .dv-complete-btn.done{background:#1a4731;border:1px solid #4ecb7144;color:#4ecb71}
+    .dv-hist-item{background:#1e2638;border:1px solid #2c3550;border-radius:10px;padding:14px;margin-bottom:10px}
+    .dv-hist-date{font-size:10px;color:#c084fc;letter-spacing:1px;margin-bottom:6px}
+    .dv-hist-verse{font-size:12px;color:#8a9ab5;font-style:italic;margin-bottom:6px}
+    .dv-hist-note{font-size:12px;color:#b0c4d8;line-height:1.5}
+    .dv-hist-done{font-size:10px;color:#4ecb71;margin-top:6px}
+    .dv-empty{text-align:center;color:#506080;font-size:13px;font-style:italic;padding:40px 20px}
 
     /* MODAL GENÉRICO */
     .modal-overlay{display:none;position:fixed;inset:0;background:#000000cc;z-index:100;align-items:flex-end;justify-content:center}
     .modal-overlay.open{display:flex}
-    .modal-box{background:#1a1a2e;border:1px solid #2a2a3e;border-radius:16px 16px 0 0;padding:20px 20px calc(env(safe-area-inset-bottom)+20px);width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
+    .modal-box{background:#1e2638;border:1px solid #2c3550;border-radius:16px 16px 0 0;padding:20px 20px calc(env(safe-area-inset-bottom)+20px);width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
     .modal-title{font-size:14px;color:#e8e8e0;margin-bottom:16px;font-weight:bold}
     .modal-field{margin-bottom:14px}
-    .modal-field label{display:block;font-size:10px;color:#666;letter-spacing:1px;margin-bottom:6px}
-    .modal-input{width:100%;background:#0d0d0d;border:1px solid #2a2a3e;border-radius:8px;color:#e8e8e0;font-size:13px;font-family:Georgia,serif;padding:10px 12px;outline:none}
-    .modal-input:focus{border-color:#4a9eff44}
-    .modal-textarea{width:100%;min-height:80px;background:#0d0d0d;border:1px solid #2a2a3e;border-radius:8px;color:#b0c4d8;font-size:13px;font-family:Georgia,serif;padding:10px 12px;resize:none;outline:none;line-height:1.6}
-    .modal-textarea:focus{border-color:#4a9eff44}
-    .modal-select{width:100%;background:#0d0d0d;border:1px solid #2a2a3e;border-radius:8px;color:#e8e8e0;font-size:13px;font-family:Georgia,serif;padding:10px 12px;outline:none;-webkit-appearance:none}
+    .modal-field label{display:block;font-size:10px;color:#7080a0;letter-spacing:1px;margin-bottom:6px}
+    .modal-input{width:100%;background:#0f1320;border:1px solid #2c3550;border-radius:8px;color:#e8e8e0;font-size:13px;font-family:Georgia,serif;padding:10px 12px;outline:none}
+    .modal-input:focus{border-color:#5aacff55}
+    .modal-textarea{width:100%;min-height:80px;background:#0f1320;border:1px solid #2c3550;border-radius:8px;color:#b0c4d8;font-size:13px;font-family:Georgia,serif;padding:10px 12px;resize:none;outline:none;line-height:1.6}
+    .modal-textarea:focus{border-color:#5aacff55}
+    .modal-select{width:100%;background:#0f1320;border:1px solid #2c3550;border-radius:8px;color:#e8e8e0;font-size:13px;font-family:Georgia,serif;padding:10px 12px;outline:none;-webkit-appearance:none}
     .modal-actions{display:flex;gap:10px;margin-top:16px}
-    .modal-save{flex:1;padding:12px;background:#4a9eff;border:none;border-radius:8px;color:#fff;font-size:13px;font-family:Georgia,serif;cursor:pointer}
+    .modal-save{flex:1;padding:12px;background:#5aacff;border:none;border-radius:8px;color:#fff;font-size:13px;font-family:Georgia,serif;cursor:pointer}
     .modal-delete{padding:12px 16px;background:transparent;border:1px solid #ff6b6b44;border-radius:8px;color:#ff6b6b;font-size:13px;font-family:Georgia,serif;cursor:pointer}
-    .modal-cancel{padding:12px 16px;background:transparent;border:1px solid #2a2a3e;border-radius:8px;color:#666;font-size:13px;font-family:Georgia,serif;cursor:pointer}
+    .modal-cancel{padding:12px 16px;background:transparent;border:1px solid #2c3550;border-radius:8px;color:#7080a0;font-size:13px;font-family:Georgia,serif;cursor:pointer}
 
     /* TYPE SELECTOR */
     .type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
-    .type-opt{padding:10px 6px;background:#0d0d0d;border:1px solid #2a2a3e;border-radius:8px;cursor:pointer;text-align:center;font-size:11px;color:#888;font-family:Georgia,serif;transition:all .2s}
+    .type-opt{padding:10px 6px;background:#0f1320;border:1px solid #2c3550;border-radius:8px;cursor:pointer;text-align:center;font-size:11px;color:#8a9ab5;font-family:Georgia,serif;transition:all .2s}
     .type-opt.selected{border-width:2px}
   </style>
 </head>
@@ -167,6 +204,7 @@
   <button class="tab-btn active" onclick="switchTab('agenda',0)">📅 AGENDA</button>
   <button class="tab-btn" onclick="switchTab('historico',1)">📊 HISTÓRICO</button>
   <button class="tab-btn" onclick="switchTab('sequencia',2)">🔥 SEQUÊNCIA</button>
+  <button class="tab-btn" onclick="switchTab('devocional',3)">✝️ DEVOC.</button>
 </div>
 
 <div class="view active" id="view-agenda">
@@ -214,6 +252,59 @@
   </div>
 </div>
 
+<div class="view" id="view-devocional">
+  <div class="dv-tabs">
+    <button class="dv-tab active" id="dvTabHoje" onclick="dvSwitchTab('hoje')">📖 Hoje</button>
+    <button class="dv-tab" id="dvTabHist" onclick="dvSwitchTab('historico')">📅 Histórico</button>
+  </div>
+  <div class="dv-view" id="dvTodayView">
+    <div class="dv-verse-card">
+      <div class="dv-verse-label">✦ VERSÍCULO DO DIA ✦</div>
+      <div class="dv-verse-text" id="dvVerseText"></div>
+      <div class="dv-verse-ref" id="dvVerseRef"></div>
+      <div class="dv-verse-nav">
+        <button class="dv-verse-nav-btn" onclick="dvPrev()">← anterior</button>
+        <button class="dv-verse-nav-btn" onclick="dvNext()">próximo →</button>
+      </div>
+    </div>
+    <div class="dv-study-wrap">
+      <button class="dv-study-toggle" onclick="dvToggleStudy()">
+        <span>📚 ESTUDO BÍBLICO</span>
+        <span id="dvStudyArrow">▼</span>
+      </button>
+      <div class="dv-study-body" id="dvStudyBody" style="display:none">
+        <div class="dv-study-text" id="dvStudyText"></div>
+      </div>
+    </div>
+    <div class="dv-section">REFLEXÃO GUIADA</div>
+    <div class="dv-reflect">
+      <div class="dv-reflect-num">PERGUNTA 1 — OBSERVAÇÃO</div>
+      <div class="dv-reflect-q" id="dvQ1"></div>
+      <textarea class="dv-journal" id="dvAns1" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+    </div>
+    <div class="dv-reflect">
+      <div class="dv-reflect-num">PERGUNTA 2 — INTERPRETAÇÃO</div>
+      <div class="dv-reflect-q" id="dvQ2"></div>
+      <textarea class="dv-journal" id="dvAns2" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+    </div>
+    <div class="dv-reflect">
+      <div class="dv-reflect-num">PERGUNTA 3 — APLICAÇÃO</div>
+      <div class="dv-reflect-q" id="dvQ3"></div>
+      <textarea class="dv-journal" id="dvAns3" placeholder="Escreva sua reflexão aqui..." rows="3"></textarea>
+    </div>
+    <button class="dv-save-btn" onclick="dvSave()">💾 Salvar reflexões</button>
+    <div class="dv-saved" id="dvSaved">✓ Reflexões salvas!</div>
+    <div class="dv-prayer">
+      <div class="dv-prayer-label">🙏 ORAÇÃO DO DIA</div>
+      <div class="dv-prayer-text" id="dvPrayer"></div>
+    </div>
+    <button class="dv-complete-btn" id="dvCompleteBtn" onclick="dvToggleDone()">Marcar devocional como concluído ✓</button>
+  </div>
+  <div class="dv-view" id="dvHistView" style="display:none">
+    <div id="dvHistList"></div>
+  </div>
+</div>
+
 <!-- MODAL EDITAR/ADICIONAR -->
 <div class="modal-overlay" id="editModal">
   <div class="modal-box">
@@ -247,12 +338,12 @@ const DAYS=['SEG','TER','QUA','QUI','SEX','SÁB','DOM'];
 const DAYS_FULL=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
 
 const COLOR={
-  trabalho:{bg:'#1e3a5f',accent:'#4a9eff',label:'Trabalho',icon:'💼'},
+  trabalho:{bg:'#1e3a5f',accent:'#5aacff',label:'Trabalho',icon:'💼'},
   estudo:  {bg:'#1a4731',accent:'#4ecb71',label:'Estudo (BA)',icon:'📚'},
   biblia:  {bg:'#4a2c6e',accent:'#c084fc',label:'Bíblia',icon:'✝️'},
-  livre:   {bg:'#2a2a2a',accent:'#666',   label:'Livre/Descanso',icon:'🌿'},
+  livre:   {bg:'#252a35',accent:'#7a8aaa',label:'Livre/Descanso',icon:'🌿'},
   almoco:  {bg:'#3a2a10',accent:'#f59e0b',label:'Almoço',icon:'🍽️'},
-  sono:    {bg:'#1a1a2e',accent:'#4a4a8a',label:'Sono/Noite',icon:'🌙'},
+  sono:    {bg:'#1e2638',accent:'#5a6a9a',label:'Sono/Noite',icon:'🌙'},
 };
 
 const DEFAULT_SCHEDULES = {
@@ -308,7 +399,6 @@ let activeDay=jsDay===0?6:jsDay-1;
 function loadSchedules(){
   const saved=localStorage.getItem('schedules');
   if(saved) return JSON.parse(saved);
-  // Init all 7 days
   const s={};
   for(let i=0;i<7;i++){
     const key=i===6?'sunday':i===5?'saturday':'weekday';
@@ -339,11 +429,7 @@ if('serviceWorker' in navigator){
     swReg = reg;
     checkNotifBanner();
     if(Notification.permission==='granted') scheduleNotifications(reg);
-
-    // Show update banner if a new SW is already waiting
     if(reg.waiting) showUpdateBanner();
-
-    // Show update banner when a new SW finishes installing
     reg.addEventListener('updatefound', ()=>{
       const newSW = reg.installing;
       newSW.addEventListener('statechange', ()=>{
@@ -351,18 +437,10 @@ if('serviceWorker' in navigator){
       });
     });
   });
-
-  // Reload the page once the new SW takes control
   navigator.serviceWorker.addEventListener('controllerchange', ()=>location.reload());
 }
-function showUpdateBanner(){
-  document.getElementById('updateBanner').classList.add('visible');
-}
-function applyUpdate(){
-  if(swReg && swReg.waiting){
-    swReg.waiting.postMessage({type:'SKIP_WAITING'});
-  }
-}
+function showUpdateBanner(){document.getElementById('updateBanner').classList.add('visible')}
+function applyUpdate(){if(swReg && swReg.waiting) swReg.waiting.postMessage({type:'SKIP_WAITING'})}
 function checkNotifBanner(){
   if(Notification.permission==='granted'||Notification.permission==='denied')
     document.getElementById('notifBanner').classList.add('hidden');
@@ -392,6 +470,7 @@ function switchTab(tab,idx){
   document.querySelectorAll('.tab-btn')[idx].classList.add('active');
   if(tab==='historico') renderHistory();
   if(tab==='sequencia') renderStreakView();
+  if(tab==='devocional') renderDevocional();
 }
 
 // STREAK
@@ -445,7 +524,7 @@ function renderSchedule(){
 
     const block=document.createElement('div');
     block.className='block'+(isChecked?' checked':'');
-    block.style.cssText=`background:${isChecked?'#111':c.bg};border-color:${isChecked?'#333':c.accent+'55'};border-left-color:${isChecked?'#333':c.accent}`;
+    block.style.cssText=`background:${isChecked?'#16191f':c.bg};border-color:${isChecked?'#2c3550':c.accent+'55'};border-left-color:${isChecked?'#2c3550':c.accent}`;
     block.innerHTML=`
       <div class="block-top">
         <span class="block-icon">${isChecked?'✅':c.icon}</span>
@@ -522,11 +601,9 @@ function saveBlock(){
   const note=document.getElementById('editNote').value;
   if(!label){alert('Digite um título para o bloco!');return}
   if(editingIdx===null){
-    // ADD
     schedules[editingDay].push({time,type:selectedType,label});
     sortSchedule(editingDay);
   } else {
-    // UPDATE
     schedules[editingDay][editingIdx]={time,type:selectedType,label};
     const key=`${editingDay}-${editingIdx}`;
     notes[key]=note;
@@ -573,7 +650,7 @@ function renderHistory(){
   let any=false;
   DAYS.forEach((d,i)=>{
     const pct=getDayPct(i);if(pct>0)any=true;
-    const col=pct>=80?'#4ecb71':pct>=50?'#f59e0b':pct>0?'#4a9eff':'#2a2a3e';
+    const col=pct>=80?'#4ecb71':pct>=50?'#f59e0b':pct>0?'#5aacff':'#2c3550';
     const row=document.createElement('div');row.className='history-row';
     row.innerHTML=`<div class="history-day-name">${DAYS_FULL[i].substring(0,3)}.</div><div class="history-bar-bg"><div class="history-bar" style="width:${pct}%;background:${col}"></div></div><div class="history-pct" style="color:${col}">${pct}%</div>`;
     el.appendChild(row);
@@ -604,6 +681,244 @@ function confirmReset(){
   if(confirm('Resetar sequência? Não pode ser desfeito.')){
     streak={count:0,lastDate:null,weekDone:[]};save();renderStreakView();renderStreakBanner();
   }
+}
+
+// DEVOCIONAL
+const VERSES = [
+  {
+    text:'"Porque sou eu que conheço os planos que tenho a vosso respeito, planos de paz e não de calamidade, para vos dar um futuro e uma esperança."',
+    ref:'Jeremias 29:11',
+    estudo:'Este versículo foi escrito pelo profeta Jeremias em carta enviada aos israelitas exilados na Babilônia em 597 a.C., após a conquista de Jerusalém por Nabucodonosor. A palavra hebraica "shalom", traduzida como "paz", vai muito além da ausência de conflito — significa plenitude, saúde e prosperidade integral de vida. Curiosamente, essa promessa gloriosa veio junto com a instrução de se estabelecerem no exílio: plantar jardins, casar-se e buscar o bem da cidade inimiga (Jer 29:5-7). O "futuro e esperança" prometidos confirmam que o sofrimento temporário jamais é a palavra final de Deus sobre Seu povo. Referências cruzadas: Romanos 8:28, Jeremias 29:10.',
+    q1:'O que Deus está prometendo neste versículo?',
+    q2:'Por que essa promessa foi dada ao povo de Israel no exílio?',
+    q3:'Como essa promessa me afeta hoje no meu dia a dia?',
+    prayer:'Senhor, confio que Teus planos para mim são bons. Quando eu não entendo o caminho, ajuda-me a descansar na Tua promessa. Que eu busque meu futuro em Ti, não nas circunstâncias. Amém.'
+  },
+  {
+    text:'"Tudo posso naquele que me fortalece."',
+    ref:'Filipenses 4:13',
+    estudo:'Paulo escreveu Filipenses de dentro de uma prisão, provavelmente em Roma por volta de 60–62 d.C. O verbo grego "endunamoō" (que me fortalece) descreve uma força infundida externamente — não a nossa, mas a de Cristo agindo em nós. Crucialmente, nos versículos anteriores (4:11-12), Paulo revela que essa força não é promessa de conquistas ilimitadas, mas a capacidade de estar contente tanto na abundância quanto na necessidade. O contexto original rejeita a leitura de que esse versículo garante sucesso em qualquer empreendimento; é uma promessa de suficiência espiritual independente das circunstâncias. Referências cruzadas: 2 Coríntios 12:9-10, Efésios 6:10.',
+    q1:'O que Paulo quis dizer com "tudo posso"?',
+    q2:'Em que contexto Paulo escreveu isso — ele estava bem ou passando por dificuldades?',
+    q3:'Qual desafio da minha vida precisa desta verdade hoje?',
+    prayer:'Pai, reconheço que minha força é limitada, mas a Tua é infinita. Fortifica-me hoje para cumprir o que me chamaste a fazer. Que eu dependa de Ti em tudo. Amém.'
+  },
+  {
+    text:'"Buscai primeiro o reino de Deus e a sua justiça, e todas as demais coisas vos serão acrescentadas."',
+    ref:'Mateus 6:33',
+    estudo:'Este ensinamento é parte do Sermão do Monte (Mateus 5–7), o mais extenso discurso de Jesus registrado nos Evangelhos, proferido numa colina junto ao Mar da Galileia. A expressão "reino de Deus" (basileia tou theou) refere-se ao reinado soberano de Deus sobre todas as dimensões da vida. Jesus pronunciou essa palavra logo após apontar os pássaros e as flores como evidências do cuidado do Pai (v.26-29), redirecionando a ansiedade humana sobre necessidades materiais para uma confiança fundamental em Deus. A promessa "todas as demais coisas vos serão acrescentadas" não é sobre riqueza, mas sobre a garantia de que Deus supre plenamente quem O prioriza. Referências cruzadas: Lucas 12:31, Salmo 37:4.',
+    q1:'O que significa buscar "primeiro" o reino de Deus?',
+    q2:'Por que Jesus deu essa instrução logo após falar sobre ansiedade?',
+    q3:'Minhas prioridades do dia refletem que estou buscando primeiro a Deus?',
+    prayer:'Senhor Jesus, ajuda-me a colocar-Te em primeiro lugar — antes do trabalho, antes das preocupações. Que meu dia comece e termine em Ti. Amém.'
+  },
+  {
+    text:'"O Senhor é o meu pastor; nada me faltará."',
+    ref:'Salmos 23:1',
+    estudo:'O Salmo 23, atribuído ao rei Davi, é provavelmente o texto mais memorizado de toda a Bíblia. Davi conhecia a vida de pastor de dentro: cuidou das ovelhas de seu pai Jessé antes de ser ungido rei (1 Samuel 16:11), o que confere ao salmo uma profundidade autobiográfica única. A metáfora do pastor evoca cuidado íntimo, guia constante, proteção e provisão. Jesus retoma esse título em João 10, declarando-Se o "Bom Pastor" que dá a própria vida pelas ovelhas. Ezequiel 34 usa a mesma imagem para contrastar pastores humanos negligentes com a promessa de Deus de pastorear pessoalmente Seu povo. "Nada me faltará" não é promessa de abundância material, mas de cuidado providencial completo.',
+    q1:'O que a imagem do pastor comunica sobre Deus?',
+    q2:'Quais outros elementos do Salmo 23 complementam esse versículo?',
+    q3:'Em que área da minha vida preciso confiar que nada me faltará?',
+    prayer:'Senhor, Tu és meu pastor fiel. Mesmo quando passo por vales sombrios, Tu estás comigo. Que eu ouça Tua voz e te siga sem medo. Amém.'
+  },
+  {
+    text:'"Sede fortes e corajosos. Não temais, nem vos assusteis diante deles, porque o Senhor, teu Deus, é quem vai contigo."',
+    ref:'Deuteronômio 31:6',
+    estudo:'Essas palavras foram pronunciadas por Moisés, com 120 anos, em seu discurso de despedida antes de morrer nas planícies de Moabe sem entrar na Terra Prometida. Israel estava prestes a cruzar o rio Jordão e enfrentar povos maiores e mais fortes, o que tornava o temor humano completamente compreensível. A coragem aqui ordenada não nasce de autoconfiança, mas de uma teologia firme: Deus vai à frente. Josué 1:9 repete quase as mesmas palavras, mostrando que esse mandato de coragem fundamentada em Deus é um padrão recorrente na Escritura. O autor de Hebreus (13:5) cita essa mesma promessa como base para a contentamento cristão. Referências cruzadas: Josué 1:9, Isaías 41:10.',
+    q1:'Para quem Deus disse essas palavras originalmente?',
+    q2:'Qual é a base para a coragem que Deus ordena?',
+    q3:'Que situação em minha vida exige coragem que só Deus pode dar?',
+    prayer:'Deus forte, enche-me de coragem hoje. Que o medo não paralise meus passos. Sei que não estou sozinho — Tu vais à minha frente. Amém.'
+  },
+  {
+    text:'"Não vos conformeis com este século, mas transformai-vos pela renovação da vossa mente."',
+    ref:'Romanos 12:2',
+    estudo:'Paulo escreveu Romanos por volta de 57 d.C., a carta mais sistemática sobre o evangelho. O verbo grego "syschēmatizō" (conformar) sugere adaptar-se ao molde exterior do mundo presente, enquanto "metamorphōo" (transformar) é exatamente a mesma raiz da palavra usada para descrever a Transfiguração de Jesus (Mateus 17:2). A renovação da mente é o mecanismo central da transformação cristã: o pensamento forma o caráter, e o caráter forma as ações concretas. Paulo contrasta o "século presente" (era atual dominada pelo pecado) com a era vindoura de Deus, chamando os cristãos a viverem já agora como cidadãos do reino futuro. O resultado dessa transformação é a capacidade de discernir e aprovar "qual é a boa, agradável e perfeita vontade de Deus". Referências cruzadas: Efésios 4:22-24, Colossenses 3:10.',
+    q1:'O que Paulo quer dizer com "não vos conformeis"?',
+    q2:'Como a mente renovada leva ao discernimento da vontade de Deus?',
+    q3:'Qual padrão do mundo ainda molda meu pensamento que preciso entregar a Deus?',
+    prayer:'Pai, renova minha mente. Que Tua Palavra transforme o modo como vejo o trabalho, a família e as decisões. Não deixa o mundo me moldar. Amém.'
+  },
+  {
+    text:'"O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha."',
+    ref:'1 Coríntios 13:4',
+    estudo:'O capítulo 13 de 1 Coríntios, frequentemente chamado de "Hino ao Amor", foi escrito para uma igreja em Corinto dividida por facções, ciúmes e competição em dons espirituais (capítulos 12 e 14). A palavra grega "agapē" distingue-se de "eros" (amor romântico) e "philia" (afeição entre amigos) por indicar amor incondicional e volitivo — uma escolha, não apenas um sentimento. Paulo personifica o amor como se fosse uma pessoa, listando 15 atributos do que o amor faz e não faz. Teólogos observam que substituir a palavra "amor" pelo nome "Jesus" ao longo do capítulo resulta em uma descrição perfeita de Cristo. O capítulo culmina com a afirmação de que o amor é o maior dos três: fé, esperança e amor. Referências cruzadas: João 13:34-35, 1 João 4:7-8.',
+    q1:'Quais características do amor são mencionadas neste versículo?',
+    q2:'Por que Paulo colocou o amor acima de todos os dons espirituais?',
+    q3:'Qual característica do amor preciso desenvolver mais nas minhas relações?',
+    prayer:'Senhor, ensina-me a amar como Tu amas — paciente, bondoso, sem vaidade. Que meu amor pela minha família reflita o Teu amor por mim. Amém.'
+  },
+  {
+    text:'"Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento."',
+    ref:'Provérbios 3:5',
+    estudo:'Provérbios 3 é um discurso paternal sobre os benefícios da sabedoria divina, parte da rica literatura sapiencial do Antigo Testamento. O verbo hebraico "bāṭaḥ" (confiar) transmite a ideia de apoiar-se completamente em algo, como uma viga que sustenta um teto — é confiança ativa, não mera aquiescência passiva. A frase "não te estribes no teu próprio entendimento" não deprecia a inteligência, mas coloca os limites do raciocínio humano em perspectiva diante da onisciência de Deus (cf. Isaías 55:8-9). Os versículos seguintes (3:6-8) prometem direção para os caminhos de quem confia e saúde ao corpo, mostrando que a sabedoria de Deus é holística, afetando todas as dimensões da vida. Referências cruzadas: Isaías 55:8-9, Provérbios 3:1-12.',
+    q1:'O que significa confiar com "todo o coração"?',
+    q2:'Por que nosso próprio entendimento pode ser um obstáculo?',
+    q3:'Há alguma decisão que estou tentando resolver sozinho em vez de confiar a Deus?',
+    prayer:'Senhor, entrego meu entendimento limitado a Ti. Quando não souber o caminho, guia meus passos. Confio em Ti com tudo o que sou. Amém.'
+  },
+  {
+    text:'"Mas os que esperam no Senhor renovarão as suas forças, subirão com asas como águias."',
+    ref:'Isaías 40:31',
+    estudo:'Isaías 40 inaugura a segunda parte do livro (capítulos 40–66), conhecida como o "Livro da Consolação", abrindo com a proclamação "Consolai, consolai o meu povo". O capítulo estabelece primeiro a grandeza incomparável de Deus — Ele mede as águas na palma da mão, pesa as montanhas e sustenta o universo (v.12-14) — antes de aplicar essa grandeza aos cansados e fracos. O verbo hebraico "qāwâ" (esperar) também significa entrelaçar ou torcer como uma corda, sugerindo uma ligação intencional e ativa com Deus, não mera resignação passiva. As três imagens de força — voar como águias, correr sem se cansar, andar sem desfalecer — descrevem uma progressão: grandeza nos momentos épicos, resistência nas temporadas longas, e fidelidade nos dias ordinários. Referências cruzadas: Isaías 40:28-30, Salmos 103:5.',
+    q1:'O que a imagem das águias comunica sobre os que esperam em Deus?',
+    q2:'Por que "esperar no Senhor" exige força de caráter?',
+    q3:'Há algo em minha vida onde preciso aprender a esperar com paciência?',
+    prayer:'Pai, quando estou cansado e sem forças, renova-me. Ensina-me a esperar em Ti com esperança, não com ansiedade. Amém.'
+  },
+  {
+    text:'"E tudo quanto fizerdes, fazei-o de todo o coração, como ao Senhor, e não aos homens."',
+    ref:'Colossenses 3:23',
+    estudo:'Paulo escreveu Colossenses para uma igreja que nunca visitou pessoalmente, provavelmente fundada por Epafras (Colossenses 1:7), por volta de 60–62 d.C. O contexto imediato (v.22-25) trata de servos e empregadores, mas o princípio se estende a toda atividade humana. A expressão "como ao Senhor" (kyriō) redefine radicalmente a noção de trabalho: não é apenas um meio de sobrevivência, mas um ato de adoração dirigido a Cristo. Isso contrariava profundamente a visão greco-romana que desprezava o trabalho manual. A promessa de "recompensa da herança" mostra que Deus honra o trabalho fiel feito em Seu nome, mesmo quando não é reconhecido pelos homens. Referências cruzadas: Efésios 6:7, 1 Coríntios 10:31.',
+    q1:'O que significa fazer algo "como ao Senhor"?',
+    q2:'Como essa perspectiva muda a motivação para o trabalho?',
+    q3:'Como posso aplicar esse princípio ao meu trabalho hoje?',
+    prayer:'Senhor, que tudo o que eu fizer hoje — no trabalho, em casa, nos estudos — seja feito para a Tua glória. Amém.'
+  },
+  {
+    text:'"Instrui o menino no caminho em que deve andar; e até quando envelhecer não se desviará dele."',
+    ref:'Provérbios 22:6',
+    estudo:'A raiz hebraica "ḥānak" (instruir/treinar), da qual deriva a festa "Chanucá", transmite a ideia de iniciar ou dedicar algo para um propósito específico — como se dedicava um novo templo ou embarcação ao seu uso sagrado. Isso sugere que o ensino aos filhos não é genérico, mas adaptado ao "caminho" particular de cada criança, levando em conta suas aptidões e chamado únicos. Deuteronômio 6:4-9 (o Shemá) estabelece o modelo de ensino contínuo: ao levantar, ao deitar, ao andar pelo caminho, em casa e fora dela. Efésios 6:4 complementa no Novo Testamento: "criai-os na disciplina e admonestação do Senhor". A formação espiritual dos filhos é um dos maiores legados que um pai pode deixar, e começa muito antes da adolescência. Referências cruzadas: Deuteronômio 6:4-9, Efésios 6:4.',
+    q1:'Que responsabilidade esse versículo coloca sobre os pais?',
+    q2:'O que significa "o caminho em que deve andar" — é genérico ou personalizado?',
+    q3:'O que estou ensinando ao meu filho pelo meu exemplo diário?',
+    prayer:'Pai, ajuda-me a ser um pai que instrui com amor e consistência. Que meu filho veja Cristo em mim. Amém.'
+  },
+  {
+    text:'"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna."',
+    ref:'João 3:16',
+    estudo:'Este versículo surge na conversa noturna de Jesus com Nicodemos, um líder fariseu influente que veio secretamente para entender os sinais que Jesus realizava (João 3:2). O verbo "ēgapēsen" (amou) está no aoristo grego, indicando um ato histórico definitivo e completo: a encarnação e entrega do Filho na cruz. A palavra "mundo" (kosmos) aqui é teologicamente surpreendente — não se refere ao Israel fiel, mas ao mundo em rebelião contra Deus (cf. João 1:10-11). Martinho Lutero chamou João 3:16 de "o Evangelho em miniatura". O contraste entre "não pereça" e "tenha a vida eterna" revela que a missão central de Deus é resgatar, não condenar — e que a vida eterna é qualitativa (conhecer a Deus pessoalmente, João 17:3) tanto quanto quantitativa. Referências cruzadas: Romanos 5:8, 1 João 4:9-10.',
+    q1:'Quais são as dimensões do amor de Deus reveladas neste versículo?',
+    q2:'O que significa que Deus "deu" seu filho?',
+    q3:'Esse amor de Deus tem mudado a forma como eu me relaciono com as pessoas?',
+    prayer:'Senhor, que eu nunca perca de vista o quanto me amaste. Que esse amor seja a base de tudo que faço. Amém.'
+  },
+];
+
+let dvData = JSON.parse(localStorage.getItem('devocional')||'{}');
+let dvOffset = parseInt(localStorage.getItem('devOffset')||'0');
+let dvStudyOpen = false;
+
+function dvKey(){
+  const d=new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function dvFmtDate(key){
+  const [y,m,d]=key.split('-');
+  const months=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  return `${d} de ${months[parseInt(m)-1]} de ${y}`;
+}
+
+function dvVerseIdx(){
+  const d=new Date();
+  return (d.getFullYear()*365+d.getMonth()*31+d.getDate()+dvOffset)%VERSES.length;
+}
+
+function dvSavePersist(){
+  localStorage.setItem('devocional',JSON.stringify(dvData));
+  localStorage.setItem('devOffset',String(dvOffset));
+}
+
+function dvToggleStudy(){
+  dvStudyOpen = !dvStudyOpen;
+  document.getElementById('dvStudyBody').style.display = dvStudyOpen ? 'block' : 'none';
+  document.getElementById('dvStudyArrow').textContent = dvStudyOpen ? '▲' : '▼';
+}
+
+function renderDevocional(){
+  const key=dvKey();
+  const vi=dvVerseIdx();
+  const v=VERSES[vi];
+  const stored=dvData[key]||{};
+
+  document.getElementById('dvVerseText').textContent=v.text;
+  document.getElementById('dvVerseRef').textContent='— '+v.ref;
+  document.getElementById('dvStudyText').textContent=v.estudo;
+  document.getElementById('dvQ1').textContent=v.q1;
+  document.getElementById('dvQ2').textContent=v.q2;
+  document.getElementById('dvQ3').textContent=v.q3;
+  document.getElementById('dvAns1').value=stored.ans1||'';
+  document.getElementById('dvAns2').value=stored.ans2||'';
+  document.getElementById('dvAns3').value=stored.ans3||'';
+  document.getElementById('dvPrayer').textContent=v.prayer;
+
+  dvStudyOpen = false;
+  document.getElementById('dvStudyBody').style.display = 'none';
+  document.getElementById('dvStudyArrow').textContent = '▼';
+
+  const btn=document.getElementById('dvCompleteBtn');
+  if(stored.done){
+    btn.textContent='✅ Devocional concluído!';
+    btn.classList.add('done');
+  } else {
+    btn.textContent='Marcar devocional como concluído ✓';
+    btn.classList.remove('done');
+  }
+
+  const savedEl=document.getElementById('dvSaved');
+  savedEl.style.display=stored.ans1?'block':'none';
+}
+
+function dvPrev(){dvOffset--;dvSavePersist();renderDevocional()}
+function dvNext(){dvOffset++;dvSavePersist();renderDevocional()}
+
+function dvSave(){
+  const key=dvKey();
+  const vi=dvVerseIdx();
+  if(!dvData[key])dvData[key]={};
+  dvData[key].verseIdx=vi;
+  dvData[key].verseRef=VERSES[vi].ref;
+  dvData[key].ans1=document.getElementById('dvAns1').value;
+  dvData[key].ans2=document.getElementById('dvAns2').value;
+  dvData[key].ans3=document.getElementById('dvAns3').value;
+  dvSavePersist();
+  const savedEl=document.getElementById('dvSaved');
+  savedEl.style.display='block';
+  setTimeout(()=>savedEl.style.display='none',2000);
+}
+
+function dvToggleDone(){
+  const key=dvKey();
+  const vi=dvVerseIdx();
+  if(!dvData[key])dvData[key]={};
+  dvData[key].verseIdx=vi;
+  dvData[key].verseRef=VERSES[vi].ref;
+  dvData[key].done=!dvData[key].done;
+  dvSavePersist();
+  renderDevocional();
+}
+
+function dvSwitchTab(tab){
+  document.getElementById('dvTodayView').style.display=tab==='hoje'?'block':'none';
+  document.getElementById('dvHistView').style.display=tab==='historico'?'block':'none';
+  document.getElementById('dvTabHoje').classList.toggle('active',tab==='hoje');
+  document.getElementById('dvTabHist').classList.toggle('active',tab==='historico');
+  if(tab==='historico')dvRenderHistory();
+}
+
+function dvRenderHistory(){
+  const el=document.getElementById('dvHistList');
+  const keys=Object.keys(dvData).sort().reverse();
+  if(!keys.length){
+    el.innerHTML='<div class="dv-empty">Nenhum devocional registrado ainda.<br>Complete o de hoje para começar seu histórico.</div>';
+    return;
+  }
+  el.innerHTML='';
+  keys.forEach(key=>{
+    const d=dvData[key];
+    const vi=d.verseIdx!==undefined?d.verseIdx:0;
+    const verse=VERSES[vi]||VERSES[0];
+    const item=document.createElement('div');
+    item.className='dv-hist-item';
+    item.innerHTML=`
+      <div class="dv-hist-date">📅 ${dvFmtDate(key)}</div>
+      <div class="dv-hist-verse">${verse.text.substring(0,80)}… — ${verse.ref}</div>
+      ${d.ans1?`<div class="dv-hist-note">💭 ${d.ans1.substring(0,100)}${d.ans1.length>100?'…':''}</div>`:''}
+      ${d.done?'<div class="dv-hist-done">✅ Devocional concluído</div>':'<div style="font-size:10px;color:#506080;margin-top:4px">⬜ Não concluído</div>'}
+    `;
+    el.appendChild(item);
+  });
 }
 
 // RENDER
