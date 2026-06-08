@@ -1,11 +1,11 @@
 // Bump CACHE_VERSION on every deploy to invalidate the old cache
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE = `rotina-${CACHE_VERSION}`;
 const FILES = ['/', '/index.html', '/manifest.json', '/icon-192.png', '/icon-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)));
-  // Do NOT skipWaiting here — the update banner in the app handles activation
+  self.skipWaiting(); // Toma controle imediatamente ao instalar
 });
 
 self.addEventListener('activate', e => {
