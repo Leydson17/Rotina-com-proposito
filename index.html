@@ -957,6 +957,7 @@ function dvToggleStudy(){
   dvStudyOpen = !dvStudyOpen;
   document.getElementById('dvStudyBody').style.display = dvStudyOpen ? 'block' : 'none';
   document.getElementById('dvStudyArrow').textContent = dvStudyOpen ? '▲' : '▼';
+  if(dvStudyOpen) autoResize(document.getElementById('dvStudyNotes'));
 }
 
 function dvTogglePassagem(){
@@ -1009,10 +1010,10 @@ function renderDevocional(){
   const ta2=document.getElementById('dvAns2');
   const ta3=document.getElementById('dvAns3');
   const taN=document.getElementById('dvStudyNotes');
-  ta1.value=stored.ans1||''; ta1.style.height='auto';
-  ta2.value=stored.ans2||''; ta2.style.height='auto';
-  ta3.value=stored.ans3||''; ta3.style.height='auto';
-  taN.value=stored.studyNotes||''; taN.style.height='auto';
+  ta1.value=stored.ans1||''; autoResize(ta1);
+  ta2.value=stored.ans2||''; autoResize(ta2);
+  ta3.value=stored.ans3||''; autoResize(ta3);
+  taN.value=stored.studyNotes||'';
   document.getElementById('dvPrayer').textContent=v.prayer;
 
   dvStudyOpen=false;
