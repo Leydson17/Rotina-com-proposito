@@ -64,10 +64,10 @@
     .block.checked .block-title{color:#555;text-decoration:line-through}
     .block-cat{font-size:10px;margin-top:2px}
     .block.checked .block-cat{color:#444!important}
-    .block-actions{display:flex;gap:8px;margin-top:8px}
-    .block-action-btn{font-size:10px;padding:4px 10px;border-radius:20px;border:1px solid #2a2a3e;background:transparent;color:#888;cursor:pointer;font-family:Georgia,serif}
+    .block-actions{display:flex;gap:6px;margin-top:8px;align-items:center}
+    .block-action-btn{font-size:11px;padding:4px 12px;border-radius:20px;border:1px solid #2a2a3e;background:transparent;color:#888;cursor:pointer;font-family:Georgia,serif;white-space:nowrap;flex-shrink:0}
     .block-action-btn:active{opacity:.7}
-    .note-toggle{color:#4a9eff}
+    .note-toggle{color:#4a9eff;border-color:#4a9eff33}
     .edit-btn{color:#f59e0b;border-color:#f59e0b44}
     .del-btn{color:#ff6b6b;border-color:#ff6b6b44}
     .note-preview{font-size:11px;color:#666;margin-top:4px;font-style:italic}
@@ -422,9 +422,9 @@ function renderSchedule(){
         </div>
       </div>
       <div class="block-actions">
-        <button class="block-action-btn note-toggle">${hasNote?'📝 Nota':'+ Nota'}</button>
-        <button class="block-action-btn edit-btn">✏️ Editar</button>
-        <button class="block-action-btn del-btn">🗑 Excluir</button>
+        <button class="block-action-btn note-toggle">${hasNote?'📝':'+ Nota'}</button>
+        <button class="block-action-btn edit-btn">✏️</button>
+        <button class="block-action-btn del-btn">🗑</button>
       </div>
       ${hasNote?`<div class="note-preview">"${notes[key].substring(0,55)}${notes[key].length>55?'…':''}"</div>`:''}
     `;
