@@ -125,7 +125,8 @@
     .dv-verse-label{font-size:11px;color:#c084fc;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
     .dv-verse-text{font-size:18px;color:#f0ece0;line-height:1.8;font-style:italic;margin-bottom:12px}
     .dv-verse-ref{font-size:14px;color:#c084fc;text-align:right}
-    .dv-verse-nav{display:flex;justify-content:space-between;margin-top:12px}
+    .dv-date-label{text-align:center;font-size:12px;color:#8070a0;letter-spacing:1px;margin-top:10px;margin-bottom:2px}
+    .dv-verse-nav{display:flex;justify-content:space-between;margin-top:6px}
     .dv-verse-nav-btn{background:transparent;border:1px solid #2c2048;border-radius:20px;color:#8a9ab5;font-size:13px;padding:5px 12px;cursor:pointer;font-family:Georgia,serif}
     .dv-study-wrap{margin-bottom:16px}
     .dv-study-toggle{width:100%;background:#182535;border:1px solid #2a4060;border-radius:10px;color:#7ab8e0;font-size:13px;letter-spacing:2px;padding:12px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:Georgia,serif;text-align:left}
@@ -288,6 +289,7 @@
       <div class="dv-verse-label">✦ VERSÍCULO DO DIA ✦</div>
       <div class="dv-verse-text" id="dvVerseText"></div>
       <div class="dv-verse-ref" id="dvVerseRef"></div>
+      <div class="dv-date-label" id="dvDateLabel"></div>
       <div class="dv-verse-nav">
         <button class="dv-verse-nav-btn" onclick="dvPrev()">← anterior</button>
         <button class="dv-verse-nav-btn" onclick="dvNext()">próximo →</button>
@@ -919,18 +921,23 @@ let dvPassagemOpen = false;
 
 function dvKey(){
   const d=new Date();
+  d.setDate(d.getDate()+dvOffset);
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
 function dvFmtDate(key){
   const [y,m,d]=key.split('-');
   const months=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-  return `${d} de ${months[parseInt(m)-1]} de ${y}`;
+  const days=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const date=new Date(parseInt(y),parseInt(m)-1,parseInt(d));
+  const rel=dvOffset===0?' — hoje':dvOffset===-1?' — ontem':'';
+  return `${days[date.getDay()]}, ${parseInt(d)} de ${months[parseInt(m)-1]}${rel}`;
 }
 
 function dvVerseIdx(){
   const d=new Date();
-  return (d.getFullYear()*365+d.getMonth()*31+d.getDate()+dvOffset)%VERSES.length;
+  d.setDate(d.getDate()+dvOffset);
+  return (d.getFullYear()*365+d.getMonth()*31+d.getDate())%VERSES.length;
 }
 
 function dvSavePersist(){
@@ -997,6 +1004,7 @@ function renderDevocional(){
 
   document.getElementById('dvVerseText').textContent=v.text;
   document.getElementById('dvVerseRef').textContent='— '+v.ref;
+  document.getElementById('dvDateLabel').textContent=dvFmtDate(key);
   document.getElementById('dvPalavra').textContent=v.palavra;
   document.getElementById('dvPalavraSub').textContent=v.palavraSub;
   document.getElementById('dvPassagemText').textContent=v.passagem;
