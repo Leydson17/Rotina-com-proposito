@@ -1,7 +1,6 @@
 // Bump CACHE_VERSION on every deploy to invalidate the old cache
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v6';
 const CACHE = `rotina-${CACHE_VERSION}`;
-// BASE resolve o caminho correto independente de subdiretório (ex: /Rotina-com-proposito)
 const BASE = self.location.pathname.replace('/sw.js', '');
 const FILES = [
   BASE + '/',
@@ -13,7 +12,7 @@ const FILES = [
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)));
-  self.skipWaiting(); // Toma controle imediatamente ao instalar
+  self.skipWaiting();
 });
 
 self.addEventListener('activate', e => {
@@ -49,8 +48,8 @@ self.addEventListener('message', e => {
     setTimeout(() => {
       self.registration.showNotification(title, {
         body,
-        icon: '/icon-192.png',
-        badge: '/icon-192.png',
+        icon: BASE + '/icon-192.png',
+        badge: BASE + '/icon-192.png',
         vibrate: [200, 100, 200],
         tag,
         renotify: true,
@@ -64,8 +63,8 @@ self.addEventListener('push', e => {
   e.waitUntil(
     self.registration.showNotification(data.title, {
       body: data.body,
-      icon: '/icon-192.png',
-      badge: '/icon-192.png',
+      icon: BASE + '/icon-192.png',
+      badge: BASE + '/icon-192.png',
       vibrate: [200, 100, 200],
       tag: data.tag || 'rotina',
       renotify: true,
@@ -76,5 +75,5 @@ self.addEventListener('push', e => {
 
 self.addEventListener('notificationclick', e => {
   e.notification.close();
-  e.waitUntil(clients.openWindow('/'));
+  e.waitUntil(clients.openWindow(BASE + '/'));
 });
