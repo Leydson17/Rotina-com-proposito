@@ -12,7 +12,8 @@
   <title>Rotina com Propósito</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-    body{background:#0d0d0d;color:#e8e8e0;font-family:Georgia,'Times New Roman',serif;min-height:100vh;padding-bottom:env(safe-area-inset-bottom)}
+    html{background:#0d0d0d}
+    body{background:#0d0d0d;color:#e8e8e0;font-family:Georgia,'Times New Roman',serif;min-height:100vh;padding-bottom:env(safe-area-inset-bottom);max-width:480px;margin:0 auto;position:relative}
 
     .header{background:linear-gradient(135deg,#0d1b2a,#1a1a2e);border-bottom:1px solid #2a2a3e;padding:calc(env(safe-area-inset-top)+20px) 24px 16px;text-align:center}
     .header-label{font-size:10px;letter-spacing:4px;color:#4a9eff;text-transform:uppercase;margin-bottom:6px}
@@ -456,8 +457,8 @@ function renderSchedule(){
       </div>
       <div class="block-actions">
         <button class="block-action-btn note-toggle">${hasNote?'📝':'+ Nota'}</button>
-        <button class="block-action-btn edit-btn">✏️</button>
-        <button class="block-action-btn del-btn">🗑</button>
+        <button class="block-action-btn edit-btn">✏️ Editar</button>
+        <button class="block-action-btn del-btn">🗑 Excluir</button>
       </div>
       ${hasNote?`<div class="note-preview">"${notes[key].substring(0,55)}${notes[key].length>55?'…':''}"</div>`:''}
     `;
