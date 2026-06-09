@@ -118,10 +118,13 @@
     .streak-week{background:#1e2638;border:1px solid #2c3550;border-radius:12px;padding:16px;margin-bottom:16px}
     .streak-week-title{font-size:12px;color:#506080;letter-spacing:2px;margin-bottom:14px}
     .streak-dots{display:flex;gap:8px;justify-content:center}
-    .streak-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:bold;border:2px solid #2c3550}
-    .streak-dot.done{background:#f59e0b22;border-color:#f59e0b;color:#f59e0b}
-    .streak-dot.today{border-color:#5aacff;color:#5aacff}
-    .streak-dot.empty{color:#304060}
+    .streak-dot{display:flex;flex-direction:column;align-items:center;gap:4px}
+    .dot-circle{width:32px;height:32px;border-radius:50%;border:2px solid #2c3550;background:transparent}
+    .dot-label{font-size:9px;color:#506080;letter-spacing:.5px}
+    .streak-dot.done .dot-circle{background:#f59e0b22;border-color:#f59e0b}
+    .streak-dot.done .dot-label{color:#f59e0b}
+    .streak-dot.today .dot-circle{border-color:#5aacff}
+    .streak-dot.today .dot-label{color:#5aacff}
     .streak-reset-btn{width:100%;padding:12px;background:transparent;border:1px solid #2c3550;border-radius:8px;color:#506080;font-size:13px;font-family:Georgia,serif;cursor:pointer;letter-spacing:1px}
 
     /* DEVOCIONAL */
@@ -210,6 +213,49 @@
     .dv-desafio-box{width:24px;height:24px;border-radius:6px;border:2px solid #f59e0b;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .2s;color:transparent}
     .dv-desafio-box.done{background:#f59e0b;border-color:#f59e0b;color:#000}
     .dv-desafio-check-label{font-size:14px;color:#f59e0b}
+
+    /* HISTÓRICO redesign */
+    .hist-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 8px}
+    .hist-nav-btn{background:transparent;border:1px solid #2c3550;border-radius:20px;color:#5aacff;font-size:13px;padding:5px 12px;cursor:pointer;font-family:Georgia,serif}
+    .hist-nav-btn:disabled{opacity:.3;cursor:default}
+    .hist-week-label{font-size:13px;color:#e8e8e0;letter-spacing:.5px}
+    .hist-stats-row{display:flex;gap:8px;padding:0 16px 12px;flex-wrap:wrap}
+    .hist-stat{flex:1;min-width:80px;background:#1e2638;border:1px solid #2c3550;border-radius:10px;padding:10px 12px;text-align:center}
+    .hist-stat-num{font-size:22px;font-weight:bold;color:#5aacff}
+    .hist-stat-label{font-size:10px;color:#506080;letter-spacing:1px;margin-top:2px}
+    .hist-section-title{font-size:11px;color:#506080;letter-spacing:2px;padding:8px 16px 8px;margin-top:4px}
+    .hist-calendar{padding:0 16px 16px;display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+    .hist-cal-header{font-size:9px;color:#506080;text-align:center;padding:2px 0;letter-spacing:.5px}
+    .hist-cal-day{aspect-ratio:1;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#506080;cursor:default}
+    .hist-cal-day.has-data{color:#e8e8e0}
+    .hist-cal-day.low{background:#1a2e1a}
+    .hist-cal-day.mid{background:#1a3a1a}
+    .hist-cal-day.high{background:#1e5c1e}
+    .hist-cal-day.full{background:#4ecb71;color:#000}
+    .hist-cal-day.dv-done{box-shadow:inset 0 0 0 2px #c084fc}
+    .hist-cal-day.today-cell{box-shadow:inset 0 0 0 2px #5aacff}
+    .hist-cal-day.empty{background:transparent}
+    /* SEQUÊNCIA redesign */
+    .streak-record-card{display:flex;align-items:center;gap:14px;background:#1e2a10;border:1px solid #4ecb7133;border-radius:12px;padding:14px 18px;margin:0 0 14px}
+    .streak-record-icon{font-size:28px}
+    .streak-record-label{font-size:11px;color:#4ecb71;letter-spacing:2px}
+    .streak-record-num{font-size:22px;font-weight:bold;color:#e8e8e0;margin-top:2px}
+    .streak-milestones{background:#1e2638;border:1px solid #2c3550;border-radius:12px;padding:14px;margin-bottom:14px}
+    .streak-milestone-title{font-size:11px;color:#506080;letter-spacing:2px;margin-bottom:12px}
+    .milestone{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #1a2030;opacity:.35;transition:opacity .3s}
+    .milestone:last-child{border-bottom:none;padding-bottom:0}
+    .milestone.unlocked{opacity:1}
+    .ms-icon{font-size:26px;flex-shrink:0}
+    .ms-label{font-size:14px;color:#e8e8e0}
+    .ms-sub{font-size:12px;color:#506080;margin-top:2px}
+    .milestone.unlocked .ms-sub{color:#4ecb71}
+    .streak-heatmap-wrap{background:#1e2638;border:1px solid #2c3550;border-radius:12px;padding:14px;margin-bottom:14px}
+    .streak-heatmap-title{font-size:11px;color:#506080;letter-spacing:2px;margin-bottom:10px}
+    .streak-heatmap{display:grid;grid-template-columns:repeat(13,1fr);gap:3px}
+    .heat-cell{aspect-ratio:1;border-radius:2px;background:#0f1320}
+    .heat-cell.l1{background:#1a2e1a}
+    .heat-cell.l2{background:#1e4a1e}
+    .heat-cell.l3{background:#4ecb71}
   </style>
 </head>
 <body>
@@ -270,8 +316,15 @@
 
 <div class="view" id="view-historico">
   <div class="history-view">
-    <div class="history-title">DESEMPENHO DA SEMANA ATUAL</div>
+    <div class="hist-nav">
+      <button class="hist-nav-btn" id="histPrevBtn" onclick="histPrevWeek()">← anterior</button>
+      <div class="hist-week-label" id="histWeekLabel">Esta semana</div>
+      <button class="hist-nav-btn" id="histNextBtn" onclick="histNextWeek()">próxima →</button>
+    </div>
+    <div class="hist-stats-row" id="histStatsRow"></div>
     <div id="historyRows"></div>
+    <div class="hist-section-title">CALENDÁRIO DO MÊS</div>
+    <div class="hist-calendar" id="histCalendar"></div>
   </div>
 </div>
 
@@ -282,9 +335,26 @@
       <div class="streak-label">DIAS SEGUIDOS</div>
       <div class="streak-sub" id="streakSubtitle">Complete o dia de hoje para começar!</div>
     </div>
+    <div class="streak-record-card">
+      <span class="streak-record-icon">🏆</span>
+      <div>
+        <div class="streak-record-label">RECORDE PESSOAL</div>
+        <div class="streak-record-num" id="streakBest">0 dias</div>
+      </div>
+    </div>
     <div class="streak-week">
       <div class="streak-week-title">ESTA SEMANA</div>
       <div class="streak-dots" id="streakDots"></div>
+    </div>
+    <div class="streak-milestones">
+      <div class="streak-milestone-title">CONQUISTAS</div>
+      <div class="milestone" id="ms7"><span class="ms-icon">🥉</span><div><div class="ms-label">7 dias seguidos</div><div class="ms-sub" id="ms7sub">0/7 dias</div></div></div>
+      <div class="milestone" id="ms30"><span class="ms-icon">🥈</span><div><div class="ms-label">30 dias seguidos</div><div class="ms-sub" id="ms30sub">0/30 dias</div></div></div>
+      <div class="milestone" id="ms84"><span class="ms-icon">🥇</span><div><div class="ms-label">84 dias — Jornada completa</div><div class="ms-sub" id="ms84sub">0/84 dias</div></div></div>
+    </div>
+    <div class="streak-heatmap-wrap">
+      <div class="streak-heatmap-title">ÚLTIMOS 90 DIAS</div>
+      <div class="streak-heatmap" id="streakHeatmap"></div>
     </div>
     <button class="streak-reset-btn" onclick="confirmReset()">🔄 Reiniciar sequência</button>
   </div>
@@ -555,6 +625,8 @@ let schedules=loadSchedules();
 let checked=JSON.parse(localStorage.getItem('checked')||'{}');
 let notes=JSON.parse(localStorage.getItem('notes')||'{}');
 let streak=JSON.parse(localStorage.getItem('streak')||'{"count":0,"lastDate":null,"weekDone":[]}');
+let appHistory=JSON.parse(localStorage.getItem('appHistory')||'{}');
+// key format: 'YYYY-MM-DD' (same as dvKey)
 let tipIdx=0;
 let editingDay=null, editingIdx=null;
 let selectedType='livre';
@@ -564,6 +636,7 @@ function save(){
   localStorage.setItem('checked',JSON.stringify(checked));
   localStorage.setItem('notes',JSON.stringify(notes));
   localStorage.setItem('streak',JSON.stringify(streak));
+  localStorage.setItem('appHistory',JSON.stringify(appHistory));
   fbPushDebounced();
 }
 
@@ -623,9 +696,7 @@ function todayStr(){const d=new Date();return`${d.getFullYear()}-${d.getMonth()}
 
 function weekStartStr(){
   const d=new Date();
-  const day=d.getDay(); // 0=Sun,1=Mon,...
-  const diff=day===0?-6:1-day; // back to Monday
-  d.setDate(d.getDate()+diff);
+  d.setDate(d.getDate()-d.getDay()); // back to Sunday (0=Sun)
   return`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
 }
 
@@ -648,14 +719,16 @@ function updateStreak(){
   streak.lastDate=today;
   if(!streak.weekDone)streak.weekDone=[];
   if(!streak.weekDone.includes(activeDay))streak.weekDone.push(activeDay);
+  if(!streak.best||streak.count>streak.best) streak.best=streak.count;
   save();renderStreakBanner();
+  recordDayHistory();
 }
 function renderStreakBanner(){document.getElementById('streakNumBanner').textContent=streak.count||0}
 
 // DAYS
 function renderDays(){
   const el=document.getElementById('daySelector');el.innerHTML='';
-  DAYS.forEach((d,i)=>{
+  [6,0,1,2,3,4,5].forEach(i=>{const d=DAYS[i];
     const btn=document.createElement('button');
     btn.className='day-btn'+(i===activeDay?' active':'');
     btn.innerHTML=`<div>${d}</div>`;
@@ -807,36 +880,203 @@ function renderTip(){document.getElementById('tipText').textContent=TIPS[tipIdx]
 function nextTip(){tipIdx=(tipIdx+1)%TIPS.length;renderTip()}
 
 // HISTORY
+function todayHistKey(){
+  const d=new Date();
+  return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function dateToHistKey(d){
+  return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function recordDayHistory(){
+  const key=todayHistKey();
+  const pct=getDayPct(activeDay);
+  const dvDone=!!(dvData[key]&&dvData[key].done);
+  appHistory[key]={pct,dv:dvDone};
+  localStorage.setItem('appHistory',JSON.stringify(appHistory));
+  fbPushDebounced();
+}
+
+let histWeekOffset=0;
+
+function getWeekDates(weekOffset){
+  const today=new Date();
+  const sunday=new Date(today);
+  sunday.setDate(today.getDate()-today.getDay()+weekOffset*7);
+  sunday.setHours(0,0,0,0);
+  const dates=[];
+  for(let i=0;i<7;i++){
+    const d=new Date(sunday);
+    d.setDate(sunday.getDate()+i);
+    dates.push(d);
+  }
+  return dates; // [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+}
+
+function jsDayToDayIdx(jsDay){ return jsDay===0?6:jsDay-1; } // 0(Sun)→6, 1(Mon)→0, etc.
+
+function histPrevWeek(){ histWeekOffset--; renderHistory(); }
+function histNextWeek(){ if(histWeekOffset<0){histWeekOffset++;renderHistory();} }
+
 function renderHistory(){
+  const isCurrentWeek=histWeekOffset===0;
+  const dates=getWeekDates(histWeekOffset);
+  const months=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+  // Week label
+  const s=dates[0],e=dates[6];
+  const label=isCurrentWeek?'Esta semana':`${s.getDate()} ${months[s.getMonth()]} – ${e.getDate()} ${months[e.getMonth()]}`;
+  document.getElementById('histWeekLabel').textContent=label;
+  document.getElementById('histNextBtn').disabled=histWeekOffset>=0;
+  document.getElementById('histPrevBtn').disabled=false;
+
   const el=document.getElementById('historyRows');el.innerHTML='';
-  let any=false;
-  DAYS.forEach((d,i)=>{
-    const pct=getDayPct(i);if(pct>0)any=true;
-    const col=pct>=80?'#4ecb71':pct>=50?'#f59e0b':pct>0?'#5aacff':'#2c3550';
-    const row=document.createElement('div');row.className='history-row';
-    row.innerHTML=`<div class="history-day-name">${DAYS_FULL[i].substring(0,3)}.</div><div class="history-bar-bg"><div class="history-bar" style="width:${pct}%;background:${col}"></div></div><div class="history-pct" style="color:${col}">${pct}%</div>`;
+  let totalPct=0,dvCount=0,activeDays=0;
+  const todayKey=todayHistKey();
+
+  dates.forEach(date=>{
+    const histKey=dateToHistKey(date);
+    const dayIdx=jsDayToDayIdx(date.getDay());
+    const dayName=DAYS[dayIdx];
+    let pct=0,dvDone=false;
+
+    if(isCurrentWeek && histKey===todayKey){
+      pct=getDayPct(dayIdx);
+      dvDone=!!(dvData[todayKey]&&dvData[todayKey].done);
+    } else if(appHistory[histKey]){
+      pct=appHistory[histKey].pct||0;
+      dvDone=!!(appHistory[histKey].dv);
+    }
+
+    if(pct>0||dvDone) activeDays++;
+    totalPct+=pct;
+    if(dvDone) dvCount++;
+
+    const row=document.createElement('div');
+    row.className='history-row';
+    const barColor=pct>=80?'#4ecb71':pct>=50?'#f59e0b':'#5aacff';
+    row.innerHTML=`
+      <div class="history-day-name">${dayName}<br><span style="font-size:10px;color:#405070">${date.getDate()}/${date.getMonth()+1}</span></div>
+      <div class="history-bar-bg"><div class="history-bar" style="width:${pct}%;background:${barColor}"></div></div>
+      <div style="display:flex;align-items:center;gap:6px">
+        ${dvDone?'<span style="font-size:12px">✝️</span>':'<span style="font-size:12px;opacity:.2">✝️</span>'}
+        <div class="history-pct" style="color:${barColor}">${pct?pct+'%':'-'}</div>
+      </div>`;
     el.appendChild(row);
   });
-  if(!any)el.innerHTML='<div class="history-empty">Nenhum dia registrado ainda.<br>Complete blocos na aba Agenda para ver seu histórico.</div>';
+
+  // Stats
+  const avg=activeDays?Math.round(totalPct/7):0;
+  document.getElementById('histStatsRow').innerHTML=`
+    <div class="hist-stat"><div class="hist-stat-num">${avg}%</div><div class="hist-stat-label">MÉDIA</div></div>
+    <div class="hist-stat"><div class="hist-stat-num">${dvCount}</div><div class="hist-stat-label">DEVOCIONAIS</div></div>
+    <div class="hist-stat"><div class="hist-stat-num">${activeDays}</div><div class="hist-stat-label">DIAS ATIVOS</div></div>`;
+
+  // Monthly calendar
+  renderHistCalendar();
+}
+
+function renderHistCalendar(){
+  const cal=document.getElementById('histCalendar');
+  cal.innerHTML='';
+  const today=new Date();
+  const todayKey=todayHistKey();
+  // Day headers Sun-Sat
+  ['D','S','T','Q','Q','S','S'].forEach(h=>{
+    const hd=document.createElement('div');
+    hd.className='hist-cal-header';hd.textContent=h;cal.appendChild(hd);
+  });
+  // First day of month
+  const year=today.getFullYear(), month=today.getMonth();
+  const firstDay=new Date(year,month,1);
+  const startSunday=new Date(firstDay);
+  startSunday.setDate(1-firstDay.getDay()); // back to Sunday
+  // 6 weeks = 42 cells
+  for(let i=0;i<42;i++){
+    const d=new Date(startSunday);
+    d.setDate(startSunday.getDate()+i);
+    const cell=document.createElement('div');
+    const key=dateToHistKey(d);
+    const inMonth=d.getMonth()===month;
+    const isToday=key===todayKey;
+    if(!inMonth){cell.className='hist-cal-day empty';cell.textContent='';cal.appendChild(cell);continue;}
+    const data=key===todayKey?{pct:getDayPct(jsDayToDayIdx(today.getDay())),dv:!!(dvData[todayKey]&&dvData[todayKey].done)}:appHistory[key];
+    let cls='hist-cal-day has-data';
+    if(!data||!data.pct) cls='hist-cal-day';
+    else if(data.pct>=100) cls+=' full';
+    else if(data.pct>=80) cls+=' high';
+    else if(data.pct>=50) cls+=' mid';
+    else cls+=' low';
+    if(data&&data.dv) cls+=' dv-done';
+    if(isToday) cls+=' today-cell';
+    cell.className=cls;
+    cell.textContent=d.getDate();
+    cal.appendChild(cell);
+    if(i>=35&&d.getDate()===1) break; // stop early if next month started
+  }
 }
 
 // STREAK VIEW
+function renderMilestones(){
+  const count=streak.count||0;
+  const best=streak.best||0;
+  [[7,'ms7','ms7sub'],[30,'ms30','ms30sub'],[84,'ms84','ms84sub']].forEach(([days,id,subId])=>{
+    const el=document.getElementById(id);
+    const sub=document.getElementById(subId);
+    if(!el) return;
+    if(best>=days){
+      el.classList.add('unlocked');
+      if(sub) sub.textContent='✓ Conquistado!';
+    } else {
+      el.classList.remove('unlocked');
+      if(sub) sub.textContent=`${count}/${days} dias`;
+    }
+  });
+}
+
+function renderHeatmap(){
+  const el=document.getElementById('streakHeatmap');
+  if(!el) return;
+  el.innerHTML='';
+  const today=new Date();
+  for(let i=89;i>=0;i--){
+    const d=new Date(today);
+    d.setDate(today.getDate()-i);
+    const key=dateToHistKey(d);
+    const data=appHistory[key];
+    const cell=document.createElement('div');
+    let cls='heat-cell';
+    if(data&&data.pct>=80) cls+=' l3';
+    else if(data&&data.pct>=50) cls+=' l2';
+    else if(data&&data.pct>0) cls+=' l1';
+    cell.className=cls;
+    cell.title=`${d.getDate()}/${d.getMonth()+1}: ${data?data.pct+'%':'—'}`;
+    el.appendChild(cell);
+  }
+}
+
 function renderStreakView(){
   const count=streak.count||0;
+  const best=streak.best||count;
   document.getElementById('streakBig').textContent=count;
   document.getElementById('streakNumBanner').textContent=count;
+  document.getElementById('streakBest').textContent=best+' dias';
   document.getElementById('streakSubtitle').textContent=
-    count===0?'Complete o dia de hoje para começar sua sequência!':
-    count===1?'Primeiro dia! Continue amanhã. 💪':
-    count>=7?'Uma semana inteira! Impressionante! 🏆':
+    count===0?'Complete o dia de hoje para começar!':
+    count>=84?'🏆 Jornada completa! Extraordinário!':
+    count>=30?'Incrível! Você está transformando sua rotina. 🔥':
+    count>=7?'Uma semana inteira! Impressionante! 🌟':
     'Você está em chamas! Não pare agora. 🔥';
   const dotsEl=document.getElementById('streakDots');dotsEl.innerHTML='';
   const wd=streak.weekDone||[];
-  DAYS.forEach((d,i)=>{
+  const DISPLAY_ORDER=[6,0,1,2,3,4,5]; // DOM first
+  DISPLAY_ORDER.forEach(i=>{
     const dot=document.createElement('div');
     dot.className='streak-dot'+(wd.includes(i)?' done':i===activeDay?' today':'');
-    dot.textContent=d[0];dotsEl.appendChild(dot);
+    dot.innerHTML=`<div class="dot-circle"></div><div class="dot-label">${DAYS[i]}</div>`;
+    dotsEl.appendChild(dot);
   });
+  renderMilestones();
+  renderHeatmap();
 }
 
 function confirmReset(){
@@ -1067,6 +1307,7 @@ function dvToggleDone(){
   dvData[key].verseRef=dvGetVerse().ref;
   dvData[key].done=!dvData[key].done;
   dvSavePersist();
+  recordDayHistory();
   renderDevocional();
 }
 
