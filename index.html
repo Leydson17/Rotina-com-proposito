@@ -710,6 +710,14 @@ function checkWeekReset(){
   }
 }
 function getDayPct(d){const s=schedules[d]||[];if(!s.length)return 0;return Math.round((s.filter((_,i)=>checked[`${d}-${i}`]).length/s.length)*100)}
+// includes devocional as 1 extra task for display (heatmap/history color)
+function getDayDisplayPct(dayIdx,histKey){
+  const s=schedules[dayIdx]||[];
+  const dvDone=!!(dvData[histKey]&&dvData[histKey].done);
+  const total=s.length+1;
+  const done=s.filter((_,i)=>checked[`${dayIdx}-${i}`]).length+(dvDone?1:0);
+  return Math.round((done/total)*100);
+}
 function updateStreak(){
   if(getDayPct(activeDay)<50)return;
   const today=todayStr();
@@ -890,7 +898,8 @@ function dateToHistKey(d){
 }
 function recordDayHistory(){
   const key=todayHistKey();
-  const pct=getDayPct(jsDayToDayIdx(new Date().getDay()));
+  const todayIdx=jsDayToDayIdx(new Date().getDay());
+  const pct=getDayDisplayPct(todayIdx,key); // includes devocional
   const dvDone=!!(dvData[key]&&dvData[key].done);
   appHistory[key]={pct,dv:dvDone};
   localStorage.setItem('appHistory',JSON.stringify(appHistory));
@@ -948,28 +957,31 @@ function renderHistory(){
     const dayName=DAYS[dayIdx];
     let pct=0,dvDone=false;
 
+    let displayPct=0;
     if(isCurrentWeek && date<=now){
       // live data for all non-future days in current week
       pct=getDayPct(dayIdx);
       dvDone=!!(dvData[histKey]&&dvData[histKey].done);
+      displayPct=getDayDisplayPct(dayIdx,histKey);
     } else if(!isCurrentWeek && appHistory[histKey]){
       pct=appHistory[histKey].pct||0;
       dvDone=!!(appHistory[histKey].dv);
+      displayPct=pct; // past weeks: pct is stored; dv shown via icon
     }
 
-    if(pct>0||dvDone) activeDays++;
-    totalPct+=pct;
+    if(displayPct>0||dvDone) activeDays++;
+    totalPct+=displayPct;
     if(dvDone) dvCount++;
 
     const row=document.createElement('div');
     row.className='history-row';
-    const barColor=pct>=80?'#4ecb71':pct>=50?'#f59e0b':'#5aacff';
+    const barColor=displayPct>=80?'#4ecb71':displayPct>=50?'#f59e0b':'#5aacff';
     row.innerHTML=`
       <div class="history-day-name">${dayName}<br><span style="font-size:10px;color:#405070">${date.getDate()}/${date.getMonth()+1}</span></div>
-      <div class="history-bar-bg"><div class="history-bar" style="width:${pct}%;background:${barColor}"></div></div>
+      <div class="history-bar-bg"><div class="history-bar" style="width:${displayPct}%;background:${barColor}"></div></div>
       <div style="display:flex;align-items:center;gap:6px">
         ${dvDone?'<span style="font-size:12px">✝️</span>':'<span style="font-size:12px;opacity:.2">✝️</span>'}
-        <div class="history-pct" style="color:${barColor}">${pct?pct+'%':'-'}</div>
+        <div class="history-pct" style="color:${barColor}">${displayPct?displayPct+'%':'-'}</div>
       </div>`;
     el.appendChild(row);
   });
@@ -1057,17 +1069,18 @@ function renderHeatmap(){
     const d=new Date(today);
     d.setDate(today.getDate()-i);
     const key=dateToHistKey(d);
-    const data=key===todayKey
-      ?{pct:getDayPct(todayDayIdx),dv:!!(dvData[key]&&dvData[key].done)}
-      :appHistory[key];
+    const dvDoneH=!!(dvData[key]&&dvData[key].done);
+    const rawPct=key===todayKey?getDayPct(todayDayIdx):(appHistory[key]?appHistory[key].pct||0:0);
+    const dispPct=key===todayKey?getDayDisplayPct(todayDayIdx,key):rawPct; // past uses stored pct (dv shown via border)
     const cell=document.createElement('div');
     let cls='heat-cell';
-    if(data&&data.pct>=100) cls+=' l4';
-    else if(data&&data.pct>=80) cls+=' l3';
-    else if(data&&data.pct>=50) cls+=' l2';
-    else if(data&&data.pct>0) cls+=' l1';
+    if(dispPct>=100) cls+=' l4';
+    else if(dispPct>=80) cls+=' l3';
+    else if(dispPct>=50) cls+=' l2';
+    else if(dispPct>0) cls+=' l1';
+    if(dvDoneH&&!dispPct) cls+=' l1'; // devocional alone = at least l1
     cell.className=cls;
-    cell.title=`${d.getDate()}/${d.getMonth()+1}: ${data&&data.pct?data.pct+'%':'—'}`;
+    cell.title=`${d.getDate()}/${d.getMonth()+1}: ${dispPct?dispPct+'%':'—'}`;
     el.appendChild(cell);
   }
 }
