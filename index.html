@@ -620,6 +620,23 @@ function switchTab(tab,idx){
 
 // STREAK
 function todayStr(){const d=new Date();return`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`}
+
+function weekStartStr(){
+  const d=new Date();
+  const day=d.getDay(); // 0=Sun,1=Mon,...
+  const diff=day===0?-6:1-day; // back to Monday
+  d.setDate(d.getDate()+diff);
+  return`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+}
+
+function checkWeekReset(){
+  const ws=weekStartStr();
+  if(streak.weekStart!==ws){
+    streak.weekStart=ws;
+    streak.weekDone=[];
+    save();
+  }
+}
 function getDayPct(d){const s=schedules[d]||[];if(!s.length)return 0;return Math.round((s.filter((_,i)=>checked[`${d}-${i}`]).length/s.length)*100)}
 function updateStreak(){
   if(getDayPct(activeDay)<50)return;
@@ -641,7 +658,7 @@ function renderDays(){
   DAYS.forEach((d,i)=>{
     const btn=document.createElement('button');
     btn.className='day-btn'+(i===activeDay?' active':'');
-    btn.innerHTML=`<div>${d}</div>${(i===5||i===6)?`<div class="day-sub">${i===6?'DOM':'FIM'}</div>`:''}`;
+    btn.innerHTML=`<div>${d}</div>`;
     btn.onclick=()=>{activeDay=i;render()};
     el.appendChild(btn);
   });
@@ -1087,7 +1104,7 @@ function dvRenderHistory(){
 
 // RENDER
 function render(){renderDays();renderSchedule();renderProgress();renderTip();renderStreakBanner()}
-renderLegend();render();
+checkWeekReset();renderLegend();render();
 </script>
 </body>
 </html>
