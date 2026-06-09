@@ -13,6 +13,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="verses.js"></script>
   <style>
     *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
     html{background:#141922}
@@ -127,7 +128,8 @@
     .dv-tab{flex:1;padding:11px 4px;background:transparent;border:none;color:#506080;font-size:12px;letter-spacing:.5px;cursor:pointer;font-family:Georgia,serif;border-bottom:2px solid transparent;transition:all .2s}
     .dv-tab.active{color:#c084fc;border-bottom-color:#c084fc}
     .dv-verse-card{background:linear-gradient(135deg,#200e38,#2c1250);border:1px solid #c084fc44;border-radius:14px;padding:20px;margin-bottom:16px}
-    .dv-verse-label{font-size:11px;color:#c084fc;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+    .dv-verse-label{font-size:13px;color:#c084fc;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;font-weight:bold}
+    .dv-verse-theme{font-size:11px;color:#8060a0;letter-spacing:1px;margin-bottom:12px}
     .dv-verse-text{font-size:18px;color:#f0ece0;line-height:1.8;font-style:italic;margin-bottom:12px}
     .dv-verse-ref{font-size:14px;color:#c084fc;text-align:right}
     .dv-date-label{text-align:center;font-size:12px;color:#8070a0;letter-spacing:1px;margin-top:10px;margin-bottom:2px}
@@ -292,7 +294,8 @@
   </div>
   <div class="dv-view" id="dvTodayView">
     <div class="dv-verse-card">
-      <div class="dv-verse-label">✦ VERSÍCULO DO DIA ✦</div>
+      <div class="dv-verse-label" id="dvDayLabel">DIA 1 DE 84</div>
+      <div class="dv-verse-theme" id="dvThemeLabel">O Caráter de Deus · Deus é Santo</div>
       <div class="dv-verse-text" id="dvVerseText"></div>
       <div class="dv-verse-ref" id="dvVerseRef"></div>
       <div class="dv-date-label" id="dvDateLabel"></div>
@@ -822,178 +825,7 @@ function confirmReset(){
   }
 }
 
-// DEVOCIONAL
-const VERSES = [
-  {
-    text:'"Porque sou eu que conheço os planos que tenho a vosso respeito, planos de paz e não de calamidade, para vos dar um futuro e uma esperança."',
-    ref:'Jeremias 29:11',
-    estudo:'Este versículo foi escrito pelo profeta Jeremias em carta enviada aos israelitas exilados na Babilônia em 597 a.C., após a conquista de Jerusalém por Nabucodonosor. A palavra hebraica "shalom", traduzida como "paz", vai muito além da ausência de conflito — significa plenitude, saúde e prosperidade integral de vida. Curiosamente, essa promessa gloriosa veio junto com a instrução de se estabelecerem no exílio: plantar jardins, casar-se e buscar o bem da cidade inimiga (Jer 29:5-7). O "futuro e esperança" prometidos confirmam que o sofrimento temporário jamais é a palavra final de Deus sobre Seu povo. Referências cruzadas: Romanos 8:28, Jeremias 29:10.',
-    q1:'O que Deus está prometendo neste versículo?',
-    q2:'Por que essa promessa foi dada ao povo de Israel no exílio?',
-    q3:'Como essa promessa me afeta hoje no meu dia a dia?',
-    palavra:'SHALOM',
-    palavraSub:'paz plena, prosperidade e plenitude',
-    passagem:'"Porque assim diz o Senhor: Quando Babilônia completar setenta anos, eu os visitarei e cumprirei a minha boa palavra a vosso respeito, e vos trarei de volta a este lugar. Porque sou eu que conheço os planos que tenho a vosso respeito, planos de paz e não de calamidade, para vos dar um futuro e uma esperança. Então me invocareis, e eu vos ouvirei; orar-me-eis, e eu vos atenderei. Buscar-me-eis e me achareis, quando me buscardes de todo o vosso coração."',
-    passagemRef:'Jeremias 29:10–13',
-    desafio:'Escreva hoje 3 coisas boas que Deus colocou na sua vida mesmo em meio às dificuldades. Cole o papel em algum lugar visível como lembrete de que os planos Dele são de paz.',
-    prayer:'Senhor, confio que Teus planos para mim são bons. Quando eu não entendo o caminho, ajuda-me a descansar na Tua promessa. Que eu busque meu futuro em Ti, não nas circunstâncias. Amém.'
-  },
-  {
-    text:'"Tudo posso naquele que me fortalece."',
-    ref:'Filipenses 4:13',
-    estudo:'Paulo escreveu Filipenses de dentro de uma prisão, provavelmente em Roma por volta de 60–62 d.C. O verbo grego "endunamoō" (que me fortalece) descreve uma força infundida externamente — não a nossa, mas a de Cristo agindo em nós. Crucialmente, nos versículos anteriores (4:11-12), Paulo revela que essa força não é promessa de conquistas ilimitadas, mas a capacidade de estar contente tanto na abundância quanto na necessidade. O contexto original rejeita a leitura de que esse versículo garante sucesso em qualquer empreendimento; é uma promessa de suficiência espiritual independente das circunstâncias. Referências cruzadas: 2 Coríntios 12:9-10, Efésios 6:10.',
-    q1:'O que Paulo quis dizer com "tudo posso"?',
-    q2:'Em que contexto Paulo escreveu isso — ele estava bem ou passando por dificuldades?',
-    q3:'Qual desafio da minha vida precisa desta verdade hoje?',
-    palavra:'FORTALEÇO',
-    palavraSub:'força que vem de fora, não de dentro',
-    passagem:'"Aprendi a estar contente em qualquer situação em que me encontre. Sei o que é viver em pobreza e sei o que é ter abundância; em tudo e em todas as circunstâncias aprendi o segredo de estar satisfeito, tanto na fartura como na necessidade. Tudo posso naquele que me fortalece."',
-    passagemRef:'Filipenses 4:11–13',
-    desafio:'Antes de iniciar sua maior tarefa de hoje, pause 30 segundos, respire fundo e declare em voz alta: "Tenho força em Cristo para isso." Repita cada vez que sentir que vai desistir.',
-    prayer:'Pai, reconheço que minha força é limitada, mas a Tua é infinita. Fortifica-me hoje para cumprir o que me chamaste a fazer. Que eu dependa de Ti em tudo. Amém.'
-  },
-  {
-    text:'"Buscai primeiro o reino de Deus e a sua justiça, e todas as demais coisas vos serão acrescentadas."',
-    ref:'Mateus 6:33',
-    estudo:'Este ensinamento é parte do Sermão do Monte (Mateus 5–7), o mais extenso discurso de Jesus registrado nos Evangelhos, proferido numa colina junto ao Mar da Galileia. A expressão "reino de Deus" (basileia tou theou) refere-se ao reinado soberano de Deus sobre todas as dimensões da vida. Jesus pronunciou essa palavra logo após apontar os pássaros e as flores como evidências do cuidado do Pai (v.26-29), redirecionando a ansiedade humana sobre necessidades materiais para uma confiança fundamental em Deus. A promessa "todas as demais coisas vos serão acrescentadas" não é sobre riqueza, mas sobre a garantia de que Deus supre plenamente quem O prioriza. Referências cruzadas: Lucas 12:31, Salmo 37:4.',
-    q1:'O que significa buscar "primeiro" o reino de Deus?',
-    q2:'Por que Jesus deu essa instrução logo após falar sobre ansiedade?',
-    q3:'Minhas prioridades do dia refletem que estou buscando primeiro a Deus?',
-    palavra:'PRIMEIRO',
-    palavraSub:'prioridade que organiza tudo o mais',
-    passagem:'"Portanto, não se preocupem, dizendo: Que comeremos? Que beberemos? Com que nos vestiremos? Pois os pagãos é que se empenham em buscar todas essas coisas, e o Pai celestial sabe que vocês precisam delas. Buscai, pois, em primeiro lugar o seu reino e a sua justiça, e todas essas coisas lhes serão acrescentadas. Portanto, não se preocupem com o amanhã, pois o amanhã trará suas próprias preocupações."',
-    passagemRef:'Mateus 6:31–34',
-    desafio:'Reserve os primeiros 10 minutos do seu dia para orar — antes de abrir o celular, antes do café. Coloque Deus em primeiro lugar de forma prática e concreta hoje.',
-    prayer:'Senhor Jesus, ajuda-me a colocar-Te em primeiro lugar — antes do trabalho, antes das preocupações. Que meu dia comece e termine em Ti. Amém.'
-  },
-  {
-    text:'"O Senhor é o meu pastor; nada me faltará."',
-    ref:'Salmos 23:1',
-    estudo:'O Salmo 23, atribuído ao rei Davi, é provavelmente o texto mais memorizado de toda a Bíblia. Davi conhecia a vida de pastor de dentro: cuidou das ovelhas de seu pai Jessé antes de ser ungido rei (1 Samuel 16:11), o que confere ao salmo uma profundidade autobiográfica única. A metáfora do pastor evoca cuidado íntimo, guia constante, proteção e provisão. Jesus retoma esse título em João 10, declarando-Se o "Bom Pastor" que dá a própria vida pelas ovelhas. Ezequiel 34 usa a mesma imagem para contrastar pastores humanos negligentes com a promessa de Deus de pastorear pessoalmente Seu povo. "Nada me faltará" não é promessa de abundância material, mas de cuidado providencial completo.',
-    q1:'O que a imagem do pastor comunica sobre Deus?',
-    q2:'Quais outros elementos do Salmo 23 complementam esse versículo?',
-    q3:'Em que área da minha vida preciso confiar que nada me faltará?',
-    palavra:'PASTOR',
-    palavraSub:'cuidado íntimo, guia e proteção',
-    passagem:'"O Senhor é o meu pastor; nada me faltará. Deitar-me faz em verdes pastos, guia-me mansamente a águas tranquilas. Refrigera a minha alma; guia-me pelas veredas da justiça por amor do seu nome. Ainda que eu andasse pelo vale da sombra da morte, não temeria mal algum, porque tu estás comigo; o teu cajado e o teu bordão me consolam."',
-    passagemRef:'Salmos 23:1–4',
-    desafio:'Escolha um momento de descanso hoje sem culpa. O Senhor nos leva a "águas tranquilas". Descansar também é confiar que Ele cuida de tudo.',
-    prayer:'Senhor, Tu és meu pastor fiel. Mesmo quando passo por vales sombrios, Tu estás comigo. Que eu ouça Tua voz e te siga sem medo. Amém.'
-  },
-  {
-    text:'"Sede fortes e corajosos. Não temais, nem vos assusteis diante deles, porque o Senhor, teu Deus, é quem vai contigo."',
-    ref:'Deuteronômio 31:6',
-    estudo:'Essas palavras foram pronunciadas por Moisés, com 120 anos, em seu discurso de despedida antes de morrer nas planícies de Moabe sem entrar na Terra Prometida. Israel estava prestes a cruzar o rio Jordão e enfrentar povos maiores e mais fortes, o que tornava o temor humano completamente compreensível. A coragem aqui ordenada não nasce de autoconfiança, mas de uma teologia firme: Deus vai à frente. Josué 1:9 repete quase as mesmas palavras, mostrando que esse mandato de coragem fundamentada em Deus é um padrão recorrente na Escritura. O autor de Hebreus (13:5) cita essa mesma promessa como base para a contentamento cristão. Referências cruzadas: Josué 1:9, Isaías 41:10.',
-    q1:'Para quem Deus disse essas palavras originalmente?',
-    q2:'Qual é a base para a coragem que Deus ordena?',
-    q3:'Que situação em minha vida exige coragem que só Deus pode dar?',
-    palavra:'CORAGEM',
-    palavraSub:'firmeza fundamentada em quem vai contigo',
-    passagem:'"Sede fortes e corajosos. Não temais, nem vos assusteis diante deles, porque o Senhor, teu Deus, é quem vai contigo; não te deixará, nem te desamparará. Josué, sê forte e corajoso, porque tu entrarás com este povo na terra que o Senhor jurou a seus pais. O próprio Senhor vai adiante de ti; ele estará contigo, não te deixará, nem te desamparará; não temas, nem te atemorizes."',
-    passagemRef:'Deuteronômio 31:6–8',
-    desafio:'Identifique uma ação que você tem adiado por medo. Dê o primeiro passo hoje — mesmo que pequeno. Anote o que fez ao final do dia.',
-    prayer:'Deus forte, enche-me de coragem hoje. Que o medo não paralise meus passos. Sei que não estou sozinho — Tu vais à minha frente. Amém.'
-  },
-  {
-    text:'"Não vos conformeis com este século, mas transformai-vos pela renovação da vossa mente."',
-    ref:'Romanos 12:2',
-    estudo:'Paulo escreveu Romanos por volta de 57 d.C., a carta mais sistemática sobre o evangelho. O verbo grego "syschēmatizō" (conformar) sugere adaptar-se ao molde exterior do mundo presente, enquanto "metamorphōo" (transformar) é exatamente a mesma raiz da palavra usada para descrever a Transfiguração de Jesus (Mateus 17:2). A renovação da mente é o mecanismo central da transformação cristã: o pensamento forma o caráter, e o caráter forma as ações concretas. Paulo contrasta o "século presente" (era atual dominada pelo pecado) com a era vindoura de Deus, chamando os cristãos a viverem já agora como cidadãos do reino futuro. O resultado dessa transformação é a capacidade de discernir e aprovar "qual é a boa, agradável e perfeita vontade de Deus". Referências cruzadas: Efésios 4:22-24, Colossenses 3:10.',
-    q1:'O que Paulo quer dizer com "não vos conformeis"?',
-    q2:'Como a mente renovada leva ao discernimento da vontade de Deus?',
-    q3:'Qual padrão do mundo ainda molda meu pensamento que preciso entregar a Deus?',
-    palavra:'RENOVA',
-    palavraSub:'transformação de dentro para fora',
-    passagem:'"Portanto, rogo-lhes, irmãos, pelas misericórdias de Deus, que apresentem os seus corpos como sacrifício vivo, santo e agradável a Deus; este é o culto racional de vocês. Não se conformem com este século, mas transformem-se pela renovação da mente, para que experimentem e aprovem qual é a boa, agradável e perfeita vontade de Deus."',
-    passagemRef:'Romanos 12:1–2',
-    desafio:'Escolha uma hora hoje para desligar as redes sociais e substituir o tempo por leitura bíblica ou oração. Registre como você se sentiu ao final desse tempo.',
-    prayer:'Pai, renova minha mente. Que Tua Palavra transforme o modo como vejo o trabalho, a família e as decisões. Não deixa o mundo me moldar. Amém.'
-  },
-  {
-    text:'"O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha."',
-    ref:'1 Coríntios 13:4',
-    estudo:'O capítulo 13 de 1 Coríntios, frequentemente chamado de "Hino ao Amor", foi escrito para uma igreja em Corinto dividida por facções, ciúmes e competição em dons espirituais (capítulos 12 e 14). A palavra grega "agapē" distingue-se de "eros" (amor romântico) e "philia" (afeição entre amigos) por indicar amor incondicional e volitivo — uma escolha, não apenas um sentimento. Paulo personifica o amor como se fosse uma pessoa, listando 15 atributos do que o amor faz e não faz. Teólogos observam que substituir a palavra "amor" pelo nome "Jesus" ao longo do capítulo resulta em uma descrição perfeita de Cristo. O capítulo culmina com a afirmação de que o amor é o maior dos três: fé, esperança e amor. Referências cruzadas: João 13:34-35, 1 João 4:7-8.',
-    q1:'Quais características do amor são mencionadas neste versículo?',
-    q2:'Por que Paulo colocou o amor acima de todos os dons espirituais?',
-    q3:'Qual característica do amor preciso desenvolver mais nas minhas relações?',
-    palavra:'PACIÊNCIA',
-    palavraSub:'amor que suporta sem desistir',
-    passagem:'"O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha. Não se comporta com indecência, não procura os seus interesses, não se irrita, não suspeita do mal. Não se alegra com a injustiça, mas se alegra com a verdade. Tudo suporta, tudo crê, tudo espera, tudo tolera."',
-    passagemRef:'1 Coríntios 13:4–7',
-    desafio:'Identifique uma pessoa com quem você tem sido impaciente. Pratique um ato concreto de paciência com ela hoje — ouça mais do que fala, responda com bondade em vez de correção.',
-    prayer:'Senhor, ensina-me a amar como Tu amas — paciente, bondoso, sem vaidade. Que meu amor pela minha família reflita o Teu amor por mim. Amém.'
-  },
-  {
-    text:'"Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento."',
-    ref:'Provérbios 3:5',
-    estudo:'Provérbios 3 é um discurso paternal sobre os benefícios da sabedoria divina, parte da rica literatura sapiencial do Antigo Testamento. O verbo hebraico "bāṭaḥ" (confiar) transmite a ideia de apoiar-se completamente em algo, como uma viga que sustenta um teto — é confiança ativa, não mera aquiescência passiva. A frase "não te estribes no teu próprio entendimento" não deprecia a inteligência, mas coloca os limites do raciocínio humano em perspectiva diante da onisciência de Deus (cf. Isaías 55:8-9). Os versículos seguintes (3:6-8) prometem direção para os caminhos de quem confia e saúde ao corpo, mostrando que a sabedoria de Deus é holística, afetando todas as dimensões da vida. Referências cruzadas: Isaías 55:8-9, Provérbios 3:1-12.',
-    q1:'O que significa confiar com "todo o coração"?',
-    q2:'Por que nosso próprio entendimento pode ser um obstáculo?',
-    q3:'Há alguma decisão que estou tentando resolver sozinho em vez de confiar a Deus?',
-    palavra:'CONFIA',
-    palavraSub:'apoiar-se completamente, sem reservas',
-    passagem:'"Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento. Reconhece-O em todos os teus caminhos, e ele endireitará as tuas veredas. Não sejas sábio a teus próprios olhos; teme ao Senhor e aparta-te do mal. Isso será saúde para o teu corpo e refrigério para os teus ossos."',
-    passagemRef:'Provérbios 3:5–8',
-    desafio:'Há uma decisão pendente que você tem tentado resolver sozinho. Escreva-a numa folha, ore sobre ela e entregue intencionalmente a Deus. Pratique soltar o controle.',
-    prayer:'Senhor, entrego meu entendimento limitado a Ti. Quando não souber o caminho, guia meus passos. Confio em Ti com tudo o que sou. Amém.'
-  },
-  {
-    text:'"Mas os que esperam no Senhor renovarão as suas forças, subirão com asas como águias."',
-    ref:'Isaías 40:31',
-    estudo:'Isaías 40 inaugura a segunda parte do livro (capítulos 40–66), conhecida como o "Livro da Consolação", abrindo com a proclamação "Consolai, consolai o meu povo". O capítulo estabelece primeiro a grandeza incomparável de Deus — Ele mede as águas na palma da mão, pesa as montanhas e sustenta o universo (v.12-14) — antes de aplicar essa grandeza aos cansados e fracos. O verbo hebraico "qāwâ" (esperar) também significa entrelaçar ou torcer como uma corda, sugerindo uma ligação intencional e ativa com Deus, não mera resignação passiva. As três imagens de força — voar como águias, correr sem se cansar, andar sem desfalecer — descrevem uma progressão: grandeza nos momentos épicos, resistência nas temporadas longas, e fidelidade nos dias ordinários. Referências cruzadas: Isaías 40:28-30, Salmos 103:5.',
-    q1:'O que a imagem das águias comunica sobre os que esperam em Deus?',
-    q2:'Por que "esperar no Senhor" exige força de caráter?',
-    q3:'Há algo em minha vida onde preciso aprender a esperar com paciência?',
-    palavra:'ESPERA',
-    palavraSub:'entrelaçar-se ativamente com Deus',
-    passagem:'"Ele dá força ao cansado e poder ao que não tem nenhum vigor. Os jovens se cansam e se fatigam, e os moços tropeçam e caem; mas os que esperam no Senhor renovarão as suas forças; subirão com asas como águias; correrão e não se cansarão; caminharão e não se fatigarão."',
-    passagemRef:'Isaías 40:29–31',
-    desafio:'Reserve 15 minutos hoje para descansar em silêncio — sem produzir, sem celular. Apenas fique com Deus. Esse é o "esperar no Senhor" em prática.',
-    prayer:'Pai, quando estou cansado e sem forças, renova-me. Ensina-me a esperar em Ti com esperança, não com ansiedade. Amém.'
-  },
-  {
-    text:'"E tudo quanto fizerdes, fazei-o de todo o coração, como ao Senhor, e não aos homens."',
-    ref:'Colossenses 3:23',
-    estudo:'Paulo escreveu Colossenses para uma igreja que nunca visitou pessoalmente, provavelmente fundada por Epafras (Colossenses 1:7), por volta de 60–62 d.C. O contexto imediato (v.22-25) trata de servos e empregadores, mas o princípio se estende a toda atividade humana. A expressão "como ao Senhor" (kyriō) redefine radicalmente a noção de trabalho: não é apenas um meio de sobrevivência, mas um ato de adoração dirigido a Cristo. Isso contrariava profundamente a visão greco-romana que desprezava o trabalho manual. A promessa de "recompensa da herança" mostra que Deus honra o trabalho fiel feito em Seu nome, mesmo quando não é reconhecido pelos homens. Referências cruzadas: Efésios 6:7, 1 Coríntios 10:31.',
-    q1:'O que significa fazer algo "como ao Senhor"?',
-    q2:'Como essa perspectiva muda a motivação para o trabalho?',
-    q3:'Como posso aplicar esse princípio ao meu trabalho hoje?',
-    palavra:'PROPÓSITO',
-    palavraSub:'todo trabalho como ato de adoração',
-    passagem:'"E tudo quanto fizerdes, fazei-o de todo o coração, como ao Senhor, e não aos homens; sabendo que do Senhor recebereis a recompensa da herança; porque servís ao Senhor Cristo."',
-    passagemRef:'Colossenses 3:23–24',
-    desafio:'Escolha a tarefa mais monótona do seu dia e a faça com excelência total, imaginando que está entregando diretamente a Jesus. Observe se sua motivação muda.',
-    prayer:'Senhor, que tudo o que eu fizer hoje — no trabalho, em casa, nos estudos — seja feito para a Tua glória. Amém.'
-  },
-  {
-    text:'"Instrui o menino no caminho em que deve andar; e até quando envelhecer não se desviará dele."',
-    ref:'Provérbios 22:6',
-    estudo:'A raiz hebraica "ḥānak" (instruir/treinar), da qual deriva a festa "Chanucá", transmite a ideia de iniciar ou dedicar algo para um propósito específico — como se dedicava um novo templo ou embarcação ao seu uso sagrado. Isso sugere que o ensino aos filhos não é genérico, mas adaptado ao "caminho" particular de cada criança, levando em conta suas aptidões e chamado únicos. Deuteronômio 6:4-9 (o Shemá) estabelece o modelo de ensino contínuo: ao levantar, ao deitar, ao andar pelo caminho, em casa e fora dela. Efésios 6:4 complementa no Novo Testamento: "criai-os na disciplina e admonestação do Senhor". A formação espiritual dos filhos é um dos maiores legados que um pai pode deixar, e começa muito antes da adolescência. Referências cruzadas: Deuteronômio 6:4-9, Efésios 6:4.',
-    q1:'Que responsabilidade esse versículo coloca sobre os pais?',
-    q2:'O que significa "o caminho em que deve andar" — é genérico ou personalizado?',
-    q3:'O que estou ensinando ao meu filho pelo meu exemplo diário?',
-    palavra:'INSTRUI',
-    palavraSub:'dedicar e iniciar com intenção',
-    passagem:'"Instrui o menino no caminho em que deve andar; e até quando envelhecer não se desviará dele. Ouve, ó Israel: O Senhor nosso Deus é o único Senhor. Amarás o Senhor teu Deus de todo o coração, de toda a tua alma e de todas as tuas forças. Estas palavras que hoje te ordeno ficarão no teu coração; tu as inculcarás a teus filhos e delas falarás quando estiveres em casa."',
-    passagemRef:'Provérbios 22:6 + Deuteronômio 6:4–7',
-    desafio:'Faça uma ação intencional com seu filho hoje que transmita um valor do reino — uma conversa sobre caráter, uma oração juntos, ou simplesmente presença total sem distração do celular por uma hora.',
-    prayer:'Pai, ajuda-me a ser um pai que instrui com amor e consistência. Que meu filho veja Cristo em mim. Amém.'
-  },
-  {
-    text:'"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna."',
-    ref:'João 3:16',
-    estudo:'Este versículo surge na conversa noturna de Jesus com Nicodemos, um líder fariseu influente que veio secretamente para entender os sinais que Jesus realizava (João 3:2). O verbo "ēgapēsen" (amou) está no aoristo grego, indicando um ato histórico definitivo e completo: a encarnação e entrega do Filho na cruz. A palavra "mundo" (kosmos) aqui é teologicamente surpreendente — não se refere ao Israel fiel, mas ao mundo em rebelião contra Deus (cf. João 1:10-11). Martinho Lutero chamou João 3:16 de "o Evangelho em miniatura". O contraste entre "não pereça" e "tenha a vida eterna" revela que a missão central de Deus é resgatar, não condenar — e que a vida eterna é qualitativa (conhecer a Deus pessoalmente, João 17:3) tanto quanto quantitativa. Referências cruzadas: Romanos 5:8, 1 João 4:9-10.',
-    q1:'Quais são as dimensões do amor de Deus reveladas neste versículo?',
-    q2:'O que significa que Deus "deu" seu filho?',
-    q3:'Esse amor de Deus tem mudado a forma como eu me relaciono com as pessoas?',
-    palavra:'AMOR',
-    palavraSub:'entrega total e definitiva de Deus',
-    passagem:'"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna. Deus enviou o seu Filho ao mundo, não para que condenasse o mundo, mas para que o mundo fosse salvo por ele."',
-    passagemRef:'João 3:16–17',
-    desafio:'Pense em alguém que precisa conhecer o amor de Deus. Envie uma mensagem sincera para essa pessoa hoje — não precisa ser um sermão, pode ser apenas cuidado genuíno que reflete o amor de Cristo.',
-    prayer:'Senhor, que eu nunca perca de vista o quanto me amaste. Que esse amor seja a base de tudo que faço. Amém.'
-  },
-];
-
+// VERSES loaded from verses.js
 let dvData = JSON.parse(localStorage.getItem('devocional')||'{}');
 let dvOffset = parseInt(localStorage.getItem('devOffset')||'0');
 let dvStudyOpen = false;
@@ -1014,14 +846,31 @@ function dvFmtDate(key){
   return `${days[date.getDay()]}, ${parseInt(d)} de ${months[parseInt(m)-1]}${rel}`;
 }
 
-function dvVerseIdx(){
+// 84-day journey anchored to June 8 2026 (Day 1)
+const DV_ANCHOR=new Date(2026,5,8);
+const DV_MONTHS=['O Caráter de Deus','Jesus Cristo','O Espírito Santo'];
+const DV_WEEKS=[
+  ['Deus é Santo','Deus é Amor','Deus é Fiel','Deus é Todo-Poderoso'],
+  ['Quem é Jesus','Os Ensinamentos de Jesus','A Cruz','A Ressurreição'],
+  ['Quem é o Espírito Santo','Os Frutos do Espírito','Os Dons do Espírito','Vida no Espírito'],
+];
+
+function dvJourneyDay(){
   const d=new Date();
   d.setDate(d.getDate()+dvOffset);
-  // Verse 0 (SHALOM) = June 9 2026. One verse per day, cycling every 12 days.
-  const anchor=new Date(2026,5,9); // June=5 in JS
   const today=new Date(d.getFullYear(),d.getMonth(),d.getDate());
-  const diff=Math.round((today-anchor)/86400000);
-  return((diff%VERSES.length)+VERSES.length)%VERSES.length;
+  return Math.round((today-DV_ANCHOR)/86400000); // 0-indexed (0 = Day 1)
+}
+
+function dvVerseIdx(){
+  const day=dvJourneyDay();
+  return Math.max(0,Math.min(day,VERSES.length-1));
+}
+
+function dvTheme(idx){
+  const m=Math.floor(idx/28);
+  const w=Math.floor((idx%28)/7);
+  return DV_MONTHS[Math.min(m,2)]+' · '+DV_WEEKS[Math.min(m,2)][Math.min(w,3)];
 }
 
 function dvSavePersist(){
@@ -1087,9 +936,12 @@ function renderDevocional(){
   const v=VERSES[vi];
   const stored=dvData[key]||{};
 
+  const journeyDay=dvJourneyDay();
+  document.getElementById('dvDayLabel').textContent='DIA '+(vi+1)+' DE '+VERSES.length;
+  document.getElementById('dvThemeLabel').textContent=dvTheme(vi);
   document.getElementById('dvVerseText').textContent=v.text;
   document.getElementById('dvVerseRef').textContent='— '+v.ref;
-  document.getElementById('dvDateLabel').textContent=dvFmtDate(key);
+  document.getElementById('dvDateLabel').textContent=dvFmtDate(key)+(journeyDay<0?' (antes do início)':journeyDay>=VERSES.length?' (jornada concluída ✓)':'');
   document.getElementById('dvPalavra').textContent=v.palavra;
   document.getElementById('dvPalavraSub').textContent=v.palavraSub;
   document.getElementById('dvPassagemText').textContent=v.passagem;
