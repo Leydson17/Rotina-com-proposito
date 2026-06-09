@@ -252,10 +252,11 @@
     .streak-heatmap-wrap{background:#1e2638;border:1px solid #2c3550;border-radius:12px;padding:14px;margin-bottom:14px}
     .streak-heatmap-title{font-size:11px;color:#506080;letter-spacing:2px;margin-bottom:10px}
     .streak-heatmap{display:grid;grid-template-columns:repeat(13,1fr);gap:3px}
-    .heat-cell{aspect-ratio:1;border-radius:2px;background:#0f1320}
-    .heat-cell.l1{background:#1a2e1a}
-    .heat-cell.l2{background:#1e4a1e}
-    .heat-cell.l3{background:#4ecb71}
+    .heat-cell{aspect-ratio:1;border-radius:2px;background:#161b22}
+    .heat-cell.l1{background:#0e4429}
+    .heat-cell.l2{background:#006d32}
+    .heat-cell.l3{background:#26a641}
+    .heat-cell.l4{background:#39d353}
   </style>
 </head>
 <body>
@@ -889,7 +890,7 @@ function dateToHistKey(d){
 }
 function recordDayHistory(){
   const key=todayHistKey();
-  const pct=getDayPct(activeDay);
+  const pct=getDayPct(jsDayToDayIdx(new Date().getDay()));
   const dvDone=!!(dvData[key]&&dvData[key].done);
   appHistory[key]={pct,dv:dvDone};
   localStorage.setItem('appHistory',JSON.stringify(appHistory));
@@ -914,7 +915,11 @@ function getWeekDates(weekOffset){
 
 function jsDayToDayIdx(jsDay){ return jsDay===0?6:jsDay-1; } // 0(Sun)→6, 1(Mon)→0, etc.
 
-function histPrevWeek(){ histWeekOffset--; renderHistory(); }
+function histPrevWeek(){
+  const prevDates=getWeekDates(histWeekOffset-1);
+  if(prevDates[6].getTime()<new Date(2026,5,8).getTime()) return;
+  histWeekOffset--; renderHistory();
+}
 function histNextWeek(){ if(histWeekOffset<0){histWeekOffset++;renderHistory();} }
 
 function renderHistory(){
@@ -927,11 +932,15 @@ function renderHistory(){
   const label=isCurrentWeek?'Esta semana':`${s.getDate()} ${months[s.getMonth()]} – ${e.getDate()} ${months[e.getMonth()]}`;
   document.getElementById('histWeekLabel').textContent=label;
   document.getElementById('histNextBtn').disabled=histWeekOffset>=0;
-  document.getElementById('histPrevBtn').disabled=false;
+  // disable ← when the week before would be entirely before June 8 (app start)
+  const prevDates=getWeekDates(histWeekOffset-1);
+  const appStartMs=new Date(2026,5,8).getTime();
+  document.getElementById('histPrevBtn').disabled=prevDates[6].getTime()<appStartMs;
 
   const el=document.getElementById('historyRows');el.innerHTML='';
   let totalPct=0,dvCount=0,activeDays=0;
   const todayKey=todayHistKey();
+  const now=new Date();now.setHours(23,59,59,999);
 
   dates.forEach(date=>{
     const histKey=dateToHistKey(date);
@@ -939,10 +948,11 @@ function renderHistory(){
     const dayName=DAYS[dayIdx];
     let pct=0,dvDone=false;
 
-    if(isCurrentWeek && histKey===todayKey){
+    if(isCurrentWeek && date<=now){
+      // live data for all non-future days in current week
       pct=getDayPct(dayIdx);
-      dvDone=!!(dvData[todayKey]&&dvData[todayKey].done);
-    } else if(appHistory[histKey]){
+      dvDone=!!(dvData[histKey]&&dvData[histKey].done);
+    } else if(!isCurrentWeek && appHistory[histKey]){
       pct=appHistory[histKey].pct||0;
       dvDone=!!(appHistory[histKey].dv);
     }
@@ -999,7 +1009,10 @@ function renderHistCalendar(){
     const inMonth=d.getMonth()===month;
     const isToday=key===todayKey;
     if(!inMonth){cell.className='hist-cal-day empty';cell.textContent='';cal.appendChild(cell);continue;}
-    const data=key===todayKey?{pct:getDayPct(jsDayToDayIdx(today.getDay())),dv:!!(dvData[todayKey]&&dvData[todayKey].done)}:appHistory[key];
+    const weekStart=new Date(today);weekStart.setDate(today.getDate()-today.getDay());weekStart.setHours(0,0,0,0);
+    const isThisWeek=d>=weekStart&&d<=today;
+    const dayIdxCal=jsDayToDayIdx(d.getDay());
+    const data=isThisWeek?{pct:getDayPct(dayIdxCal),dv:!!(dvData[key]&&dvData[key].done)}:appHistory[key];
     let cls='hist-cal-day has-data';
     if(!data||!data.pct) cls='hist-cal-day';
     else if(data.pct>=100) cls+=' full';
@@ -1038,18 +1051,23 @@ function renderHeatmap(){
   if(!el) return;
   el.innerHTML='';
   const today=new Date();
+  const todayKey=todayHistKey();
+  const todayDayIdx=jsDayToDayIdx(today.getDay());
   for(let i=89;i>=0;i--){
     const d=new Date(today);
     d.setDate(today.getDate()-i);
     const key=dateToHistKey(d);
-    const data=appHistory[key];
+    const data=key===todayKey
+      ?{pct:getDayPct(todayDayIdx),dv:!!(dvData[key]&&dvData[key].done)}
+      :appHistory[key];
     const cell=document.createElement('div');
     let cls='heat-cell';
-    if(data&&data.pct>=80) cls+=' l3';
+    if(data&&data.pct>=100) cls+=' l4';
+    else if(data&&data.pct>=80) cls+=' l3';
     else if(data&&data.pct>=50) cls+=' l2';
     else if(data&&data.pct>0) cls+=' l1';
     cell.className=cls;
-    cell.title=`${d.getDate()}/${d.getMonth()+1}: ${data?data.pct+'%':'—'}`;
+    cell.title=`${d.getDate()}/${d.getMonth()+1}: ${data&&data.pct?data.pct+'%':'—'}`;
     el.appendChild(cell);
   }
 }
