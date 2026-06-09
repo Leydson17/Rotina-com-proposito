@@ -10,12 +10,17 @@
   <link rel="manifest" href="/Rotina-com-proposito/manifest.json"/>
   <link rel="apple-touch-icon" href="/Rotina-com-proposito/icon-192.png"/>
   <title>Rotina com Propósito</title>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   <style>
     *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
     html{background:#141922}
     body{background:#141922;color:#e8e8e0;font-family:Georgia,'Times New Roman',serif;min-height:100vh;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);max-width:480px;margin:0 auto}
 
-    .header{background:linear-gradient(135deg,#162235,#1e1840);border-bottom:1px solid #2c3550;padding:20px 24px 16px;text-align:center}
+    .header{background:linear-gradient(135deg,#162235,#1e1840);border-bottom:1px solid #2c3550;padding:20px 24px 16px;text-align:center;position:relative}
+    .fb-btn{position:absolute;top:10px;right:14px;font-size:11px;font-family:Georgia,serif;cursor:pointer;background:#141d2e;border:1px solid #2c3550;border-radius:20px;padding:4px 10px;color:#5aacff;letter-spacing:.5px;white-space:nowrap}
+    .fb-btn.ok{color:#4ecb71;border-color:#4ecb7133}
     .header-label{font-size:12px;letter-spacing:4px;color:#5aacff;text-transform:uppercase;margin-bottom:6px}
     .header h1{font-size:24px;font-weight:normal;color:#f0ece0;letter-spacing:1px}
     .header p{margin-top:4px;font-size:14px;color:#8a9ab5;font-style:italic}
@@ -205,6 +210,7 @@
 <body>
 
 <div class="header">
+  <button class="fb-btn" id="fbAuthBtn" onclick="fbSignIn()">🔐 Entrar</button>
   <div class="header-label">AGENDA SEMANAL</div>
   <h1>Rotina com Propósito</h1>
   <p>Trabalho · Estudo · Fé</p>
@@ -393,6 +399,79 @@
 </div>
 
 <script>
+// ── FIREBASE ──────────────────────────────────────────
+firebase.initializeApp({
+  apiKey:"AIzaSyCj_eiMANjippVHI6P85frRuLAyAQPVwiQ",
+  authDomain:"bolao-copa-5d5c4.firebaseapp.com",
+  projectId:"bolao-copa-5d5c4",
+  storageBucket:"bolao-copa-5d5c4.firebasestorage.app",
+  messagingSenderId:"205906994856",
+  appId:"1:205906994856:web:b447bbafa85b866e56c49d"
+});
+const _fbAuth = firebase.auth();
+const _fbDb   = firebase.firestore();
+let _fbUid    = null;
+let _fbTimer  = null;
+
+function fbPushDebounced(){ clearTimeout(_fbTimer); _fbTimer = setTimeout(_fbPush, 1500); }
+
+async function _fbPush(){
+  if(!_fbUid) return;
+  const snap = {};
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);
+    snap[k]=localStorage.getItem(k);
+  }
+  try{ await _fbDb.collection('rotina').doc(_fbUid).set({snap,ts:Date.now()}); }
+  catch(e){ console.warn('Firebase push error',e); }
+}
+
+async function _fbPull(){
+  if(!_fbUid) return false;
+  try{
+    const doc=await _fbDb.collection('rotina').doc(_fbUid).get();
+    if(doc.exists && doc.data().snap){
+      Object.entries(doc.data().snap).forEach(([k,v])=>localStorage.setItem(k,v));
+      return true;
+    }
+  } catch(e){ console.warn('Firebase pull error',e); }
+  return false;
+}
+
+function fbSignIn(){
+  _fbAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    .catch(e=>alert('Falha ao entrar: '+e.message));
+}
+function fbSignOut(){ _fbAuth.signOut(); }
+
+function _fbUpdateBtn(user){
+  const btn=document.getElementById('fbAuthBtn');
+  if(!btn) return;
+  if(user){
+    btn.textContent='✓ '+(user.displayName?user.displayName.split(' ')[0]:'Conectado');
+    btn.classList.add('ok'); btn.onclick=fbSignOut;
+  } else {
+    btn.textContent='🔐 Entrar';
+    btn.classList.remove('ok'); btn.onclick=fbSignIn;
+  }
+}
+
+_fbAuth.onAuthStateChanged(async user=>{
+  _fbUpdateBtn(user);
+  if(user){
+    _fbUid=user.uid;
+    if(!sessionStorage.getItem('fbPulled')){
+      sessionStorage.setItem('fbPulled','1');
+      const pulled=await _fbPull();
+      if(pulled) location.reload();
+    }
+  } else {
+    _fbUid=null;
+    sessionStorage.removeItem('fbPulled');
+  }
+});
+// ──────────────────────────────────────────────────────
+
 const DAYS=['SEG','TER','QUA','QUI','SEX','SÁB','DOM'];
 const DAYS_FULL=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
 
@@ -479,6 +558,7 @@ function save(){
   localStorage.setItem('checked',JSON.stringify(checked));
   localStorage.setItem('notes',JSON.stringify(notes));
   localStorage.setItem('streak',JSON.stringify(streak));
+  fbPushDebounced();
 }
 
 // SERVICE WORKER
@@ -944,6 +1024,7 @@ function dvVerseIdx(){
 function dvSavePersist(){
   localStorage.setItem('devocional',JSON.stringify(dvData));
   localStorage.setItem('devOffset',String(dvOffset));
+  fbPushDebounced();
 }
 
 function autoResize(el){
