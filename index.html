@@ -40,8 +40,10 @@
     .streak-num{font-size:20px;font-weight:bold;color:#f59e0b}
 
     .tabs{display:flex;border-bottom:1px solid #2c3550;background:#141922}
-    .tab-btn{flex:1;padding:11px 4px;background:transparent;border:none;color:#506080;font-size:12px;letter-spacing:.5px;cursor:pointer;font-family:Georgia,serif;border-bottom:2px solid transparent;transition:all .2s}
+    .tab-btn{flex:1;padding:8px 4px 6px;background:transparent;border:none;color:#506080;cursor:pointer;font-family:Georgia,serif;border-bottom:2px solid transparent;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:3px}
     .tab-btn.active{color:#5aacff;border-bottom-color:#5aacff}
+    .tab-icon{font-size:20px;line-height:1}
+    .tab-label{font-size:9px;letter-spacing:1px;text-transform:uppercase}
 
     .view{display:none}
     .view.active{display:block}
@@ -237,10 +239,10 @@
 </div>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('agenda',0)">📅 AGENDA</button>
-  <button class="tab-btn" onclick="switchTab('historico',1)">📊 HISTÓRICO</button>
-  <button class="tab-btn" onclick="switchTab('sequencia',2)">🔥 SEQUÊNCIA</button>
-  <button class="tab-btn" onclick="switchTab('devocional',3)">✝️ DEVOC.</button>
+  <button class="tab-btn active" onclick="switchTab('agenda',0)"><span class="tab-icon">📅</span><span class="tab-label">Agenda</span></button>
+  <button class="tab-btn" onclick="switchTab('historico',1)"><span class="tab-icon">📊</span><span class="tab-label">Histórico</span></button>
+  <button class="tab-btn" onclick="switchTab('sequencia',2)"><span class="tab-icon">🔥</span><span class="tab-label">Sequência</span></button>
+  <button class="tab-btn" onclick="switchTab('devocional',3)"><span class="tab-icon">✝️</span><span class="tab-label">Devocional</span></button>
 </div>
 
 <div class="view active" id="view-agenda">
@@ -976,7 +978,8 @@ function renderDevocional(){
   if(prevBtn) prevBtn.disabled=Math.round((dvCurrentDate()-DV_START)/86400000)<=0;
   document.getElementById('dvVerseText').textContent=v.text;
   document.getElementById('dvVerseRef').textContent='— '+v.ref;
-  document.getElementById('dvDateLabel').textContent=dvFmtDate(key)+(journeyDay<0?' (antes do início)':journeyDay>=VERSES.length?' (jornada concluída ✓)':'');
+  const jd=dvJourneyDay();
+  document.getElementById('dvDateLabel').textContent=dvFmtDate(key)+(isIntro?' · introdução':jd>=VERSES.length?' · jornada concluída ✓':'');
   document.getElementById('dvPalavra').textContent=v.palavra;
   document.getElementById('dvPalavraSub').textContent=v.palavraSub;
   document.getElementById('dvPassagemText').textContent=v.passagem;

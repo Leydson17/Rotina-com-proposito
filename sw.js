@@ -1,5 +1,5 @@
 // Bump CACHE_VERSION on every deploy to invalidate the old cache
-const CACHE_VERSION = 'v20';
+const CACHE_VERSION = 'v21';
 const CACHE = `rotina-${CACHE_VERSION}`;
 const BASE = self.location.pathname.replace('/sw.js', '');
 const FILES = [
