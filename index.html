@@ -937,7 +937,8 @@ function dvFmtDate(key){
 function dvVerseIdx(){
   const d=new Date();
   d.setDate(d.getDate()+dvOffset);
-  return (d.getFullYear()*365+d.getMonth()*31+d.getDate())%VERSES.length;
+  // June(5)=0, July(6)=1, ..., Dec(11)=6, Jan(0)=7, ..., May(4)=11
+  return (d.getMonth() - 5 + 12) % 12;
 }
 
 function dvSavePersist(){
