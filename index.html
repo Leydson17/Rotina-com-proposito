@@ -1017,8 +1017,11 @@ function dvFmtDate(key){
 function dvVerseIdx(){
   const d=new Date();
   d.setDate(d.getDate()+dvOffset);
-  // June(5)=0, July(6)=1, ..., Dec(11)=6, Jan(0)=7, ..., May(4)=11
-  return (d.getMonth() - 5 + 12) % 12;
+  // Verse 0 (SHALOM) = June 9 2026. One verse per day, cycling every 12 days.
+  const anchor=new Date(2026,5,9); // June=5 in JS
+  const today=new Date(d.getFullYear(),d.getMonth(),d.getDate());
+  const diff=Math.round((today-anchor)/86400000);
+  return((diff%VERSES.length)+VERSES.length)%VERSES.length;
 }
 
 function dvSavePersist(){
