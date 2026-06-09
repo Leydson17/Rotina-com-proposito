@@ -135,6 +135,7 @@
     .dv-date-label{text-align:center;font-size:12px;color:#8070a0;letter-spacing:1px;margin-top:10px;margin-bottom:2px}
     .dv-verse-nav{display:flex;justify-content:space-between;margin-top:6px}
     .dv-verse-nav-btn{background:transparent;border:1px solid #2c2048;border-radius:20px;color:#8a9ab5;font-size:13px;padding:5px 12px;cursor:pointer;font-family:Georgia,serif}
+    .dv-verse-nav-btn:disabled{opacity:.25;cursor:default}
     .dv-study-wrap{margin-bottom:16px}
     .dv-study-toggle{width:100%;background:#182535;border:1px solid #2a4060;border-radius:10px;color:#7ab8e0;font-size:13px;letter-spacing:2px;padding:12px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:Georgia,serif;text-align:left}
     .dv-study-toggle:active{opacity:.8}
@@ -300,7 +301,7 @@
       <div class="dv-verse-ref" id="dvVerseRef"></div>
       <div class="dv-date-label" id="dvDateLabel"></div>
       <div class="dv-verse-nav">
-        <button class="dv-verse-nav-btn" onclick="dvPrev()">← anterior</button>
+        <button class="dv-verse-nav-btn" id="dvPrevBtn" onclick="dvPrev()">← anterior</button>
         <button class="dv-verse-nav-btn" onclick="dvNext()">próximo →</button>
       </div>
     </div>
@@ -846,28 +847,57 @@ function dvFmtDate(key){
   return `${days[date.getDay()]}, ${parseInt(d)} de ${months[parseInt(m)-1]}${rel}`;
 }
 
-// 84-day journey anchored to June 8 2026 (Day 1)
-const DV_ANCHOR=new Date(2026,5,9); // June 9 2026 = Day 1
+// Intro day: June 8 2026 (Colossenses 3:23)
+const DV_START=new Date(2026,5,8); // June 8 = intro, blocks going further back
+// 84-day journey: June 9 2026 = Day 1
+const DV_ANCHOR=new Date(2026,5,9);
 const DV_MONTHS=['O Caráter de Deus','Jesus Cristo','O Espírito Santo'];
 const DV_WEEKS=[
   ['Deus é Santo','Deus é Amor','Deus é Fiel','Deus é Todo-Poderoso'],
   ['Quem é Jesus','Os Ensinamentos de Jesus','A Cruz','A Ressurreição'],
   ['Quem é o Espírito Santo','Os Frutos do Espírito','Os Dons do Espírito','Vida no Espírito'],
 ];
+const DV_INTRO={
+  text:'"E tudo quanto fizerdes, fazei-o de todo o coração, como ao Senhor, e não aos homens."',
+  ref:'Colossenses 3:23',
+  estudo:'Paulo escreveu Colossenses para uma igreja que nunca visitou pessoalmente, por volta de 60–62 d.C. O contexto imediato trata de servos e empregadores, mas o princípio se estende a toda atividade humana. A expressão "como ao Senhor" (kyriō) redefine radicalmente o trabalho: não é apenas um meio de sobrevivência, mas um ato de adoração dirigido a Cristo. Isso contrariava a visão greco-romana que desprezava o trabalho manual. A promessa de "recompensa da herança" mostra que Deus honra o trabalho fiel feito em Seu nome, mesmo quando não é reconhecido pelos homens. Referências cruzadas: Efésios 6:7, 1 Coríntios 10:31.',
+  q1:'O que significa fazer algo "como ao Senhor"?',
+  q2:'Como essa perspectiva muda a motivação para o trabalho?',
+  q3:'Como posso aplicar esse princípio ao meu trabalho hoje?',
+  palavra:'PROPÓSITO',
+  palavraSub:'todo trabalho como ato de adoração',
+  passagem:'"E tudo quanto fizerdes, fazei-o de todo o coração, como ao Senhor, e não aos homens; sabendo que do Senhor recebereis a recompensa da herança; porque servís ao Senhor Cristo."',
+  passagemRef:'Colossenses 3:23–24',
+  desafio:'Escolha a tarefa mais monótona do seu dia e a faça com excelência total, imaginando que está entregando diretamente a Jesus. Essa é a atitude que vai guiar os próximos 84 dias.',
+  prayer:'Senhor, que tudo o que eu fizer — no trabalho, em casa, nos estudos — seja feito para a Tua glória. Que esse propósito me guie por toda esta jornada. Amém.'
+};
 
-function dvJourneyDay(){
+function dvCurrentDate(){
   const d=new Date();
   d.setDate(d.getDate()+dvOffset);
-  const today=new Date(d.getFullYear(),d.getMonth(),d.getDate());
-  return Math.round((today-DV_ANCHOR)/86400000); // 0-indexed (0 = Day 1)
+  return new Date(d.getFullYear(),d.getMonth(),d.getDate());
+}
+
+function dvJourneyDay(){
+  return Math.round((dvCurrentDate()-DV_ANCHOR)/86400000);
+}
+
+function dvIsIntro(){
+  return Math.round((dvCurrentDate()-DV_START)/86400000)===0;
 }
 
 function dvVerseIdx(){
+  if(dvIsIntro()) return -1;
   const day=dvJourneyDay();
   return Math.max(0,Math.min(day,VERSES.length-1));
 }
 
+function dvGetVerse(){
+  return dvVerseIdx()===-1 ? DV_INTRO : VERSES[dvVerseIdx()];
+}
+
 function dvTheme(idx){
+  if(idx===-1) return 'Introdução à Jornada';
   const m=Math.floor(idx/28);
   const w=Math.floor((idx%28)/7);
   return DV_MONTHS[Math.min(m,2)]+' · '+DV_WEEKS[Math.min(m,2)][Math.min(w,3)];
@@ -912,7 +942,7 @@ function dvToggleDesafio(){
   const vi=dvVerseIdx();
   if(!dvData[key])dvData[key]={};
   dvData[key].verseIdx=vi;
-  dvData[key].verseRef=VERSES[vi].ref;
+  dvData[key].verseRef=dvGetVerse().ref;
   dvData[key].desafioDone=!dvData[key].desafioDone;
   dvSavePersist();
   dvRenderDesafio(dvData[key]);
@@ -933,12 +963,17 @@ function dvRenderDesafio(stored){
 function renderDevocional(){
   const key=dvKey();
   const vi=dvVerseIdx();
-  const v=VERSES[vi];
+  const v=dvGetVerse();
   const stored=dvData[key]||{};
 
-  const journeyDay=dvJourneyDay();
-  document.getElementById('dvDayLabel').textContent='DIA '+(vi+1)+' DE '+VERSES.length;
+  // Day label
+  const isIntro=vi===-1;
+  document.getElementById('dvDayLabel').textContent=isIntro?'✦ INTRODUÇÃO ✦':'DIA '+(vi+1)+' DE '+VERSES.length;
   document.getElementById('dvThemeLabel').textContent=dvTheme(vi);
+
+  // Block ← button at DV_START
+  const prevBtn=document.getElementById('dvPrevBtn');
+  if(prevBtn) prevBtn.disabled=Math.round((dvCurrentDate()-DV_START)/86400000)<=0;
   document.getElementById('dvVerseText').textContent=v.text;
   document.getElementById('dvVerseRef').textContent='— '+v.ref;
   document.getElementById('dvDateLabel').textContent=dvFmtDate(key)+(journeyDay<0?' (antes do início)':journeyDay>=VERSES.length?' (jornada concluída ✓)':'');
@@ -982,7 +1017,10 @@ function renderDevocional(){
   savedEl.style.display=stored.ans1?'block':'none';
 }
 
-function dvPrev(){dvOffset--;dvSavePersist();renderDevocional()}
+function dvPrev(){
+  if(Math.round((dvCurrentDate()-DV_START)/86400000)<=0) return;
+  dvOffset--;dvSavePersist();renderDevocional();
+}
 function dvNext(){dvOffset++;dvSavePersist();renderDevocional()}
 
 function dvSave(){
@@ -990,7 +1028,7 @@ function dvSave(){
   const vi=dvVerseIdx();
   if(!dvData[key])dvData[key]={};
   dvData[key].verseIdx=vi;
-  dvData[key].verseRef=VERSES[vi].ref;
+  dvData[key].verseRef=dvGetVerse().ref;
   dvData[key].ans1=document.getElementById('dvAns1').value;
   dvData[key].ans2=document.getElementById('dvAns2').value;
   dvData[key].ans3=document.getElementById('dvAns3').value;
@@ -1006,7 +1044,7 @@ function dvToggleDone(){
   const vi=dvVerseIdx();
   if(!dvData[key])dvData[key]={};
   dvData[key].verseIdx=vi;
-  dvData[key].verseRef=VERSES[vi].ref;
+  dvData[key].verseRef=dvGetVerse().ref;
   dvData[key].done=!dvData[key].done;
   dvSavePersist();
   renderDevocional();
@@ -1031,7 +1069,7 @@ function dvRenderHistory(){
   keys.forEach(key=>{
     const d=dvData[key];
     const vi=d.verseIdx!==undefined?d.verseIdx:0;
-    const verse=VERSES[vi]||VERSES[0];
+    const verse=(vi===-1?DV_INTRO:VERSES[vi])||VERSES[0];
     const item=document.createElement('div');
     item.className='dv-hist-item';
     item.innerHTML=`
