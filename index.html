@@ -710,13 +710,8 @@ function checkWeekReset(){
   }
 }
 function getDayPct(d){const s=schedules[d]||[];if(!s.length)return 0;return Math.round((s.filter((_,i)=>checked[`${d}-${i}`]).length/s.length)*100)}
-// includes devocional as 1 extra task for display (heatmap/history color)
-function getDayDisplayPct(dayIdx,histKey){
-  const s=schedules[dayIdx]||[];
-  const dvDone=!!(dvData[histKey]&&dvData[histKey].done);
-  const total=s.length+1;
-  const done=s.filter((_,i)=>checked[`${dayIdx}-${i}`]).length+(dvDone?1:0);
-  return Math.round((done/total)*100);
+// alias used for display — pct is purely agenda tasks; devocional is visual only (✝️ icon / purple border)
+function getDayDisplayPct(dayIdx,histKey){return getDayPct(dayIdx);}
 }
 function updateStreak(){
   if(getDayPct(activeDay)<50)return;
@@ -899,7 +894,7 @@ function dateToHistKey(d){
 function recordDayHistory(){
   const key=todayHistKey();
   const todayIdx=jsDayToDayIdx(new Date().getDay());
-  const pct=getDayDisplayPct(todayIdx,key); // includes devocional
+  const pct=getDayPct(todayIdx);
   const dvDone=!!(dvData[key]&&dvData[key].done);
   appHistory[key]={pct,dv:dvDone};
   localStorage.setItem('appHistory',JSON.stringify(appHistory));
@@ -1070,15 +1065,13 @@ function renderHeatmap(){
     d.setDate(today.getDate()-i);
     const key=dateToHistKey(d);
     const dvDoneH=!!(dvData[key]&&dvData[key].done);
-    const rawPct=key===todayKey?getDayPct(todayDayIdx):(appHistory[key]?appHistory[key].pct||0:0);
-    const dispPct=key===todayKey?getDayDisplayPct(todayDayIdx,key):rawPct; // past uses stored pct (dv shown via border)
+    const dispPct=key===todayKey?getDayPct(todayDayIdx):(appHistory[key]?appHistory[key].pct||0:0);
     const cell=document.createElement('div');
     let cls='heat-cell';
     if(dispPct>=100) cls+=' l4';
     else if(dispPct>=80) cls+=' l3';
     else if(dispPct>=50) cls+=' l2';
     else if(dispPct>0) cls+=' l1';
-    if(dvDoneH&&!dispPct) cls+=' l1'; // devocional alone = at least l1
     cell.className=cls;
     cell.title=`${d.getDate()}/${d.getMonth()+1}: ${dispPct?dispPct+'%':'—'}`;
     el.appendChild(cell);
